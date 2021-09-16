@@ -27,7 +27,7 @@ include "../includes/sidebar.php";
                     </div>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body table-bordered table-responsive p-0" style="height: 300px;">
+                <div class="card-body table-bordered table-responsive p-0">
                     <table class="table table-head-fixed text-nowrap">
                         <thead>
                             <tr>
@@ -41,7 +41,12 @@ include "../includes/sidebar.php";
                         </thead>
                         <tbody>
                         <?php 
-                        $sql = "SELECT * FROM child_data";
+                        if(isset($_GET['filter']) && $_GET['filter']=='marriageable'){
+                            $sql = "SELECT * FROM child_data WHERE isMarriageable='yes'";
+                        }else{
+                            $sql = "SELECT * FROM child_data";
+                        }
+                        
                         $result = mysqli_query($conn,$sql);
                         if (mysqli_num_rows($result) > 0) {
                             // output data of each row

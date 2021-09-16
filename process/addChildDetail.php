@@ -1,7 +1,5 @@
 <?php
 include "../db/conn.php";
-include "../includes/sidebar.php";
-
 // echo $_POST['marriage'],$_POST['upload'];
 if(isset($_POST['childdata'])){
     $child_Name =$_POST['name'];
@@ -26,6 +24,7 @@ if(isset($_POST['childdata'])){
 
 if (mysqli_query($conn, $sql)) {
     echo "New record created successfully";
+    header("location: ../server/child_new.php");
   } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
   }

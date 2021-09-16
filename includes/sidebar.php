@@ -45,18 +45,18 @@
           </li>
           <li class="nav-item">
             <a href="../server/member_form.php" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-user"></i>
               <p>
-                Add Member
+                Add New Member
                 <!-- <span class="right badge badge-danger">New</span> -->
               </p>
             </a>
           </li>
           <li class="nav-item">
             <a href="../server/member_table.php" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
+              <i class="nav-icon fas fa-users"></i>
               <p>
-                Members table
+                View All Members
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -64,9 +64,9 @@
           </li>
           <li class="nav-item">
             <a href="../server/child_new.php" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
+              <i class="nav-icon fas fa-user"></i>
               <p>
-                Add Child
+                Add New Child
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -75,21 +75,11 @@
             <a href="../server/childTables.php" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
-                child list
+                View All Children
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
-              <p>
-                Add Element
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-          </li>
-
         </ul> -->
       </nav>
       <!-- /.sidebar-menu -->
