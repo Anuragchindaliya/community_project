@@ -88,7 +88,7 @@ include "../db/conn.php"
                     </div>
                     <div class="form-group">
                         <label for="address">Address</label>
-                        <input type="password" class="form-control" id="address" name="address" placeholder="Address ">
+                        <input type="text" class="form-control" id="address" name="address" placeholder="Address ">
                       </div>
                       <div class="form-group">
                         <label for="password1">Password</label>
@@ -151,4 +151,4 @@ include "../db/conn.php"
         </section>
         <!-- /.content -->
       </div>
-      <?php include "../includes/footer.php"?> 
+      <?php include "../includes/footer.php"?>
