@@ -19,14 +19,16 @@ if(isset($_POST['addMember'])){
     $recieptno = $_POST['recieptNo'];
     $profilepic = $_POST['InputFile'];
     $sql = "INSERT INTO  membersdetails (`firstName`, `lastname`, `mobileNo`, `email`, `dob`, `gender`, `state`, `city`, `address`, `password`, `fatherName`, `motherName`, `lifeMemberNo`, `recieptNo`, `profilepic`) VALUES ('$firstName','$lastName','$mobileNo','$email','$dob','$gender','$state','$city','$address','$password','$fatherName','$motherName','$lifeMemberNo','$recieptno','$profilepic')";
-}
-
-
-if (mysqli_query($conn, $sql)) {
+    if (mysqli_query($conn, $sql)) {
     echo "New record created successfully";
+    // header("Location:")
   } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
   }
   mysqli_close($conn);
+}
+
+
+
 
 ?>

@@ -1,5 +1,5 @@
 <?php 
-include "../db/conn.php"
+include "../db/conn.php";
 include "../includes/header.php";
 include "../includes/sidebar.php";
 
@@ -55,7 +55,7 @@ include "../includes/sidebar.php";
                                 <td><button type="submit">Active</button></td>
                                 <td>
                                     <button type="button" class="btn btn-primary" ><i class="fas fa-eye"></i></button>
-                                    <a href="../client/updateMember_form.php?id=<?=$row['id']?> "><button class="btn btn-primary ml-1" data-toggle="modal" data-target="#example"><i class="fas fa-edit"></i></button></a>
+                                    <a href="../process/updateMember_form.php?id=<?=$row['id']?> "><button class="btn btn-primary ml-1" data-toggle="modal" data-target="#example"><i class="fas fa-edit"></i></button></a>
                                     <a href="../process/deleteMember.php?id=<?=$row['id']?>"><button type="submit" class="btn btn-danger ml-1" id="delete"><i class="fas fa-trash-alt"></i></button></a>
                             </td>
                                 </tr>
