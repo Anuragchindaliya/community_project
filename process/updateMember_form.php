@@ -74,10 +74,6 @@ include "../db/conn.php"
                     }
                     mysqli_close($conn);
                   }
-
-
-
-
                   ?>
                   <div class="form-group col">
                     <label for="inputName">Name</label>

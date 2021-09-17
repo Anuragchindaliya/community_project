@@ -53,7 +53,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="http://localhost/community/server/member_table.php" class="nav-link">
+            <a href="../server/member_table.php" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Members table
@@ -63,10 +63,19 @@
 
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="../server/child_new.php" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                 Add Child
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../server/childTables.php" class="nav-link">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                child list
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
