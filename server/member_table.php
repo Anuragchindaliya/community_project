@@ -42,11 +42,11 @@ include "../includes/sidebar.php";
                     <tbody>
                         <?php 
                          if(isset($_GET['filter']) && $_GET['filter']=='lifemember'){
-                            $sql = "SELECT * FROM membersdetails WHERE isLifeMember='1'";
+                            $sql = "SELECT * FROM members WHERE isLifeMember='1'";
                         }else{
-                            $sql = "SELECT * FROM membersdetails";
+                            $sql = "SELECT * FROM members";
                         }
-                        // $sql = "SELECT * FROM membersdetails";
+                        // $sql = "SELECT * FROM members";
                         $result = mysqli_query($conn,$sql);
                         if (mysqli_num_rows($result) > 0) {
                             // output data of each row

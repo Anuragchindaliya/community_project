@@ -42,9 +42,9 @@ include "../includes/sidebar.php";
                         <tbody>
                         <?php 
                         if(isset($_GET['filter']) && $_GET['filter']=='marriageable'){
-                            $sql = "SELECT * FROM child_data WHERE isMarriageable='yes'";
+                            $sql = "SELECT * FROM child WHERE isMarriageable='yes'";
                         }else{
-                            $sql = "SELECT * FROM child_data";
+                            $sql = "SELECT * FROM child";
                         }
                         
                         $result = mysqli_query($conn,$sql);

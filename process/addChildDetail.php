@@ -18,7 +18,7 @@ if(isset($_POST['childdata'])){
     $expectation = $_POST['expectation'];
     $profile_pic = $_POST['InputFile'];
     // $status = $_POST['InputFile'];
-    $sql = "INSERT INTO `child_data`( `child_Name`, `child_email`, `gender`, `isMarriageable`, `age`, `education`, `degree`, `profession`, `height`, `dateofbirth`, `faceofcomplexion`, `manglik`, `expectation`,`profile_pic`) VALUES ('$child_Name', '$child_email', '$gender', '$isMarriageable', 'age', '$education', '$degree', '$profession', '$height', '$dateofbirth', '$faceofcomplexion', '$manglik','$expectation','$profile_pic')";
+    $sql = "INSERT INTO `child`( `child_Name`, `child_email`, `gender`, `isMarriageable`, `age`, `education`, `degree`, `profession`, `height`, `dateofbirth`, `faceofcomplexion`, `manglik`, `expectation`,`profile_pic`) VALUES ('$child_Name', '$child_email', '$gender', '$isMarriageable', 'age', '$education', '$degree', '$profession', '$height', '$dateofbirth', '$faceofcomplexion', '$manglik','$expectation','$profile_pic')";
 }
 
 
