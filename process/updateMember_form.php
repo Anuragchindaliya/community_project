@@ -41,7 +41,7 @@ include "../db/conn.php"
                   <?php
                   // include "../db/conn.php";
                   $ids = $_GET['id'];
-                  $showquery = "select * from membersdetails where id = {$ids}";
+                  $showquery = "SELECT * FROM `members` WHERE id = {$ids}";
                   $showdata = mysqli_query($conn, $showquery);
                   $arrdata = mysqli_fetch_assoc($showdata);
                   // echo $arrdata['gender'];
@@ -66,7 +66,7 @@ include "../db/conn.php"
                     $lifeMemberNo = $_POST['lifeMember'];
                     $recieptno = $_POST['recieptNo'];
                     // $profilepic = $_POST['InputFile'];
-                    $sql = "UPDATE `membersdetails` SET firstName ='$firstName', lastname='$lastName', mobileNo= '$mobileNo' ,email = '$email', dob = '$dob', gender = '$gender', state = '$state', city = '$city', address = '$address', password ='$password', fatherName = '$fatherName', motherName ='$motherName', lifeMemberNo = '$lifeMemberNo' , recieptNo ='$recieptno', profilepic = '$profilepic' WHERE id = {$ids}";
+                    $sql = "UPDATE `members` SET firstName ='$firstName', lastname='$lastName', mobileNo= '$mobileNo' ,email = '$email', dob = '$dob', gender = '$gender', state = '$state', city = '$city', address = '$address', password ='$password', fatherName = '$fatherName', motherName ='$motherName', lifeMemberNo = '$lifeMemberNo' , recieptNo ='$recieptno', profilepic = '$profilepic' WHERE id = {$ids}";
                     if (mysqli_query($conn, $sql)) {
                       echo "New record created successfully";
                     } else {
