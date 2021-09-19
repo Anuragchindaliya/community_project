@@ -31,6 +31,7 @@ include "../includes/sidebar.php";
                 <table class="table table-head-fixed text-nowrap">
                     <thead>
                         <tr>
+                            <th>Profile Picture</th>
                             <th>ID</th>
                             <th>User</th>
                             <th>Date</th>
@@ -50,10 +51,12 @@ include "../includes/sidebar.php";
                         $result = mysqli_query($conn,$sql);
                         if (mysqli_num_rows($result) > 0) {
                             // output data of each row
-
+                            
                             while ($row = mysqli_fetch_assoc($result)) {
                                     ?>
+                                    
                                 <tr>
+                                    <td><img src="../process/uploads/<?=$row['profilepic']?>" style="width:45px;"></td>
                                     <td><?=$row["id"]?></td>
                                 <td><?=$row["firstName"]." ".$row["lastname"];?></td>
                                 <td><?=$row["dob"]?></td>

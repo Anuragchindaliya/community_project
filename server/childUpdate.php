@@ -17,18 +17,19 @@ include "../db/conn.php";
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="../process/addChildDetail.php" method="post" enctype="multipart/form-data">
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>?id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="form-row">
                             <?php
                   // include "../db/conn.php";
                   $ids = $_GET['id'];
-                  $showquery = "select * from child_data where id = {$ids}";
+                  $showquery = "select * from `child` where id = $ids";
                   $showdata = mysqli_query($conn, $showquery);
                   $arrdata = mysqli_fetch_assoc($showdata);
-                  // echo $arrdata['gender'];
+                //   echo $arrdata['child_Name'];
                   // echo "$arrdata[id]";
-                  if(isset($_POST['childdata'])){
+                  if(isset($_POST['childupdata'])){
+                    echo "<meta http-equiv='refresh' content='0'>";
                     $child_Name =$_POST['name'];
                     // echo $firstName;
                     $child_email = $_POST['email'];
@@ -45,7 +46,7 @@ include "../db/conn.php";
                     $expectation = $_POST['expectation'];
                     $profile_pic = $_POST['InputFile'];
                     // $profilepic = $_POST['InputFile'];
-                    $sql = "UPDATE ` child_data` SET firstName ='$firstName', lastname='$lastName', mobileNo= '$mobileNo' ,email = '$email', dob = '$dob', gender = '$gender', state = '$state', city = '$city', address = '$address', password ='$password', fatherName = '$fatherName', motherName ='$motherName', lifeMemberNo = '$lifeMemberNo' , recieptNo ='$recieptno', profilepic = '$profilepic' WHERE id = {$ids}";
+                    $sql = "UPDATE `child` SET `child_Name`='$child_Name',`child_email`='$child_email',`gender`='$gender',`isMarriageable`='$isMarriageable',`age`='$age',`education`='$education',`degree`='$degree',`profession`='$profession',`height`='$height',`dateofbirth`='$dateofbirth',`faceofcomplexion`='$faceofcomplexion',`manglik`='$manglik',`expectation`='$expectation',`profile_pic`='$profile_pic',`status`='$profile_pic' WHERE id {$id}";
                     if (mysqli_query($conn, $sql)) {
                       echo "New record created successfully";
                     } else {
@@ -56,42 +57,51 @@ include "../db/conn.php";
                   ?>
                                 <div class="form-group col-md-6">
                                     <label for="exampleInputEmail1">Name</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Enter name" value="<?php echo $arrdata['childName'] ?>">
+                                    <input type="text" name="name" class="form-control" placeholder="Enter name" value="<?php echo $arrdata['child_Name'] ?>">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="exampleInputEmail1">Phone</label>
-                                    <input type="number" class="form-control" name="phone" placeholder="Enter phone number">
+                                    <input type="number" class="form-control" name="phone" placeholder="Enter phone number" value="<?php echo $arrdata['child_Name'] ?>">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" class="form-control" name="email" placeholder="Enter email">
+                                    <input type="email" class="form-control" name="email" placeholder="Enter email" value="<?php echo $arrdata['child_email'] ?>">
                                 </div>
-                                <div class="form-group radio col-md-3">
-                                    <label for="exampleInputGender">Gender</label>
-
-                                      <div>
-                                        <input type="radio" id="html" name="gender" value="Male"> <label for="male">Male</label>
-                                          <input type="radio" id="css" name="gender" value="female">
-                                          <label for="female">Female</label>
-                                          <input type="radio" checked name="gender" value="other">
-                                          <label for="other">Other</label>
-                                    </div>
-                                </div>
+                                <div class="form-group">
+                  <div>
+                    <label for="Gender">Gender</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="Gender" id="inlineRadio1" value="Male" <?php if ($arrdata['gender'] === 'male') { ?> checked <?php
+                                                                                                                                                                  } ?>>
+                    <label class="form-check-label" for="inlineRadio1">Male</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="Gender" id="inlineRadio2" value="Female" <?php if ($arrdata['gender'] === 'female') { ?> checked <?php
+                                                                                                                                                                      } ?>>
+                    <label class="form-check-label" for="inlineRadio2">Female</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="Gender" id="inlineRadio3" value="Others" <?php if ($arrdata['gender'] === 'Others') { ?> checked <?php
+                                                                                                                                                                      } ?>>
+                    <label class="form-check-label" for="inlineRadio3">Others</label>
+                  </div>
+                </div>
                                 <div class="form-group col-md-3">
                                     <label>Is Marriageable</label>
                                     <div>
-                                        <input type="checkbox" value="yes" name="marriage">
+                                        <input type="checkbox" value="yes" name="marriage" value="<?php echo $arrdata['child_Name'] ?>">
                                         yes
 
                                     </div>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="exampleInputAge">Age</label>
-                                    <input type="type" placeholder="enter age" name="age" class="form-control">
+                                    <input type="type" placeholder="enter age" name="age" class="form-control" value="<?php echo $arrdata['child_Name'] ?>">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="exampleInputEmail1">Education</label>
-                                    <input type="text" class="form-control" name="education" placeholder="Enter education">
+                                    <input type="text" class="form-control" name="education" placeholder="Enter education" value="<?php echo $arrdata['child_Name'] ?>">
 
                                 </div>
                                 <div class="form-group col-md-6">
@@ -99,10 +109,14 @@ include "../db/conn.php";
 
                                     <div>
                                         <select name="degree" class="form-control">
-                                            <option value="bcom">bcom</option>
-                                            <option value="btech">btech</option>
-                                            <option value="mca">mca</option>
-                                            <option value="other">other </option>
+                                            <option value="bcom" <?php if ($arrdata['degree'] === 'bcom') { ?> selected <?php
+                                        } ?> >bcom</option>
+                                            <option value="btech" <?php if ($arrdata['degree'] === 'btech') { ?> selected <?php
+                                        } ?> >btech</option>
+                                            <option value="mca" <?php if ($arrdata['degree'] === 'mca') { ?> selected <?php
+                                        } ?>>mca</option>
+                                            <option value="other" <?php if ($arrdata['degree'] === 'other') { ?> selected <?php
+                                        } ?>>other </option>
                                         </select>
                                     </div>
                                 </div>
@@ -110,10 +124,14 @@ include "../db/conn.php";
                                     <label for="exampleInputEmail1">Profession</label>
                                     <div>
                                         <select name="profession" class="form-control">
-                                            <option value="bcom">bcom</option>
-                                            <option value="btech">btech</option>
-                                            <option value="mca">mca</option>
-                                            <option value="other">other </option>
+                                        <option value="bcom" <?php if ($arrdata['profession'] === 'bcom') { ?> selected <?php
+                                        } ?> >bcom</option>
+                                            <option value="btech" <?php if ($arrdata['profession'] === 'btech') { ?> selected <?php
+                                        } ?> >btech</option>
+                                            <option value="mca" <?php if ($arrdata['profession'] === 'mca') { ?> selected <?php
+                                        } ?>>mca</option>
+                                            <option value="other" <?php if ($arrdata['profession'] === 'other') { ?> selected <?php
+                                        } ?>>other </option>
                                         </select>
                                     </div>
                                 </div>
@@ -129,10 +147,14 @@ include "../db/conn.php";
                                     <label for="exampleInputEmail1">Face Complexion</label>
                                     <div>
                                         <select name="facecomplexion" class="form-control">
-                                            <option value="bcom">bcom</option>
-                                            <option value="btech">btech</option>
-                                            <option value="mca">mca</option>
-                                            <option value="other">other </option>
+                                        <option value="bcom" <?php if ($arrdata['facecomplexion'] === 'bcom') { ?> selected <?php
+                                        } ?> >bcom</option>
+                                            <option value="btech" <?php if ($arrdata['facecomplexion'] === 'btech') { ?> selected <?php
+                                        } ?> >btech</option>
+                                            <option value="mca" <?php if ($arrdata['facecomplexion'] === 'mca') { ?> selected <?php
+                                        } ?>>mca</option>
+                                            <option value="other" <?php if ($arrdata['facecomplexion'] === 'other') { ?> selected <?php
+                                        } ?>>other </option>
                                         </select>
                                     </div>
                                 </div>
@@ -140,10 +162,15 @@ include "../db/conn.php";
                                     <label for="exampleInputEmail1">Manglik</label>
                                     <div>
                                         <select name="manglik" class="form-control">
-                                            <option value="bcom">bcom</option>
-                                            <option value="btech">btech</option>
-                                            <option value="mca">mca</option>
-                                            <option value="other">other </option>
+                                        <option value="bcom" <?php if ($arrdata['manglik'] === 'bcom') { ?> selected <?php
+                                        } ?> >bcom</option>
+                                            <option value="btech" <?php if ($arrdata['manglik'] === 'btech') { ?> selected <?php
+                                        } ?> >btech</option>
+                                            <option value="mca" <?php if ($arrdata['manglik'] === 'mca') { ?> selected <?php
+                                        } ?>>mca</option>
+                                            <option value="other" <?php if ($arrdata['manglik'] === 'other') { ?> selected <?php
+                                        } ?>>other </option>
+                                        </select>
                                         </select>
                                     </div>
                                 </div>
@@ -180,7 +207,7 @@ include "../db/conn.php";
                         <!-- /.card-body -->
 
                         <div class="card-footer">
-                            <button type="submit" name="childdata" class="btn btn-primary">Submit</button>
+                            <button type="submit" name="childupdata" class="btn btn-primary">Update</button>
                         </div>
                     </form>
                 </div>
