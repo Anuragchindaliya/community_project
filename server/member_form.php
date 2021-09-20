@@ -1,4 +1,12 @@
 <?php
+
+session_start();
+if(!isset($_SESSION['login'])){
+    header("Location: ../client/member_login.php");
+}
+if($_SESSION['user']=='member'){
+  header("Location: ./dashboard.php");
+}
 include "../includes/header.php";
 include "../includes/sidebar.php";
 include "../db/conn.php"

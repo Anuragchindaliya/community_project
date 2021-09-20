@@ -18,6 +18,7 @@
     <div class="row mb-5">
       <div class="col-md-8  m-auto">
         <h1 class="m-auto text-center">Varshney Samaj Community</h1>
+        <p class="text-center">Portal for Member</p>
       </div>
 
     </div>

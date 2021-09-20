@@ -6,7 +6,7 @@
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar" style="height: 100vh;">
+    <div class="sidebar" style="height: 80vh;">
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
@@ -43,6 +43,7 @@
               </p>
             </a>
           </li>
+          <?php if(isset($_SESSION['login']) && $_SESSION['user']=='admin'){ ?>
           <li class="nav-item">
             <a href="../server/member_form.php" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
@@ -52,6 +53,8 @@
               </p>
             </a>
           </li>
+
+          <?php } ?>
           <li class="nav-item">
             <a href="../server/member_table.php" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
