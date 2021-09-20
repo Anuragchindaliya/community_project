@@ -12,6 +12,7 @@ if(isset($_POST['email']) && isset($_POST['password'])){
 
     if(mysqli_num_rows($result)>0){
         $_SESSION['login']=true;
+        $_SESSION['user']="admin";
         $_SESSION['username']=$data['username'];
         header("location: ../server/dashboard.php");
     }else{
