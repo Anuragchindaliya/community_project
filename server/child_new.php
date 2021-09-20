@@ -51,6 +51,7 @@ include "../db/conn.php";
                                         <label class="form-check-label" for="inlineRadio3">Others</label>
                                     </div>
                                 </div>
+                                <div>
                                 <div class="form-group col-md-3">
                                     <label>Is Marriageable</label>
                                     <div>
@@ -63,6 +64,8 @@ include "../db/conn.php";
                                     <label for="exampleInputAge">Age</label>
                                     <input type="type" placeholder="enter age" name="age" class="form-control">
                                 </div>
+                                </div>
+
                                 <div class="form-group col-md-6">
                                     <label for="exampleInputEmail1">Education</label>
                                     <input type="text" class="form-control" name="education" placeholder="Enter education">

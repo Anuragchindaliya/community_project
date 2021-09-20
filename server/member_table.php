@@ -9,7 +9,7 @@ include "../includes/sidebar.php";
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-10">
-        <div class="card">
+        <div class="card mt-3" style="width: 80vw;">
             <div class="card-header">
 
                 <h3 class="card-title">Fixed Header Table</h3>
@@ -27,8 +27,8 @@ include "../includes/sidebar.php";
                 </div>
             </div>
             <!-- /.card-header -->
-            <div class="card-body table-bordered table-responsive p-0" >
-                <table class="table table-head-fixed text-nowrap">
+            <div class="card-body table-bordered table-responsive p-0"style="min-height: 570px;" >
+                <table class="table table-head-fixed text-nowrap" style="min-height: 200px;">
                     <thead>
                         <tr>
                             <th>Profile Picture</th>
