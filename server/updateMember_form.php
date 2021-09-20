@@ -34,7 +34,7 @@ include "../db/conn.php"
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form action="updateMember_form.php?id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
+            <form action="../process/updateMember.php?id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
               <div class="card-body">
 
                 <div class="row">
@@ -44,83 +44,6 @@ include "../db/conn.php"
                   $showquery = "SELECT * FROM `members` WHERE id = {$ids}";
                   $showdata = mysqli_query($conn, $showquery);
                   $arrdata = mysqli_fetch_assoc($showdata);
-                  // echo $arrdata['gender'];
-                  // echo "$arrdata[id]";
-                  if (isset($_POST['update'])) {
-
-                    echo "<meta http-equiv='refresh' content='0'>";
-                    // $idupdate = $_GET['id'];
-                    $firstName = $_POST['firstName'];
-
-                    $lastName = $_POST['lastName'];
-                    $mobileNo = $_POST['mobile'];
-                    $email = $_POST['email'];
-                    $dob = $_POST['dob'];
-                    $gender = $_POST['gender'];
-                    $state = $_POST['state'];
-                    $city = $_POST['city'];
-                    $address = $_POST['address'];
-                    $password = $_POST['password'];
-                    $fatherName = $_POST['fathername'];
-                    $motherName = $_POST['motherName'];
-                    $lifeMemberNo = $_POST['lifeMember'];
-                    $recieptno = $_POST['recieptNo'];
-                    // $profilepic = $_POST['InputFile'];
-                    echo $gender;
-
-                    // image upload************************************
-                    $file = $_FILES['InputFile'];
-                    $fileName = $_FILES['InputFile']['name'];
-                    $fileTmpName = $_FILES['InputFile']['tmp_name'];
-                    $fileType = $_FILES['InputFile']['type'];
-                    $fileSize = $_FILES['InputFile']['size'];
-                    $fileError = $_FILES['InputFile']['error'];
-
-                    $fileExt = explode('.', $fileName);
-
-                    $fileActualExt = strtolower(end($fileExt));
-
-                    $allowed = array('jpg', 'jpeg', 'png');
-                    if (in_array($fileActualExt, $allowed)) {
-                      if ($fileError === 0) {
-                        if ($fileSize < 3000000) {
-                          $fileNameNew = uniqid() . "." . $fileActualExt;
-                          $fileDestination = 'uploads/' . $fileNameNew;
-
-                          // uploadfiles
-                          echo $sql = "UPDATE `members` SET firstName ='$firstName', lastname='$lastName', mobileNo= '$mobileNo' ,email = '$email', dob = '$dob', gender = '$gender', state = '$state', city = '$city', address = '$address', password ='$password', fatherName = '$fatherName', motherName ='$motherName', lifeMemberNo = '$lifeMemberNo' , recieptNo ='$recieptno', profilepic = '$fileNameNew' WHERE id = '{$ids}'";
-
-                          if (mysqli_query($conn, $sql)) {
-                            move_uploaded_file($fileTmpName, $fileDestination);
-                            header("Location: ../server/member_form.php");
-                          } else {
-                            echo "<br/>Error: " . $sql . "<br>" . mysqli_error($conn);
-                          }
-                          // header("location: index.php?uploadsuccess");
-                        } else {
-                          echo "your file is too big!";
-                        }
-                      } else {
-                        echo "There was an error Uploading your
-            file!";
-                      }
-                    } else {
-                      echo "You cannot upload files of this type!";
-                    }
-
-                    mysqli_close($conn);
-                  }
-
-
-
-                  //   $sql = "UPDATE `members` SET firstName ='$firstName', lastname='$lastName', mobileNo= '$mobileNo' ,email = '$email', dob = '$dob', gender = '$gender', state = '$state', city = '$city', address = '$address', password ='$password', fatherName = '$fatherName', motherName ='$motherName', lifeMemberNo = '$lifeMemberNo' , recieptNo ='$recieptno', profilepic = '$profilepic' WHERE id = {$ids}";
-                  //   if (mysqli_query($conn, $sql)) {
-                  //     echo "New record created successfully";
-                  //   } else {
-                  //     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                  //   }
-                  //   mysqli_close($conn);
-                  // }
                   ?>
                   <div class="form-group col">
                     <label for="inputName">Name</label>
@@ -179,17 +102,24 @@ include "../db/conn.php"
                     <input type="text" class="form-control" id="city" name="city" placeholder="City" value="<?php echo $arrdata['city'] ?>">
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="address">Address</label>
-                  <input type="text" class="form-control" id="address" name="address" placeholder="Address " value="<?php echo $arrdata['address'] ?>">
+                <div class="row">
+                  <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" name="address" placeholder="Address " value="<?php echo $arrdata['address'] ?>">
+                  </div>
+                  <div class="form-group col">
+                    <label for="address">Pincode</label>
+                    <input class="form-control" id="pincode" name="pincode" placeholder="Pincode" type="text" pattern="[0-9]{6}" title="Correct Format: 121005 " value="<?php echo $arrdata['pincode'] ?>">
+                  </div>
                 </div>
+
                 <div class="row">
                   <div class="form-group col">
                     <label for="password1">Password</label>
                     <input type="password" class="form-control" id="password1" placeholder="Password" name="password" value="<?php echo $arrdata['password'] ?>">
                   </div>
                   <div class="form-group col">
-                    <label for="confirmPasswords">Confirm Passwords</label>
+                    <label for="confirmPasswords">Confirm Password</label>
                     <input type="password" class="form-control" id="confirmPasswords" placeholder="Confirm Passwords" value="<?php echo $arrdata['password'] ?>">
                   </div>
                 </div>
@@ -222,16 +152,22 @@ include "../db/conn.php"
                   </div>
                 </div>
                 <div class="form-group col-md-6">
+                  <label for="exampleInputFile">Choose your Profile Picture <?= $arrdata['profilepic'] ?></label>
+                  <div class="form-group">
+                    <input name="InputFile" type="file"  class="form-control-file" id="exampleFormControlFile1">
+
+                  </div>
+                <!-- <div class="form-group col-md-6">
                   <label for="exampleInputFile">File input</label>
                   <div class="input-group">
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input" name="InputFile" id="exampleInputFile" value="<?=$arrdata['profilepic']?>">
+                      <input type="file" class="custom-file-input" name="InputFile" id="exampleInputFile" value="<?= $arrdata['profilepic'] ?>">
                       <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <div class="col-md-6">
-                <img src="../process/uploads/<?=$arrdata['profilepic']?>" style="width:45px;">
+                  <img src="../process/uploads/<?= $arrdata['profilepic'] ?>" style="width:45px;">
                 </div>
                 <!-- <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">

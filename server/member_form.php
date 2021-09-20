@@ -9,7 +9,7 @@ include "../db/conn.php"
     <div class="container">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>General Form</h1>
+          <h1>Add New Member</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -30,7 +30,7 @@ include "../db/conn.php"
           <!-- general form elements -->
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Quick Example</h3>
+              <h3 class="card-title">Fill Member Details</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
@@ -38,11 +38,11 @@ include "../db/conn.php"
               <div class="card-body">
                 <div class="row">
                   <div class="form-group col">
-                    <label for="inputName">Name</label>
+                    <label for="inputName">First Name</label>
                     <input type="text" class="form-control" name="firstName" id="inputName" placeholder="Name">
                   </div>
                   <div class="form-group col">
-                    <label for="lastName">LastName</label>
+                    <label for="lastName">Last Name</label>
                     <input type="text" class="form-control" id="lastName" name="lastName" placeholder="LastName">
                   </div>
                 </div>
@@ -59,14 +59,14 @@ include "../db/conn.php"
                 <div class="row">
                   <div class="form-group col">
                   <label for="Dob">Date of Birth</label>
-                  <input type="date" class="form-control" id="Dob" placeholder="Date of Birth" name="dob">
+                  <input type="date" class="form-control" id="Dob" placeholder="Date of Birth" name="dob" min='1899-01-01' max='2000-01-01'>
                   </div>
                   <div class="form-group col">
                   <div>
                     <label for="Gender">Gender</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="Gender" id="inlineRadio1" value="Male">
+                    <input class="form-check-input" type="radio" checked name="Gender" id="inlineRadio1" value="Male">
                     <label class="form-check-label" for="inlineRadio1">Male</label>
                   </div>
                   <div class="form-check form-check-inline">
@@ -129,26 +129,38 @@ include "../db/conn.php"
                     <input type="text" class="form-control" id="city" name="city" placeholder="City">
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="address">Address</label>
-                  <input type="text" class="form-control" id="address" name="address" placeholder="Address ">
+                <div class="row">
+                  <div class="form-group col">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" name="address" placeholder="Address ">
+                  </div>
+                  <div class="form-group col">
+                    <label for="address">Pincode</label>
+                    <input class="form-control" id="pincode" name="pincode" placeholder="Pincode" type="text" pattern="[0-9]{6}" title="Correct Format: 121005">
+                  </div>
                 </div>
-                <div class="form-group">
+                
+                <div class="row">
+                <div class="form-group col">
                   <label for="password1">Password</label>
                   <input type="password" class="form-control" id="password1" placeholder="Password" name="password">
                 </div>
-                <div class="form-group">
-                  <label for="confirmPasswords">Confirm Passwords</label>
+                <div class="form-group col">
+                  <label for="confirmPasswords">Confirm Password</label>
                   <input type="password" class="form-control" id="confirmPasswords" placeholder="Confirm Passwords">
                 </div>
-                <div class="form-group">
+                </div>
+                <div class="row">
+                <div class="form-group col">
                   <label for="fatherName">Father Name</label>
                   <input type="text" class="form-control" id="fatherName" name="fathername" placeholder="Father Name">
                 </div>
-                <div class="form-group">
+                <div class="form-group col">
                   <label for="motherName">Mother Name</label>
                   <input type="text" class="form-control" id="motherName" name="motherName" placeholder="Mother Name">
                 </div>
+                </div>
+
                 <div class="row">
                   <div class="form-group col">
                     <label for="recieptNo.">Reciept No.</label>
@@ -159,17 +171,18 @@ include "../db/conn.php"
                     <input type="text" class="form-control" id="lifeMember" name="lifeMember" placeholder="Life Member">
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="exampleInputFile">File input</label>
-                  <div class="input-group">
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" name="InputFile" id="exampleInputFile">
+                
+                <div class="form-group col-md-6">
+                  <label for="exampleInputFile">Choose your Profile Picture</label>
+                  <div class="form-group">
+                    <input name="InputFile" type="file" class="form-control-file" id="exampleFormControlFile1">
+                  </div>
+                  <!-- <div class="">
+                    <div class="">
+                      <input type="file" class="" name="InputFile" id="exampleInputFile">
                       <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                     </div>
-                    <div class="input-group-append">
-                      <span class="input-group-text">Upload</span>
-                    </div>
-                  </div>
+                  </div> -->
                 </div>
                 <!-- <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">

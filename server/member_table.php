@@ -58,14 +58,14 @@ include "../includes/sidebar.php";
                                 <tr>
                                     <td><img src="../process/uploads/<?=$row['profilepic']?>" style="width:45px;"></td>
                                     <td><?=$row["id"]?></td>
-                                <td><?=$row["firstName"]." ".$row["lastname"];?></td>
-                                <td><?=$row["dob"]?></td>
-                                <td><button type="submit">Active</button></td>
-                                <td>
-                                    <button type="button" class="btn btn-primary" ><i class="fas fa-eye"></i></button>
-                                    <a href="../process/updateMember_form.php?id=<?=$row['id']?> "><button class="btn btn-primary ml-1" data-toggle="modal" data-target="#example"><i class="fas fa-edit"></i></button></a>
-                                    <a href="../process/deleteMember.php?id=<?=$row['id']?>"><button type="submit" class="btn btn-danger ml-1" id="delete"><i class="fas fa-trash-alt"></i></button></a>
-                            </td>
+                                    <td><?=$row["firstName"]." ".$row["lastname"];?></td>
+                                    <td><?=$row["dob"]?></td>
+                                    <td><button type="submit">Active</button></td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary" ><i class="fas fa-eye"></i></button>
+                                        <a href="../server/updateMember_form.php?id=<?=$row['id']?> "><button class="btn btn-primary ml-1" data-toggle="modal" data-target="#example"><i class="fas fa-edit"></i></button></a>
+                                        <a href="../process/deleteMember.php?id=<?=$row['id']?>"><button type="submit" class="btn btn-danger ml-1" id="delete"><i class="fas fa-trash-alt"></i></button></a>
+                                    </td>
                                 </tr>
                                 <?php
                                     }
