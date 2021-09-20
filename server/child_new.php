@@ -34,15 +34,21 @@ include "../db/conn.php";
                                     <label for="exampleInputEmail1">Email address</label>
                                     <input type="email" class="form-control" name="email" placeholder="Enter email">
                                 </div>
-                                <div class="form-group radio col-md-3">
-                                    <label for="exampleInputGender">Gender</label>
-
-                                      <div>
-                                        <input type="radio" id="html" name="gender" value="Male"> <label for="male">Male</label>
-                                          <input type="radio" id="css" name="gender" value="female">
-                                          <label for="female">Female</label>
-                                          <input type="radio" checked name="gender" value="other">
-                                          <label for="other">Other</label>
+                                <div class="form-group">
+                                    <div>
+                                        <label for="Gender">Gender</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Male">
+                                        <label class="form-check-label" for="inlineRadio1">Male</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="Female">
+                                        <label class="form-check-label" for="inlineRadio2">Female</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="gender" id="inlineRadio3" value="Others">
+                                        <label class="form-check-label" for="inlineRadio3">Others</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3">

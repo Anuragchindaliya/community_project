@@ -1,8 +1,8 @@
 <?php
 include "../db/conn.php";
 
-if(isset($_POST['addMember'])){
-    $firstName =$_POST['firstName'];
+if (isset($_POST['addMember'])) {
+    $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
     $mobileNo = $_POST['mobile'];
     $email = $_POST['email'];
@@ -16,18 +16,45 @@ if(isset($_POST['addMember'])){
     $motherName = $_POST['motherName'];
     $lifeMemberNo = $_POST['lifeMember'];
     $recieptno = $_POST['recieptNo'];
-    $profilepic = $_POST['InputFile'];
-    $sql = "INSERT INTO  `members` (`firstName`, `lastname`, `mobileNo`, `email`, `dob`, `gender`, `state`, `city`, `address`, `password`, `fatherName`, `motherName`, `lifeMemberNo`, `recieptNo`, `profilepic`) VALUES ('$firstName','$lastName','$mobileNo','$email','$dob','$gender','$state','$city','$address','$password','$fatherName','$motherName','$lifeMemberNo','$recieptno','$profilepic')";
-    if (mysqli_query($conn, $sql)) {
-    // echo "New record created successfully";
-    header("Location: ../server/member_form.php");
-  } else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-  }
-  mysqli_close($conn);
+    $pincode = $_POST['pincode'];
+
+    // image upload************************************
+    $file = $_FILES['InputFile'];
+    $fileName = $_FILES['InputFile']['name'];
+    $fileTmpName = $_FILES['InputFile']['tmp_name'];
+    $fileType = $_FILES['InputFile']['type'];
+    $fileSize = $_FILES['InputFile']['size'];
+    $fileError = $_FILES['InputFile']['error'];
+
+    $fileExt = explode('.', $fileName);
+
+    $fileActualExt = strtolower(end($fileExt));
+
+    $allowed = array('jpg', 'jpeg', 'png');
+    if (in_array($fileActualExt, $allowed)) {
+        if ($fileError === 0) {
+            if ($fileSize < 3000000) {
+                $fileNameNew = uniqid() . "." . $fileActualExt;
+                $fileDestination = 'uploads/' . $fileNameNew;
+
+                // uploadfiles
+                $sql = "INSERT INTO  `members` (`firstName`, `lastname`, `mobileNo`, `email`, `dob`, `gender`, `state`, `city`, `address`, `password`, `fatherName`, `motherName`, `lifeMemberNo`, `recieptNo`,`profilepic`,`pincode`) VALUES ('$firstName','$lastName','$mobileNo','$email','$dob','$gender','$state','$city','$address','$password','$fatherName','$motherName','$lifeMemberNo','$recieptno','$fileNameNew','$pincode')";
+                if (mysqli_query($conn, $sql)) {
+                    move_uploaded_file($fileTmpName, $fileDestination);
+                    header("Location: ../server/member_form.php");
+                } else {
+                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                }
+            } else {
+                echo "your file is too big!";
+            }
+        } else {
+            echo "There was an error Uploading your
+            file!";
+        }
+    } else {
+        echo "You cannot upload files of this type!";
+    }
+
+    mysqli_close($conn);
 }
-
-
-
-
-?>
