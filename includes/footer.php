@@ -1,4 +1,4 @@
-<footer class="main-footer sticky-bottom">
+<footer class="main-footer" style="height:6.2vh;" >
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 1.0
     </div>

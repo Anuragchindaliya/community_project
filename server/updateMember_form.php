@@ -21,12 +21,12 @@ include "../db/conn.php"
     <div class="container">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>General Form</h1>
+          <h1>Update Member</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">General Form</li>
+            <li class="breadcrumb-item active">Update Member</li>
           </ol>
         </div>
       </div>
@@ -42,7 +42,7 @@ include "../db/conn.php"
           <!-- general form elements -->
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Quick Example</h3>
+              <h3 class="card-title">Enter Correct Details</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
@@ -115,7 +115,7 @@ include "../db/conn.php"
                   </div>
                 </div>
                 <div class="row">
-                  <div class="form-group">
+                  <div class="form-group col">
                     <label for="address">Address</label>
                     <input type="text" class="form-control" id="address" name="address" placeholder="Address " value="<?php echo $arrdata['address'] ?>">
                   </div>
@@ -145,14 +145,6 @@ include "../db/conn.php"
                     <input type="text" class="form-control" id="motherName" name="motherName" placeholder="Mother Name" value="<?php echo $arrdata['motherName'] ?>">
                   </div>
                 </div>
-                <div class="form-group col">
-                  <label for="fatherName">Father Name</label>
-                  <input type="text" class="form-control" id="fatherName" name="fathername" placeholder="Father Name" value="<?php echo $arrdata['fatherName'] ?>">
-                </div>
-                <div class="form-group col">
-                  <label for="motherName">Mother Name</label>
-                  <input type="text" class="form-control" id="motherName" name="motherName" placeholder="Mother Name" value="<?php echo $arrdata['motherName'] ?>">
-                </div>
                 <div class="row">
                   <div class="form-group col">
                     <label for="recieptNo.">Reciept No.</label>
@@ -164,7 +156,8 @@ include "../db/conn.php"
                   </div>
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="exampleInputFile">Choose your Profile Picture <?= $arrdata['profilepic'] ?></label>
+                  <label for="exampleInputFile">Choose your Profile Picture </label>
+                      <h6><?= $arrdata['profilepic'] ?></h6>
                   <div class="form-group">
                     <input name="InputFile" type="file"  class="form-control-file" id="exampleFormControlFile1">
 
