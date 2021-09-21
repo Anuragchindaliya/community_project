@@ -1,8 +1,10 @@
 <?php
+session_start();
 include "../includes/header.php";
 include "../includes/sidebar.php";
 
 include "../db/conn.php";
+
 ?>
 <section class="content">
     <div class="container-fluid">

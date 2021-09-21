@@ -17,7 +17,7 @@ include "../includes/sidebar.php";
         <div class="card mt-3" style="width: 80vw;">
             <div class="card-header">
 
-                <h3 class="card-title">Fixed Header Table</h3>
+                <h3 class="card-title">All Members</h3>
 
                 <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
