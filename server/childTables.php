@@ -61,7 +61,7 @@ include "../includes/sidebar.php";
                                         <td><?= $row["age"] ?></td>
                                         <td><button type="submit">Active</button></td>
                                         <td>
-                                            <button type="button" class="btn btn-primary"><i class="fas fa-eye"></i></button>
+                                            
                                             <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#example"><i class="fas fa-eye"></i>
                                             </button>
                                             <a href="./childUpdate.php?id=<?= $row['id'] ?> "><button class="btn btn-primary ml-1"><i class="fas fa-edit"></i></button></a>
@@ -208,6 +208,7 @@ include "../includes/sidebar.php";
                                                     </div>
                                                 </div>
                                             </div>
+                                </div>
                             <?php
                                 }
                             } else {

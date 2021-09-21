@@ -46,8 +46,8 @@ include "../db/conn.php"
               <div class="card-body">
                 <div class="row">
                   <div class="form-group col">
-                    <label for="inputName">First Name</label>
-                    <input type="text" class="form-control" name="firstName" id="inputName" placeholder="Name">
+                    <label for="inputName"> Name<sup class="text-danger">*</sup></label>
+                    <input type="text" class="form-control" name="firstName" id="inputName" placeholder="Name" required>
                   </div>
                   <div class="form-group col">
                     <label for="lastName">Last Name</label>
@@ -56,18 +56,18 @@ include "../db/conn.php"
                 </div>
                 <div class="row">
                   <div class="form-group col">
-                  <label for="Mobile">Mobile No.</label>
-                  <input type="tel" class="form-control" id="Mobile" placeholder="Mobile No." name="mobile">
+                  <label for="Mobile">Mobile No.<sup class="text-danger">*</sup></label>
+                  <input type="tel" class="form-control" id="Mobile" placeholder="Mobile No." name="mobile" required>
                   </div>
                   <div class="form-group col">
-                  <label for="Email1">Email address</label>
+                  <label for="Email1">Email address<sup class="text-danger">*</sup></label>
                   <input type="email" class="form-control" id="Email1" placeholder="Enter email" name="email">
                   </div>
                 </div>
                 <div class="row">
                   <div class="form-group col">
-                  <label for="Dob">Date of Birth</label>
-                  <input type="date" class="form-control" id="Dob" placeholder="Date of Birth" name="dob" min='1899-01-01' max='2000-01-01'>
+                  <label for="Dob">Date of Birth<sup class="text-danger">*</sup></label>
+                  <input type="date" class="form-control" id="Dob" placeholder="Date of Birth" name="dob" min='1899-01-01' max='2000-01-01' required>
                   </div>
                   <div class="form-group col">
                   <div>
@@ -82,7 +82,7 @@ include "../db/conn.php"
                     <label class="form-check-label" for="inlineRadio2">Female</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="Gender" id="inlineRadio3" value="Others">
+                    <input class="form-check-input" type="radio" name="Gender" id="inlineRadio3" value="Others" >
                     <label class="form-check-label" for="inlineRadio3">Others</label>
                   </div>
                   </div>
@@ -90,8 +90,8 @@ include "../db/conn.php"
 
                 <div class="row">
                 <div class="form-group col">
-                    <label for="state">State</label>
-                    <input list="states" class="form-control" name="state" placeholder="State" id="state">
+                    <label for="state">State<sup class="text-danger">*</sup></label>
+                    <input list="states" class="form-control" name="state" placeholder="State" id="state" required>
                     <datalist id="states">
                       <option value="Andhra Pradesh">Andhra Pradesh</option>
                       <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -133,30 +133,43 @@ include "../db/conn.php"
 
                   </div>
                   <div class="form-group col">
-                    <label for="city">City</label>
-                    <input type="text" class="form-control" id="city" name="city" placeholder="City">
+                    <label for="city">City<sup class="text-danger">*</sup></label>
+                    <input type="text" class="form-control" id="city" name="city" placeholder="City" required>
                   </div>
                 </div>
                 <div class="row">
                   <div class="form-group col">
-                    <label for="address">Address</label>
-                    <input type="text" class="form-control" id="address" name="address" placeholder="Address ">
+                    <label for="address">Address<sup class="text-danger">*</sup></label>
+                    <input type="text" class="form-control" id="address" name="address" placeholder="Address" required>
                   </div>
                   <div class="form-group col">
-                    <label for="address">Pincode</label>
-                    <input class="form-control" id="pincode" name="pincode" placeholder="Pincode" type="text" pattern="[0-9]{6}" title="Correct Format: 121005">
+                    <label for="address">Pincode<sup class="text-danger">*</sup></label>
+                    <input class="form-control" id="pincode" name="pincode" placeholder="Pincode" type="text" pattern="[0-9]{6}" title="Correct Format: 121005" required >
                   </div>
                 </div>
                 
                 <div class="row">
+
                 <div class="form-group col">
-                  <label for="password1">Password</label>
-                  <input type="password" class="form-control" id="password1" placeholder="Password" name="password">
+                  <label for="password1">Password<sup class="text-danger">*</sup> <span></span></label>
+                  <input type="password" class="form-control" id="password1" placeholder="Password" name="password" required >
                 </div>
                 <div class="form-group col">
-                  <label for="confirmPasswords">Confirm Password</label>
-                  <input type="password" class="form-control" id="confirmPasswords" placeholder="Confirm Passwords">
+                  <label for="confirmPasswords">Confirm Password<sup class="text-danger">*</sup> <span id='message' style="font-size: small;"></span></label>
+                  <input type="password" class="form-control" id="confirmPasswords" placeholder="Confirm Passwords" oninput='check();' required>
                 </div>
+                <script>
+                    var check = function() {
+                      if (document.getElementById('password1').value ==
+                        document.getElementById('confirmPasswords').value) {
+                        document.getElementById('message').style.color = 'green';
+                        document.getElementById('message').innerHTML = 'Confirm Posswordis Is Matching';
+                      } else {
+                        document.getElementById('message').style.color = 'red';
+                        document.getElementById('message').innerHTML = ' Confirm Posswordis Is Not Matching';
+                      }
+                    }
+                  </script>
                 </div>
                 <div class="row">
                 <div class="form-group col">
@@ -181,7 +194,7 @@ include "../db/conn.php"
                 </div>
                 
                 <div class="form-group col-md-6">
-                  <label for="exampleInputFile">Choose your Profile Picture</label>
+                  <label for="exampleInputFile">Choose your Profile Picture<sup class="text-danger">*</sup></label>
                   <div class="form-group">
                     <input name="InputFile" type="file" class="form-control-file" id="exampleFormControlFile1">
                   </div>
