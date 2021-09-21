@@ -58,7 +58,7 @@ include "../db/conn.php"
                   $arrdata = mysqli_fetch_assoc($showdata);
                   ?>
                   <div class="form-group col">
-                    <label for="inputName">Name</label>
+                    <label for="inputName">Name<sup class="text-danger">*</sup></label>
                     <input type="text" class="form-control" name="firstName" value="<?php echo $arrdata['firstName'] ?>" id="inputName" placeholder="Name">
                   </div>
                   <div class="form-group col">
@@ -68,17 +68,17 @@ include "../db/conn.php"
                 </div>
                 <div class="row">
                   <div class="form-group col">
-                    <label for="Mobile">Mobile No.</label>
+                    <label for="Mobile">Mobile No.<sup class="text-danger">*</sup></label>
                     <input type="tel" class="form-control" id="Mobile" placeholder="Mobile No." name="mobile" value="<?php echo $arrdata['mobileNo'] ?>">
                   </div>
                   <div class="form-group col">
-                    <label for="Email1">Email address</label>
+                    <label for="Email1">Email address<sup class="text-danger">*</sup></label>
                     <input type="email" class="form-control" id="Email1" placeholder="Enter email" name="email" value="<?php echo $arrdata['email'] ?>">
                   </div>
                 </div>
                 <div class="row">
                   <div class="form-group col">
-                    <label for="Dob">Date of Birth</label>
+                    <label for="Dob">Date of Birth<sup class="text-danger">*</sup></label>
                     <input type="date" class="form-control" id="Dob" placeholder="Date of Birth" name="dob" value="<?php echo $arrdata['dob'] ?>">
                   </div>
                   <div class="form-group col">
@@ -106,34 +106,46 @@ include "../db/conn.php"
 
                 <div class="row">
                   <div class="form-group col">
-                    <label for="state">State</label>
+                    <label for="state">State<sup class="text-danger">*</sup></label>
                     <input type="text" class="form-control" id="state" name="state" placeholder="State" value="<?php echo $arrdata['state'] ?>">
                   </div>
                   <div class="form-group col">
-                    <label for="city">City</label>
+                    <label for="city">City<sup class="text-danger">*</sup></label>
                     <input type="text" class="form-control" id="city" name="city" placeholder="City" value="<?php echo $arrdata['city'] ?>">
                   </div>
                 </div>
                 <div class="row">
                   <div class="form-group col">
-                    <label for="address">Address</label>
+                    <label for="address">Address<sup class="text-danger">*</sup></label>
                     <input type="text" class="form-control" id="address" name="address" placeholder="Address " value="<?php echo $arrdata['address'] ?>">
                   </div>
                   <div class="form-group col">
-                    <label for="address">Pincode</label>
+                    <label for="address">Pincode<sup class="text-danger">*</sup></label>
                     <input class="form-control" id="pincode" name="pincode" placeholder="Pincode" type="text" pattern="[0-9]{6}" title="Correct Format: 121005 " value="<?php echo $arrdata['pincode'] ?>">
                   </div>
                 </div>
 
                 <div class="row">
                   <div class="form-group col">
-                    <label for="password1">Password</label>
+                    <label for="password1">Password<sup class="text-danger">*</sup></label>
                     <input type="password" class="form-control" id="password1" placeholder="Password" name="password" value="<?php echo $arrdata['password'] ?>">
                   </div>
                   <div class="form-group col">
-                    <label for="confirmPasswords">Confirm Password</label>
-                    <input type="password" class="form-control" id="confirmPasswords" placeholder="Confirm Passwords" value="<?php echo $arrdata['password'] ?>">
+                    <label for="confirmPasswords">Confirm Password<sup class="text-danger">*</sup><span id='message' style="font-size: small;"></span> </label>
+                    <input type="password" class="form-control" id="confirmPasswords" placeholder="Confirm Passwords" value="<?php echo $arrdata['password'] ?>" oninput="check();">
                   </div>
+                  <script>
+                    var check = function() {
+                      if (document.getElementById('password1').value ==
+                        document.getElementById('confirmPasswords').value) {
+                        document.getElementById('message').style.color = 'green';
+                        document.getElementById('message').innerHTML = 'Confirm Posswordis Is Matching';
+                      } else {
+                        document.getElementById('message').style.color = 'red';
+                        document.getElementById('message').innerHTML = ' Confirm Posswordis Is Not Matching';
+                      }
+                    }
+                  </script>
                 </div>
                 <div class="row">
                   <div class="form-group col">
@@ -156,7 +168,7 @@ include "../db/conn.php"
                   </div>
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="exampleInputFile">Choose your Profile Picture </label>
+                  <label for="exampleInputFile">Choose your Profile Picture<sup class="text-danger">*</sup> </label>
                       <h6><?= $arrdata['profilepic'] ?></h6>
                   <div class="form-group">
                     <input name="InputFile" type="file"  class="form-control-file" id="exampleFormControlFile1">

@@ -74,7 +74,8 @@ include "../includes/sidebar.php";
 
                                         <?php if(isset($_SESSION['login']) && $_SESSION['user']=='admin'){ ?>
                                         <a href="../server/updateMember_form.php?id=<?=$row['id']?> "><button class="btn btn-primary ml-1" data-toggle="modal" data-target="#example"><i class="fas fa-edit"></i></button></a>
-                                        <a href="../process/deleteMember.php?id=<?=$row['id']?>"><button type="submit" class="btn btn-danger ml-1" id="delete"><i class="fas fa-trash-alt"></i></button></a>
+
+                                        <a  id="deleteAlter" onclick="myFunction(<?=$row['id']?>);"><button type="submit" class="btn btn-danger ml-1" id="delete"><i class="fas fa-trash-alt"></i></button></a>
                                         <?php }?>
                                     </td>
                                 </tr>
@@ -82,7 +83,7 @@ include "../includes/sidebar.php";
                                 <?php
                                     }
                                 } else {
-                                    echo "0 results";
+                                    echo '<tr><td colspan="6    " class="text-center"><h1>No Result Found</td></h1></tr>';
                                 } ?>
                         <!-- <tr>
                             
@@ -101,7 +102,18 @@ include "../includes/sidebar.php";
     </div>
     </div>
 </div>
-
+<script>
+    function myFunction(id) {
+  var txt;
+  if (confirm("Are you sure? You want delete this  ")) {
+    txt = `../process/deleteMember.php?id=${id}`;
+  } else {
+    txt = "You pressed Cancel!";
+  }
+  del = document.querySelector("#deleteAlter").setAttribute("href",txt)
+  
+}
+</script>
 <?php
 
 include "../includes/footer.php";
