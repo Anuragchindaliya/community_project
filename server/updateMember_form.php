@@ -192,12 +192,11 @@ include "../db/conn.php"
                       </div> -->
               </div>
               <!-- /.card-body -->
-
-              <div class="card-footer">
+          </div>
+          <div class="card-footer">
                 <button type="submit" name="update" class="btn btn-primary">Update</button>
               </div>
             </form>
-          </div>
           <!-- /.card -->
 
         </div>

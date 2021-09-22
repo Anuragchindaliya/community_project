@@ -1,4 +1,10 @@
 <?php
+session_start();
+if(!isset($_SESSION['login']) && $_SESSION['user']=="member"){
+    header("Location: ../client/member_login.php");
+}else if(!isset($_SESSION['login']) && $_SESSION['user']=="admin"){
+    header("Location: ../client/admin_login.php");
+}
 include "../db/conn.php";
 include "../includes/header.php";
 include "../includes/sidebar.php";
@@ -11,7 +17,7 @@ include "../includes/sidebar.php";
             <div class="card " style="width: 1250px;">
                 <div class="card-header">
 
-                    <h3 class="card-title">Fixed Header Table</h3>
+                    <h3 class="card-title"> All Children </h3>
 
                     <div class="card-tools">
                         <div class="input-group input-group-sm">

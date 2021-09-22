@@ -34,7 +34,7 @@ include "../db/conn.php"
     <div class="container">
       <div class="row">
         <!-- left column -->
-        <div class="col-md-10">
+        <div class="col">
           <!-- general form elements -->
           <div class="card card-primary">
             <div class="card-header">

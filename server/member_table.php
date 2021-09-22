@@ -1,5 +1,4 @@
 <?php 
-
 session_start();
 if(!isset($_SESSION['login'])){
     header("Location: ../client/member_login.php");
@@ -17,7 +16,7 @@ include "../includes/sidebar.php";
         <div class="card mt-3" style="width: 80vw;">
             <div class="card-header">
 
-                <h3 class="card-title">Fixed Header Table</h3>
+                <h3 class="card-title">All Members</h3>
 
                 <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
@@ -102,18 +101,7 @@ include "../includes/sidebar.php";
     </div>
     </div>
 </div>
-<script>
-    function myFunction(id) {
-  var txt;
-  if (confirm("Are you sure? You want delete this  ")) {
-    txt = ``;
-  } else {
-    txt = "member_table.php";
-  }
-  document.querySelector("#deleteAlter").setAttribute("href",txt)
-  
-}
-</script>
+
 <?php
 
 include "../includes/footer.php";
