@@ -39,7 +39,7 @@ include "../includes/sidebar.php";
                             <th>Profile Picture</th>
                             <th>ID</th>
                             <th>User</th>
-                            <th>Date</th>
+                            <th>D.O.B</th>
                             <th>Active / InActive</th>
                             <th>Actions</th>
 
@@ -108,9 +108,9 @@ include "../includes/sidebar.php";
   if (confirm("Are you sure? You want delete this  ")) {
     txt = `../process/deleteMember.php?id=${id}`;
   } else {
-    txt = "You pressed Cancel!";
+    txt = "member_table.php";
   }
-  del = document.querySelector("#deleteAlter").setAttribute("href",txt)
+  document.querySelector("#deleteAlter").setAttribute("href",txt)
   
 }
 </script>
