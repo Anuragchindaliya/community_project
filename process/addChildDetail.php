@@ -5,9 +5,8 @@ if(isset($_POST['childdata'])){
     $child_Name =$_POST['name'];
     // echo $firstName;
     $child_email = $_POST['email'];
-    echo $gender = $_POST['gender'];
-    
-    $isMarriageable = $_POST['marriage'];
+    $gender = $_POST['gender'];
+    echo $mobileno = $_POST['mobileno'];
     $age = $_POST['age'];
     $education = $_POST['education'];
     $degree = $_POST['degree'];
@@ -38,7 +37,7 @@ if(isset($_POST['childdata'])){
                 $fileDestination = 'uploads/' . $fileNameNew;
 
                 // uploadfiles
-                $sql = "INSERT INTO `child`( `child_Name`, `child_email`, `gender`, `isMarriageable`, `age`, `education`, `degree`, `profession`, `height`, `dateofbirth`, `faceofcomplexion`, `manglik`, `expectation`,`profile_pic`) VALUES ('$child_Name', '$child_email', '$gender', '$isMarriageable', '$age', '$education', '$degree', '$profession', '$height', '$dateofbirth', '$faceofcomplexion', '$manglik','$expectation','$fileNameNew')";
+                $sql = "INSERT INTO `child`( `child_Name`, `child_email`, `gender`, `mobileno`, `age`, `education`, `degree`, `profession`, `height`, `dateofbirth`, `faceofcomplexion`, `manglik`, `expectation`,`profile_pic`) VALUES ('$child_Name', '$child_email', '$gender', '$mobileno', '$age', '$education', '$degree', '$profession', '$height', '$dateofbirth', '$faceofcomplexion', '$manglik','$expectation','$fileNameNew')";
                 // $sql = "INSERT INTO  `members` (`firstName`, `lastname`, `mobileNo`, `email`, `dob`, `gender`, `state`, `city`, `address`, `password`, `fatherName`, `motherName`, `lifeMemberNo`, `recieptNo`,`profilepic`) VALUES ('$firstName','$lastName','$mobileNo','$email','$dob','$gender','$state','$city','$address','$password','$fatherName','$motherName','$lifeMemberNo','$recieptno','$fileNameNew')";
                 if (mysqli_query($conn, $sql)) {
                     move_uploaded_file($fileTmpName, $fileDestination);
