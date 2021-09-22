@@ -1,5 +1,10 @@
 <?php
 session_start();
+if(!isset($_SESSION['login']) && $_SESSION['user']=="member"){
+    header("Location: ../client/member_login.php");
+}else if($_SESSION['user']=="admin"){
+    header("Location: ../client/admin_login.php");
+}
 include "../includes/header.php";
 include "../includes/sidebar.php";
 
@@ -54,18 +59,18 @@ include "../db/conn.php";
                                     </div>
                                 </div>
                                 <div>
-                                <div class="form-group col-md-3">
-                                    <label>Is Marriageable</label>
-                                    <div>
-                                        <input type="checkbox" value="yes" name="marriage">
-                                        yes
+                                    <div class="form-group col-md-3">
+                                        <label>Is Marriageable</label>
+                                        <div>
+                                            <input type="checkbox" value="yes" name="marriage">
+                                            yes
 
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="exampleInputAge">Age</label>
-                                    <input type="type" placeholder="enter age" name="age" class="form-control">
-                                </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="exampleInputAge">Age</label>
+                                        <input type="type" placeholder="enter age" name="age" class="form-control">
+                                    </div>
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -163,6 +168,9 @@ include "../db/conn.php";
                         </div>
                     </form>
                 </div>
-                <?php
-                include "../includes/footer.php"
-                ?>
+            </div>
+        </div>
+    </div>
+            <?php
+            include "../includes/footer.php"
+            ?>
