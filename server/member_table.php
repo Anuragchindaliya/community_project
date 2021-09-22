@@ -104,13 +104,12 @@ include "../includes/sidebar.php";
 <script>
     function myFunction(id) {
   var txt;
-  if (confirm("Are you sure? You want delete this  ")) {
+  if (confirm("Are you sure? You want delete this ")) {
     txt = `../process/deleteMember.php?id=${id}`;
   } else {
-    txt = "You pressed Cancel!";
+    txt = "member_table.php";
   }
-  del = document.querySelector("#deleteAlter").setAttribute("href",txt)
-  
+  document.querySelector("#deleteAlter").setAttribute("href",txt)
 }
 </script>
 <?php

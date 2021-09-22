@@ -2,7 +2,7 @@
 session_start();
 if(!isset($_SESSION['login']) && $_SESSION['user']=="member"){
     header("Location: ../client/member_login.php");
-}else if($_SESSION['user']=="admin"){
+}else if(!isset($_SESSION['login']) && $_SESSION['user']=="admin"){
     header("Location: ../client/admin_login.php");
 }
 include "../includes/header.php";
