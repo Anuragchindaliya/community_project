@@ -3,13 +3,12 @@ include "../includes/header.php";
 include "../includes/sidebar.php";
 include "../db/conn.php";
 ?>
+<div class="content-wrapper">
 <section class="content">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
-            <div class="col-md-3"></div>
-
             <!-- left column -->
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <!-- general form elements -->
                 <div class="card card-primary">
                     <div class="card-header">
@@ -19,7 +18,6 @@ include "../db/conn.php";
                     <!-- form start -->
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>?id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
                         <div class="card-body">
-                            <div class="form-row">
                             <?php
                   // include "../db/conn.php";
                   $ids = $_GET['id'];
@@ -55,152 +53,149 @@ include "../db/conn.php";
                     mysqli_close($conn);
                   }
                   ?>
-                                <div class="form-group col-md-6">
-                                    <label for="exampleInputEmail1">Name</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Enter name" value="<?php echo $arrdata['child_Name'] ?>">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="exampleInputEmail1">Phone</label>
-                                    <input type="number" class="form-control" name="phone" placeholder="Enter phone number" value="<?php echo $arrdata['child_Name'] ?>">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" class="form-control" name="email" placeholder="Enter email" value="<?php echo $arrdata['child_email'] ?>">
-                                </div>
-                                <div class="form-group">
-                  <div>
-                    <label for="Gender">Gender</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="Gender" id="inlineRadio1" value="Male" <?php if ($arrdata['gender'] === 'male') { ?> checked <?php
-                                                                                                                                                                  } ?>>
-                    <label class="form-check-label" for="inlineRadio1">Male</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="Gender" id="inlineRadio2" value="Female" <?php if ($arrdata['gender'] === 'female') { ?> checked <?php
-                                                                                                                                                                      } ?>>
-                    <label class="form-check-label" for="inlineRadio2">Female</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="Gender" id="inlineRadio3" value="Others" <?php if ($arrdata['gender'] === 'Others') { ?> checked <?php
-                                                                                                                                                                      } ?>>
-                    <label class="form-check-label" for="inlineRadio3">Others</label>
-                  </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Name</label>
+                    <input type="text" name="name" class="form-control" placeholder="Enter name" value="<?php echo $arrdata['child_Name'] ?>">
                 </div>
-                                <div class="form-group col-md-3">
-                                    <label>Is Marriageable</label>
-                                    <div>
-                                        <input type="checkbox" value="yes" name="marriage" value="<?php echo $arrdata['child_Name'] ?>">
-                                        yes
-
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="exampleInputAge">Age</label>
-                                    <input type="type" placeholder="enter age" name="age" class="form-control" value="<?php echo $arrdata['child_Name'] ?>">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="exampleInputEmail1">Education</label>
-                                    <input type="text" class="form-control" name="education" placeholder="Enter education" value="<?php echo $arrdata['child_Name'] ?>">
-
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="exampleInputEmail1">Degree</label>
-
-                                    <div>
-                                        <select name="degree" class="form-control">
-                                            <option value="bcom" <?php if ($arrdata['degree'] === 'bcom') { ?> selected <?php
-                                        } ?> >bcom</option>
-                                            <option value="btech" <?php if ($arrdata['degree'] === 'btech') { ?> selected <?php
-                                        } ?> >btech</option>
-                                            <option value="mca" <?php if ($arrdata['degree'] === 'mca') { ?> selected <?php
-                                        } ?>>mca</option>
-                                            <option value="other" <?php if ($arrdata['degree'] === 'other') { ?> selected <?php
-                                        } ?>>other </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="exampleInputEmail1">Profession</label>
-                                    <div>
-                                        <select name="profession" class="form-control">
-                                        <option value="bcom" <?php if ($arrdata['profession'] === 'bcom') { ?> selected <?php
-                                        } ?> >bcom</option>
-                                            <option value="btech" <?php if ($arrdata['profession'] === 'btech') { ?> selected <?php
-                                        } ?> >btech</option>
-                                            <option value="mca" <?php if ($arrdata['profession'] === 'mca') { ?> selected <?php
-                                        } ?>>mca</option>
-                                            <option value="other" <?php if ($arrdata['profession'] === 'other') { ?> selected <?php
-                                        } ?>>other </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="exampleInputEmail1">Height</label>
-                                    <input type="text" class="form-control" name="height" placeholder="Enter height">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="exampleInputEmail1">Date of Birth/D.O.B.</label>
-                                    <input type="date" class="form-control" name="dateofbirth" placeholder="Enter date of birth">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="exampleInputEmail1">Face Complexion</label>
-                                    <div>
-                                        <select name="facecomplexion" class="form-control">
-                                        <option value="bcom" <?php if ($arrdata['facecomplexion'] === 'bcom') { ?> selected <?php
-                                        } ?> >bcom</option>
-                                            <option value="btech" <?php if ($arrdata['facecomplexion'] === 'btech') { ?> selected <?php
-                                        } ?> >btech</option>
-                                            <option value="mca" <?php if ($arrdata['facecomplexion'] === 'mca') { ?> selected <?php
-                                        } ?>>mca</option>
-                                            <option value="other" <?php if ($arrdata['facecomplexion'] === 'other') { ?> selected <?php
-                                        } ?>>other </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="exampleInputEmail1">Manglik</label>
-                                    <div>
-                                        <select name="manglik" class="form-control">
-                                        <option value="bcom" <?php if ($arrdata['manglik'] === 'bcom') { ?> selected <?php
-                                        } ?> >bcom</option>
-                                            <option value="btech" <?php if ($arrdata['manglik'] === 'btech') { ?> selected <?php
-                                        } ?> >btech</option>
-                                            <option value="mca" <?php if ($arrdata['manglik'] === 'mca') { ?> selected <?php
-                                        } ?>>mca</option>
-                                            <option value="other" <?php if ($arrdata['manglik'] === 'other') { ?> selected <?php
-                                        } ?>>other </option>
-                                        </select>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="exampleInputEmail1">Expectation</label>
-                                    <div>
-                                        <textarea cols="40" name="expectation" rows="1"></textarea>
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group">
-                                    <label for="exampleInputFile">File input</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="InputFile" id="exampleInputFile">
-                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                        </div>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">Upload</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <!-- <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                    </div> -->
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Phone</label>
+                    <input type="number" class="form-control" name="phone" placeholder="Enter phone number" value="<?php echo $arrdata['child_Name'] ?>">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" name="email" placeholder="Enter email" value="<?php echo $arrdata['child_email'] ?>">
+                 </div>
+                <div class="form-group">
+                    <div>
+                        <label for="Gender">Gender</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="Gender" id="inlineRadio1" value="Male" <?php if ($arrdata['gender'] === 'male') { ?> checked <?php
+                           } ?>>
+                            <label class="form-check-label" for="inlineRadio1">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="Gender" id="inlineRadio2" value="Female" <?php if ($arrdata['gender'] === 'female') { ?> checked <?php
+                                                                                                                                                                            } ?>>
+                            <label class="form-check-label" for="inlineRadio2">Female</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="Gender" id="inlineRadio3" value="Others" <?php if ($arrdata['gender'] === 'Others') { ?> checked <?php
+                                                                                                                                                                            } ?>>
+                            <label class="form-check-label" for="inlineRadio3">Others</label>
+                    </div>
+                </div>
+            </div>    
+            <div class="row">
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="exampleInputAge">Age</label>
+                        <input type="type" placeholder="enter age" name="age" class="form-control" value="<?php echo $arrdata['child_Name'] ?>">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Education</label>
+                    <input type="text" class="form-control" name="education" placeholder="Enter education" value="<?php echo $arrdata['child_Name'] ?>">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Degree</label>
+                        <div>
+                            <select name="degree" class="form-control">
+                                <option value="bcom" <?php if ($arrdata['degree'] === 'bcom') { ?> selected <?php
+                                } ?> >bcom</option>
+                                <option value="btech" <?php if ($arrdata['degree'] === 'btech') { ?> selected <?php
+                                } ?> >btech</option>
+                                <option value="mca" <?php if ($arrdata['degree'] === 'mca') { ?> selected <?php
+                                } ?>>mca</option>
+                                <option value="other" <?php if ($arrdata['degree'] === 'other') { ?> selected <?php
+                                } ?>>other </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">Profession</label>
+                    <div>
+                        <select name="profession" class="form-control">
+                            <option value="bcom" <?php if ($arrdata['profession'] === 'bcom') { ?> selected <?php
+                            } ?> >bcom</option>
+                            <option value="btech" <?php if ($arrdata['profession'] === 'btech') { ?> selected <?php
+                            } ?> >btech</option>
+                            <option value="mca" <?php if ($arrdata['profession'] === 'mca') { ?> selected <?php
+                            } ?>>mca</option>
+                            <option value="other" <?php if ($arrdata['profession'] === 'other') { ?> selected <?php
+                            } ?>>other </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Height</label>
+                    <input type="text" class="form-control" name="height" placeholder="Enter height">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Date of Birth/D.O.B.</label>
+                    <input type="date" class="form-control" name="dateofbirth" placeholder="Enter date of birth">
+                </div>
+            </div>
+            <div class="row">                    
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Face Complexion</label>
+                    <div>
+                        <select name="facecomplexion" class="form-control">
+                            <option value="bcom" <?php if ($arrdata['facecomplexion'] === 'bcom') { ?> selected <?php
+                            } ?> >bcom</option>
+                            <option value="btech" <?php if ($arrdata['facecomplexion'] === 'btech') { ?> selected <?php
+                            } ?> >btech</option>
+                            <option value="mca" <?php if ($arrdata['facecomplexion'] === 'mca') { ?> selected <?php
+                            } ?>>mca</option>
+                            <option value="other" <?php if ($arrdata['facecomplexion'] === 'other') { ?> selected <?php
+                            } ?>>other </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Manglik</label>
+                    <div>
+                        <select name="manglik" class="form-control">
+                            <option value="bcom" <?php if ($arrdata['manglik'] === 'bcom') { ?> selected <?php
+                            } ?> >bcom</option>
+                            <option value="btech" <?php if ($arrdata['manglik'] === 'btech') { ?> selected <?php
+                            } ?> >btech</option>
+                            <option value="mca" <?php if ($arrdata['manglik'] === 'mca') { ?> selected <?php
+                            } ?>>mca</option>
+                            <option value="other" <?php if ($arrdata['manglik'] === 'other') { ?> selected <?php
+                            } ?>>other </option>
+                        </select>
+                    </div>
+                    </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Expectation</label>
+                            <div>
+                                <textarea cols="40" name="expectation" rows="1"></textarea>
                             </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="exampleInputFile">File input</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="InputFile" id="exampleInputFile">
+                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Upload</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        </div>
                         </div>
 
 
@@ -211,6 +206,11 @@ include "../db/conn.php";
                         </div>
                     </form>
                 </div>
-                <?php
-                include "../includes/footer.php"
-                ?>
+            </div>
+        </div> 
+        </div>
+    </div>
+</section>
+</div> 
+
+<?php include "../includes/footer.php"?>

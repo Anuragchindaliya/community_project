@@ -4,13 +4,28 @@ include "../includes/sidebar.php";
 
 include "../db/conn.php";
 ?>
-<section class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3"></div>
+<div class="content-wrapper ">
 
+  <section class="content-header">
+    <div class="container">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Add New Member</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">General Form</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+<section class="content">
+    <div class="container">
+        <div class="row">
             <!-- left column -->
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <!-- general form elements -->
                 <div class="card card-primary">
                     <div class="card-header">
@@ -20,21 +35,24 @@ include "../db/conn.php";
                     <!-- form start -->
                     <form action="../process/addChildDetail.php" method="post" enctype="multipart/form-data">
                         <div class="card-body">
-                            <div class="form-row">
-
+                            <div class="row">
+                                    
                                 <div class="form-group col-md-6">
                                     <label for="exampleInputEmail1">Name</label>
                                     <input type="text" name="name" class="form-control" placeholder="Enter name">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="exampleInputEmail1">Phone</label>
-                                    <input type="number" class="form-control" name="phone" placeholder="Enter phone number">
-                                </div>
-                                <div class="form-group col-md-6">
+                                    <input type="number" class="form-control" name="mobileno" placeholder="Enter phone number">
+                                </div>                            
+                            </div>
+                            <div class="row">
+
+                            <div class="form-group col-md-6">
                                     <label for="exampleInputEmail1">Email address</label>
                                     <input type="email" class="form-control" name="email" placeholder="Enter email">
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group col-md-6">
                                     <div>
                                         <label for="Gender">Gender</label>
                                     </div>
@@ -51,26 +69,21 @@ include "../db/conn.php";
                                         <label class="form-check-label" for="inlineRadio3">Others</label>
                                     </div>
                                 </div>
-                                <div>
-                                <div class="form-group col-md-3">
-                                    <label>Is Marriageable</label>
-                                    <div>
-                                        <input type="checkbox" value="yes" name="marriage">
-                                        yes
+                            </div>
 
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="exampleInputAge">Age</label>
-                                    <input type="type" placeholder="enter age" name="age" class="form-control">
-                                </div>
-                                </div>
+                                <div class="row">
 
                                 <div class="form-group col-md-6">
                                     <label for="exampleInputEmail1">Education</label>
                                     <input type="text" class="form-control" name="education" placeholder="Enter education">
 
                                 </div>
+                                <div class="form-group col-md-6">
+                                    <label for="exampleInputAge">Age</label>
+                                    <input type="type" placeholder="enter age" name="age" class="form-control">
+                                </div>
+                                </div>
+                                <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="exampleInputEmail1">Degree</label>
 
@@ -94,63 +107,65 @@ include "../db/conn.php";
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="exampleInputEmail1">Height</label>
-                                    <input type="text" class="form-control" name="height" placeholder="Enter height">
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="exampleInputEmail1">Date of Birth/D.O.B.</label>
-                                    <input type="date" class="form-control" name="dateofbirth" placeholder="Enter date of birth">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="exampleInputEmail1">Face Complexion</label>
-                                    <div>
-                                        <select name="facecomplexion" class="form-control">
-                                            <option value="bcom">bcom</option>
-                                            <option value="btech">btech</option>
-                                            <option value="mca">mca</option>
-                                            <option value="other">other </option>
-                                        </select>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="exampleInputEmail1">Height</label>
+                                        <input type="text" class="form-control" name="height" placeholder="Enter height">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="exampleInputEmail1">Date of Birth/D.O.B.</label>
+                                        <input type="date" class="form-control" name="dateofbirth" placeholder="Enter date of birth">
                                     </div>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="exampleInputEmail1">Manglik</label>
-                                    <div>
-                                        <select name="manglik" class="form-control">
-                                            <option value="bcom">bcom</option>
-                                            <option value="btech">btech</option>
-                                            <option value="mca">mca</option>
-                                            <option value="other">other </option>
-                                        </select>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="exampleInputEmail1">Face Complexion</label>
+                                        <div>
+                                            <select name="facecomplexion" class="form-control">
+                                                <option value="bcom">bcom</option>
+                                                <option value="btech">btech</option>
+                                                <option value="mca">mca</option>
+                                                <option value="other">other </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="exampleInputEmail1">Manglik</label>
+                                        <div>
+                                            <select name="manglik" class="form-control">
+                                                <option value="bcom">bcom</option>
+                                                <option value="btech">btech</option>
+                                                <option value="mca">mca</option>
+                                                <option value="other">other </option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="exampleInputEmail1">Expectation</label>
                                     <div>
                                         <textarea cols="40" name="expectation" rows="1"></textarea>
                                     </div>
                                 </div>
-
-
-                                <div class="form-group">
+                                <div class="form-group col-md-6">
                                     <label for="exampleInputFile">File input</label>
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" name="InputFile" id="exampleInputFile">
                                             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                         </div>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">Upload</span>
-                                        </div>
                                     </div>
 
+                                </div>
                                 </div>
 
                                 <!-- <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                         <label class="form-check-label" for="exampleCheck1">Check me out</label>
                                     </div> -->
-                            </div>
+                        
                         </div>
 
 
@@ -161,6 +176,10 @@ include "../db/conn.php";
                         </div>
                     </form>
                 </div>
-                <?php
-                include "../includes/footer.php"
-                ?>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+<?php include "../includes/footer.php"?>
