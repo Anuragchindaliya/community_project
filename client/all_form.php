@@ -1,3 +1,10 @@
+
+<?php 
+    session_start();
+    if(isset($_SESSION['login'])){
+        header("Location: ../server/dashboard.php");
+    }
+?>
 <!doctype html>
 <html lang="en">
 
@@ -101,7 +108,7 @@
                                         <button type="submit" id="registerMember" name="registerMember" class="btn btn-success">Create Account</button>
                                     </div>
                                     <?php
-                                    if (isset($_GET['msgreg']) && $_GET['msg'] = "success") { ?>
+                                    if (isset($_GET['msgreg']) && $_GET['msgreg'] == "success") { ?>
                                         <div id="successMsg" class="alert alert-success alert-dismissible fade show" role="alert">
 
                                             <i class="fa fa-check-circle"></i>

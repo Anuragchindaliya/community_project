@@ -180,14 +180,8 @@ include "../db/conn.php"
                   <div class="form-group">
                     <input name="InputFile" type="file" class="form-control-file" id="exampleFormControlFile1" required>
                   </div>
-<<<<<<< HEAD
                  
                 </div>
-=======
-
-                </div>
-
->>>>>>> cdbae1ec7f77e7acaeb5a2c2df1a323a4b5c7fb5
               </div>
               <!-- /.card-body -->
 

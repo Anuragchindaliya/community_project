@@ -1,3 +1,10 @@
+<?php 
+    session_start();
+    
+    if(isset($_SESSION['login'])){
+        header("Location: ../server/dashboard.php");
+    }
+?>
 <!doctype html>
 <html lang="en">
 
