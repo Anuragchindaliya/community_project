@@ -5,8 +5,8 @@ if(isset($_POST['childdata'])){
     $child_Name =$_POST['name'];
     // echo $firstName;
     $child_email = $_POST['email'];
-    $gender = $_POST['gender'];
-    echo $mobileno = $_POST['mobileno'];
+    echo $gender = $_POST['childGender'];
+    $mobileno = $_POST['mobileno'];
     $age = $_POST['age'];
     $education = $_POST['education'];
     $degree = $_POST['degree'];
