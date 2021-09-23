@@ -187,17 +187,8 @@ include "../db/conn.php"
                   <div class="form-group">
                     <input name="InputFile" type="file" class="form-control-file" id="exampleFormControlFile1" required>
                   </div>
-                  <!-- <div class="">
-                    <div class="">
-                      <input type="file" class="" name="InputFile" id="exampleInputFile">
-                      <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                    </div>
-                  </div> -->
+                 
                 </div>
-                <!-- <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                      </div> -->
               </div>
               <!-- /.card-body -->
 
