@@ -46,18 +46,14 @@ include "../db/conn.php"
               <div class="card-body">
                 <div class="row">
                   <div class="form-group col">
-                    <label for="inputName"> Name<sup class="text-danger">*</sup></label>
-                    <input type="text" class="form-control" name="firstName" id="inputName" placeholder="Name" required>
-                  </div>
-                  <div class="form-group col">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="LastName">
+                    <label for="inputName">Full Name<sup class="text-danger">*</sup></label>
+                    <input type="text" class="form-control" name="firstName" id="inputName" pattern="[a-zA-Z][a-zA-Z ]*" placeholder="Name" required>
                   </div>
                 </div>
                 <div class="row">
                   <div class="form-group col">
                     <label for="Mobile">Mobile No.<sup class="text-danger">*</sup></label>
-                    <input type="tel" class="form-control" id="Mobile" placeholder="Mobile No." name="mobile" required>
+                    <input type="tel" class="form-control" id="Mobile" pattern="^[789]\d{9}$" placeholder="Mobile No." name="mobile" required>
                   </div>
                   <div class="form-group col">
                     <label for="Email1">Email address<sup class="text-danger">*</sup></label>
@@ -151,8 +147,9 @@ include "../db/conn.php"
                 <div class="row">
 
                   <div class="form-group col">
-                    <label for="password1">Password<sup class="text-danger">*</sup> <span></span></label>
-                    <input type="password" class="form-control" id="password1" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" placeholder="Password" name="password" required>
+                    <label for="password1">Password<sup class="text-danger">*</sup> </label>
+                    <input type="password" class="form-control" id="password1" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" placeholder="Password" onblur='req()' name="password" required>
+                    <div id="req"></div>
                   </div>
                   <div class="form-group col">
                     <label for="confirmPasswords">Confirm Password<sup class="text-danger">*</sup> <span id='message' style="font-size: small;"></span></label>
@@ -163,19 +160,15 @@ include "../db/conn.php"
                 <div class="row">
                   <div class="form-group col">
                     <label for="fatherName">Father Name</label>
-                    <input type="text" class="form-control" id="fatherName" name="fathername" placeholder="Father Name">
+                    <input type="text" class="form-control" pattern="[a-zA-Z][a-zA-Z ]*" id="fatherName" name="fathername" placeholder="Father Name">
                   </div>
                   <div class="form-group col">
                     <label for="motherName">Mother Name</label>
-                    <input type="text" class="form-control" id="motherName" name="motherName" placeholder="Mother Name">
+                    <input type="text" class="form-control" pattern="[a-zA-Z][a-zA-Z ]*" id="motherName" name="motherName" placeholder="Mother Name">
                   </div>
                 </div>
 
                 <div class="row">
-                  <div class="form-group col">
-                    <label for="recieptNo.">Reciept No.</label>
-                    <input type="text" class="form-control" id="Reciept No" name="recieptNo" placeholder="Reciept No">
-                  </div>
                   <div class="form-group col">
                     <label for="lifeMemberNo.">Life Member No.</label>
                     <input type="text" class="form-control" id="lifeMember" name="lifeMember" placeholder="Life Member">
@@ -187,17 +180,9 @@ include "../db/conn.php"
                   <div class="form-group">
                     <input name="InputFile" type="file" class="form-control-file" id="exampleFormControlFile1" required>
                   </div>
-                  <!-- <div class="">
-                    <div class="">
-                      <input type="file" class="" name="InputFile" id="exampleInputFile">
-                      <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                    </div>
-                  </div> -->
+
                 </div>
-                <!-- <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                      </div> -->
+
               </div>
               <!-- /.card-body -->
 
@@ -206,14 +191,11 @@ include "../db/conn.php"
               </div>
             </form>
           </div>
-          <!-- /.card -->
+
 
         </div>
-        <!--/.col left -->
-        <!-- right column -->
 
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
+      </div>
   </section>
   <!-- /.content -->
 </div>
@@ -231,6 +213,11 @@ include "../db/conn.php"
       document.getElementById('message').innerHTML = ' Confirm Posswordis Is Not Matching';
       document.getElementById('addMember').setAttribute('disabled', 'true')
     }
+  }
+  var req = function(){
+    document.getElementById('req').innerHTML = `<div style="font-size:;color:red;">
+                          <p>Must be between 8 and 12 characters. have at least:one lowercase, uppercase, a digit and a symbol</p>
+                        </div>`
   }
 </script>
 <?php include "../includes/footer.php" ?>

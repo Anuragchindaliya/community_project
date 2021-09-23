@@ -58,22 +58,18 @@ include "../db/conn.php"
                   $arrdata = mysqli_fetch_assoc($showdata);
                   ?>
                   <div class="form-group col">
-                    <label for="inputName">Name<sup class="text-danger">*</sup></label>
-                    <input type="text" class="form-control" name="firstName" value="<?php echo $arrdata['firstName'] ?>" id="inputName" placeholder="Name">
-                  </div>
-                  <div class="form-group col">
-                    <label for="lastName">LastName</label>
-                    <input type="text" class="form-control" id="lastName" name="lastName" value="<?php echo $arrdata['lastname'] ?>" placeholder="LastName">
+                    <label for="inputName">FullName<sup class="text-danger">*</sup></label>
+                    <input type="text" class="form-control" name="firstName" pattern="[a-zA-Z][a-zA-Z ]*" value="<?php echo $arrdata['firstName'] ?>" id="inputName" placeholder="Name" required>
                   </div>
                 </div>
                 <div class="row">
                   <div class="form-group col">
                     <label for="Mobile">Mobile No.<sup class="text-danger">*</sup></label>
-                    <input type="tel" class="form-control" id="Mobile" placeholder="Mobile No." name="mobile" value="<?php echo $arrdata['mobileNo'] ?>">
+                    <input type="tel" class="form-control" id="Mobile" pattern="^[789]\d{9}$"  placeholder="Mobile No." name="mobile" value="<?php echo $arrdata['mobileNo'] ?>" required>
                   </div>
                   <div class="form-group col">
                     <label for="Email1">Email address<sup class="text-danger">*</sup></label>
-                    <input type="email" class="form-control" id="Email1" placeholder="Enter email" name="email" value="<?php echo $arrdata['email'] ?>">
+                    <input type="email" class="form-control" id="Email1" placeholder="Enter email" name="email" value="<?php echo $arrdata['email'] ?>" required>
                   </div>
                 </div>
                 <div class="row">
@@ -107,7 +103,45 @@ include "../db/conn.php"
                 <div class="row">
                   <div class="form-group col">
                     <label for="state">State<sup class="text-danger">*</sup></label>
-                    <input type="text" class="form-control" id="state" name="state" placeholder="State" value="<?php echo $arrdata['state'] ?>">
+                    <input  list="states"  class="form-control" id="state" name="state" placeholder="State" value="<?php echo $arrdata['state'] ?>" required>
+                    <datalist id="states">
+                      <option value="Andhra Pradesh">Andhra Pradesh</option>
+                      <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                      <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                      <option value="Assam">Assam</option>
+                      <option value="Bihar">Bihar</option>
+                      <option value="Chandigarh">Chandigarh</option>
+                      <option value="Chhattisgarh">Chhattisgarh</option>
+                      <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                      <option value="Daman and Diu">Daman and Diu</option>
+                      <option value="Delhi">Delhi</option>
+                      <option value="Lakshadweep">Lakshadweep</option>
+                      <option value="Puducherry">Puducherry</option>
+                      <option value="Goa">Goa</option>
+                      <option value="Gujarat">Gujarat</option>
+                      <option value="Haryana">Haryana</option>
+                      <option value="Himachal Pradesh">Himachal Pradesh</option>
+                      <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                      <option value="Jharkhand">Jharkhand</option>
+                      <option value="Karnataka">Karnataka</option>
+                      <option value="Kerala">Kerala</option>
+                      <option value="Madhya Pradesh">Madhya Pradesh</option>
+                      <option value="Maharashtra">Maharashtra</option>
+                      <option value="Manipur">Manipur</option>
+                      <option value="Meghalaya">Meghalaya</option>
+                      <option value="Mizoram">Mizoram</option>
+                      <option value="Nagaland">Nagaland</option>
+                      <option value="Odisha">Odisha</option>
+                      <option value="Punjab">Punjab</option>
+                      <option value="Rajasthan">Rajasthan</option>
+                      <option value="Sikkim">Sikkim</option>
+                      <option value="Tamil Nadu">Tamil Nadu</option>
+                      <option value="Telangana">Telangana</option>
+                      <option value="Tripura">Tripura</option>
+                      <option value="Uttar Pradesh">Uttar Pradesh</option>
+                      <option value="Uttarakhand">Uttarakhand</option>
+                      <option value="West Bengal">West Bengal</option>
+                    </datalist>
                   </div>
                   <div class="form-group col">
                     <label for="city">City<sup class="text-danger">*</sup></label>
@@ -128,40 +162,25 @@ include "../db/conn.php"
                 <div class="row">
                   <div class="form-group col">
                     <label for="password1">Password<sup class="text-danger">*</sup></label>
-                    <input type="password" class="form-control" id="password1" placeholder="Password" name="password" value="<?php echo $arrdata['password'] ?>">
+                    <input type="password" class="form-control" id="password1" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" placeholder="Password" name="password" value="<?php echo $arrdata['password'] ?>">
                   </div>
                   <div class="form-group col">
                     <label for="confirmPasswords">Confirm Password<sup class="text-danger">*</sup><span id='message' style="font-size: small;"></span> </label>
-                    <input type="password" class="form-control" id="confirmPasswords" placeholder="Confirm Passwords" value="<?php echo $arrdata['password'] ?>" oninput="check();">
+                    <input type="password" class="form-control" id="confirmPasswords"  placeholder="Confirm Passwords" value="<?php echo $arrdata['password'] ?>" onkeyup='check()' required>
                   </div>
-                  <script>
-                    var check = function() {
-                      if (document.getElementById('password1').value ==
-                        document.getElementById('confirmPasswords').value) {
-                        document.getElementById('message').style.color = 'green';
-                        document.getElementById('message').innerHTML = 'Confirm Posswordis Is Matching';
-                      } else {
-                        document.getElementById('message').style.color = 'red';
-                        document.getElementById('message').innerHTML = ' Confirm Posswordis Is Not Matching';
-                      }
-                    }
-                  </script>
+                  
                 </div>
                 <div class="row">
                   <div class="form-group col">
                     <label for="fatherName">Father Name</label>
-                    <input type="text" class="form-control" id="fatherName" name="fathername" placeholder="Father Name" value="<?php echo $arrdata['fatherName'] ?>">
+                    <input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" id="fatherName" name="fathername" placeholder="Father Name" value="<?php echo $arrdata['fatherName'] ?>">
                   </div>
                   <div class="form-group col ">
                     <label for="motherName">Mother Name</label>
-                    <input type="text" class="form-control" id="motherName" name="motherName" placeholder="Mother Name" value="<?php echo $arrdata['motherName'] ?>">
+                    <input type="text" class="form-control" id="motherName" pattern="[a-zA-Z][a-zA-Z ]*" name="motherName" placeholder="Mother Name" value="<?php echo $arrdata['motherName'] ?>">
                   </div>
                 </div>
                 <div class="row">
-                  <div class="form-group col">
-                    <label for="recieptNo.">Reciept No.</label>
-                    <input type="text" class="form-control" id="Reciept No" name="recieptNo" placeholder="Reciept No" value="<?php echo $arrdata['recieptNo'] ?>">
-                  </div>
                   <div class="form-group col">
                     <label for="lifeMemberNo.">Life Member No.</label>
                     <input type="text" class="form-control" id="lifeMember" name="lifeMember" placeholder="Life Member" value="<?php echo $arrdata['lifeMemberNo'] ?>">
@@ -174,38 +193,35 @@ include "../db/conn.php"
                     <input name="InputFile" type="file"  class="form-control-file" id="exampleFormControlFile1">
 
                   </div>
-                <!-- <div class="form-group col-md-6">
-                  <label for="exampleInputFile">File input</label>
-                  <div class="input-group">
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" name="InputFile" id="exampleInputFile" value="<?= $arrdata['profilepic'] ?>">
-                      <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                    </div>
-                  </div>
-                </div> -->
+                
                 <div class="col-md-6">
                   <img src="../process/uploads/<?= $arrdata['profilepic'] ?>" style="width:45px;">
                 </div>
-                <!-- <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                      </div> -->
+                
               </div>
-              <!-- /.card-body -->
           </div>
           <div class="card-footer">
                 <button type="submit" name="update" class="btn btn-primary">Update</button>
               </div>
             </form>
-          <!-- /.card -->
-
         </div>
-        <!--/.col left -->
-        <!-- right column -->
-
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
+      </div>
   </section>
-  <!-- /.content -->
 </div>
+<script>
+  var check = function() {
+    if (document.getElementById('password1').value ==
+      document.getElementById('confirmPasswords').value) {
+      document.getElementById('message').style.color = 'green';
+      document.getElementById('message').innerHTML = 'Confirm Posswordis Is Matching';
+      // var addMember = document.getElementById('addMember')
+      document.getElementById('addMember').removeAttribute('disabled');
+
+    } else {
+      document.getElementById('message').style.color = 'red';
+      document.getElementById('message').innerHTML = ' Confirm Posswordis Is Not Matching';
+      document.getElementById('addMember').setAttribute('disabled', 'true')
+    }
+  }
+</script>
 <?php include "../includes/footer.php" ?>
