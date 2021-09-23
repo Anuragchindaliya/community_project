@@ -15,10 +15,8 @@
     <!-- <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
     <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
-        $("#delete").click(function() {
-            swal("Good job!", "You clicked the button!", "success");
-        });
-    </script> -->
+       
+    </script>  -->
 
 </body>
 

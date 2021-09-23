@@ -4,7 +4,7 @@ include "../db/conn.php";
 if(isset($_POST['email']) && isset($_POST['password'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $sql= "SELECT * FROM `members` WHERE email='$email' AND password ='$password'";
+    $sql= "SELECT * FROM `members` WHERE `email`='$email' AND `password` ='$password' AND `status`='1'";
      
     $result=mysqli_query($conn,$sql);
 
@@ -16,7 +16,7 @@ if(isset($_POST['email']) && isset($_POST['password'])){
         $_SESSION['username']=$data['firstName'];
         header("location: ../server/dashboard.php");
     }else{
-        $msg = "wrong credentials";
+        $msg = "wrong credentials or maybe you not activated";
         header("location: ../client/member_login.php?msg=$msg");
     }
 }else{
