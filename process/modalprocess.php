@@ -17,7 +17,7 @@ if(mysqli_num_rows($result)>0){
             <div class="col-md-6">
                 <div class="profile-head">
                     <h5>'.
-                        ucFirst($data['firstName']).' '.ucFirst($data['lastname'])
+                        ucFirst($data['firstName'])
                     .'</h5>
                     <h6>
                         Web Developer and Designer
@@ -54,7 +54,7 @@ if(mysqli_num_rows($result)>0){
                             </div>
                             <div class="col-md-6">
                                 
-                                <p>'.$data['firstName'].' '.$data['lastname'].'</p>
+                                <p>'.$data['firstName'].'</p>
                             </div>
                         </div>
                         <div class="row">

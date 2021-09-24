@@ -1,9 +1,7 @@
 <?php
 include "../db/conn.php";
 if (isset($_POST['update'])) {
-  $ids = $_GET['id'];
-  // echo "<meta http-equiv='refresh' content='0'>";
-  // $idupdate = $_GET['id'];
+  echo $ids = $_POST['id'];
   $firstName = $_POST['firstName'];
   $mobileNo = $_POST['mobile'];
   $email = $_POST['email'];
@@ -45,11 +43,10 @@ if (isset($_POST['update'])) {
 
           if (mysqli_query($conn, $sql)) {
             move_uploaded_file($fileTmpName, $fileDestination);
-            header("Location: ../server/updateMember_form.php?id=$ids");
+            header("Location: ../server/memberProfile.php");
           } else {
             echo "<br/>Error: " . $sql . "<br>" . mysqli_error($conn);
           }
-          // header("location: index.php?uploadsuccess");
         } else {
           echo "your file is too big!";
         }
@@ -62,7 +59,7 @@ if (isset($_POST['update'])) {
   } else {
     $sql = "UPDATE `members` SET firstName ='$firstName', mobileNo= '$mobileNo' ,email = '$email', dob = '$dob', gender = '$gender', state = '$state', city = '$city', address = '$address', password ='$password', fatherName = '$fatherName', motherName ='$motherName', lifeMemberNo = '$lifeMemberNo' , pincode = '$pincode' WHERE id = '{$ids}'";
     if (mysqli_query($conn, $sql)) {
-      header("Location: ../server/updateMember_form.php?id=$ids");
+      header("Location: ../server/memberProfile.php");
     } else {
       echo "<br/>Error: " . $sql . "<br>" . mysqli_error($conn);
     }

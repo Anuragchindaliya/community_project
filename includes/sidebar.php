@@ -34,6 +34,17 @@
               </p>
             </a>
           </li>
+          <?php if($_SESSION['user']=="member"){?>
+          <li class="nav-item">
+            <a href="../server/memberProfile.php" class="nav-link">
+              <i class="nav-icon fas fa-users-cog"></i>
+              <p>
+                Profile
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+          <?php } ?>
           <?php if(isset($_SESSION['login']) && $_SESSION['user']=='admin'){ ?>
           <li class="nav-item">
             <a href="../server/member_form.php" class="nav-link">
@@ -56,15 +67,17 @@
             </a>
 
           </li>
+          
           <li class="nav-item">
             <a href="../server/child_new.php" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
+              <i class="nav-icon fas fa-user-plus"></i>
               <p>
                 Add New Child
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
           </li>
+          
           <li class="nav-item">
             <a href="../server/childTables.php" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>

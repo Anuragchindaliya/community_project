@@ -2,13 +2,13 @@
 
 session_start();
 
-if(!isset($_SESSION['login'])){
-    header("Location: ../client/member_login.php");
+if (!isset($_SESSION['login'])) {
+  header("Location: ../client/member_login.php");
 }
-if($_SESSION['user']=='member'){
+if ($_SESSION['user'] == 'member') {
   header("Location: ./dashboard.php");
 }
-if(!isset($_GET['id'])){
+if (!isset($_GET['id'])) {
   header("Location: ./member_form.php");
 }
 include "../includes/header.php";
@@ -38,7 +38,7 @@ include "../db/conn.php"
     <div class="container">
       <div class="row">
         <!-- left column -->
-        <div class="col-md-10">
+        <div class="col">
           <!-- general form elements -->
           <div class="card card-primary">
             <div class="card-header">
@@ -65,7 +65,7 @@ include "../db/conn.php"
                 <div class="row">
                   <div class="form-group col">
                     <label for="Mobile">Mobile No.<sup class="text-danger">*</sup></label>
-                    <input type="tel" class="form-control" id="Mobile" pattern="^[789]\d{9}$"  placeholder="Mobile No." name="mobile" value="<?php echo $arrdata['mobileNo'] ?>" required>
+                    <input type="tel" class="form-control" id="Mobile" pattern="^[789]\d{9}$" placeholder="Mobile No." name="mobile" value="<?php echo $arrdata['mobileNo'] ?>" required>
                   </div>
                   <div class="form-group col">
                     <label for="Email1">Email address<sup class="text-danger">*</sup></label>
@@ -103,7 +103,7 @@ include "../db/conn.php"
                 <div class="row">
                   <div class="form-group col">
                     <label for="state">State<sup class="text-danger">*</sup></label>
-                    <input  list="states"  class="form-control" id="state" name="state" placeholder="State" value="<?php echo $arrdata['state'] ?>" required>
+                    <input list="states" class="form-control" id="state" name="state" placeholder="State" value="<?php echo $arrdata['state'] ?>" required>
                     <datalist id="states">
                       <option value="Andhra Pradesh">Andhra Pradesh</option>
                       <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -166,9 +166,9 @@ include "../db/conn.php"
                   </div>
                   <div class="form-group col">
                     <label for="confirmPasswords">Confirm Password<sup class="text-danger">*</sup><span id='message' style="font-size: small;"></span> </label>
-                    <input type="password" class="form-control" id="confirmPasswords"  placeholder="Confirm Passwords" value="<?php echo $arrdata['password'] ?>" onkeyup='check()' required>
+                    <input type="password" class="form-control" id="confirmPasswords" placeholder="Confirm Passwords" value="<?php echo $arrdata['password'] ?>" onkeyup='check()' required>
                   </div>
-                  
+
                 </div>
                 <div class="row">
                   <div class="form-group col">
@@ -188,24 +188,24 @@ include "../db/conn.php"
                 </div>
                 <div class="form-group col-md-6">
                   <label for="exampleInputFile">Choose your Profile Picture<sup class="text-danger">*</sup> </label>
-                      <h6><?= $arrdata['profilepic'] ?></h6>
+                  <h6><?= $arrdata['profilepic'] ?></h6>
                   <div class="form-group">
-                    <input name="InputFile" type="file"  class="form-control-file" id="exampleFormControlFile1"  >
+                    <input name="InputFile" type="file" class="form-control-file" id="exampleFormControlFile1">
 
                   </div>
-                
-                <div class="col-md-6">
-                  <img src="../process/uploads/<?= $arrdata['profilepic'] ?>" style="width:45px;">
+
+                  <div class="col-md-6">
+                    <img src="../process/uploads/<?= $arrdata['profilepic'] ?>" style="width:45px;">
+                  </div>
+
                 </div>
-                
               </div>
-          </div>
-          <div class="card-footer">
+              <div class="card-footer">
                 <button type="submit" name="update" class="btn btn-primary">Update</button>
               </div>
             </form>
+          </div>
         </div>
-      </div>
   </section>
 </div>
 <script>
