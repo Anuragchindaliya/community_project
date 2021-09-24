@@ -3,7 +3,6 @@ include "../db/conn.php";
 // echo $_POST['marriage'],$_POST['upload'];
 if(isset($_POST['childdata'])){
     $child_Name =$_POST['name'];
-    // echo $firstName;
     $child_email = $_POST['email'];
     echo $gender = $_POST['childGender'];
     $mobileno = $_POST['mobileno'];
@@ -16,7 +15,7 @@ if(isset($_POST['childdata'])){
     $faceofcomplexion = $_POST['facecomplexion'];
     $manglik = $_POST['manglik'];
     $expectation = $_POST['expectation'];
-    // $profile_pic = $_POST['InputFile'];
+    
     // image upload************************************
     $file = $_FILES['InputFile'];
     $fileName = $_FILES['InputFile']['name'];
@@ -38,7 +37,7 @@ if(isset($_POST['childdata'])){
 
                 // uploadfiles
                 $sql = "INSERT INTO `child`( `child_Name`, `child_email`, `gender`, `mobileno`, `age`, `education`, `degree`, `profession`, `height`, `dateofbirth`, `faceofcomplexion`, `manglik`, `expectation`,`profile_pic`) VALUES ('$child_Name', '$child_email', '$gender', '$mobileno', '$age', '$education', '$degree', '$profession', '$height', '$dateofbirth', '$faceofcomplexion', '$manglik','$expectation','$fileNameNew')";
-                // $sql = "INSERT INTO  `members` (`firstName`, `lastname`, `mobileNo`, `email`, `dob`, `gender`, `state`, `city`, `address`, `password`, `fatherName`, `motherName`, `lifeMemberNo`, `recieptNo`,`profilepic`) VALUES ('$firstName','$lastName','$mobileNo','$email','$dob','$gender','$state','$city','$address','$password','$fatherName','$motherName','$lifeMemberNo','$recieptno','$fileNameNew')";
+                // $sql = "INSERT INTO  `members` (`firstName`, `mobileNo`, `email`, `dob`, `gender`, `state`, `city`, `address`, `password`, `fatherName`, `motherName`, `lifeMemberNo`,`profilepic`) VALUES ('$firstName','$mobileNo','$email','$dob','$gender','$state','$city','$address','$password','$fatherName','$motherName','$lifeMemberNo','$fileNameNew')";
                 if (mysqli_query($conn, $sql)) {
                     move_uploaded_file($fileTmpName, $fileDestination);
                     header("Location: ../server/member_form.php");
@@ -57,6 +56,5 @@ if(isset($_POST['childdata'])){
     }
 
     mysqli_close($conn);
-    // $status = $_POST['InputFile'];
 }
 ?>

@@ -190,7 +190,7 @@ include "../db/conn.php"
                   <label for="exampleInputFile">Choose your Profile Picture<sup class="text-danger">*</sup> </label>
                       <h6><?= $arrdata['profilepic'] ?></h6>
                   <div class="form-group">
-                    <input name="InputFile" type="file"  class="form-control-file" id="exampleFormControlFile1">
+                    <input name="InputFile" type="file"  class="form-control-file" id="exampleFormControlFile1"  >
 
                   </div>
                 

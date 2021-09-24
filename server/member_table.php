@@ -36,7 +36,7 @@ include "../includes/sidebar.php";
                         <thead>
                             <tr>
                                 <th>Profile Picture</th>
-                                <th>Name</th>
+                                <th>FullName</th>
                                 <th>D.O.B</th>
                                 <?php if (isset($_SESSION) && $_SESSION['user'] == "admin") { ?>
                                 <th>Active / InActive</th>
@@ -60,7 +60,7 @@ include "../includes/sidebar.php";
 
                                     <tr>
                                         <td><img src="../process/uploads/<?= $row['profilepic'] ?>" style="width:45px;"></td>
-                                        <td><?= $row["firstName"] . " " . $row["lastname"]; ?></td>
+                                        <td><?= $row["firstName"]?></td>
                                         <td>
                                             <?= date('d-m-Y',strtotime($row["dob"])) ?>
                                     </td>
