@@ -14,7 +14,6 @@ if (isset($_POST['addMember'])) {
     $fatherName = $_POST['fathername'];
     $motherName = $_POST['motherName'];
     $lifeMemberNo = $_POST['lifeMember'];
-    $recieptno = $_POST['recieptNo'];
     $pincode = $_POST['pincode'];
 
     // image upload************************************
@@ -37,7 +36,7 @@ if (isset($_POST['addMember'])) {
                 $fileDestination = 'uploads/' . $fileNameNew;
 
                 // uploadfiles
-                $sql = "INSERT INTO  `members` (`firstName`, `mobileNo`, `email`, `dob`, `gender`, `state`, `city`, `address`, `password`, `fatherName`, `motherName`, `lifeMemberNo`, `recieptNo`,`profilepic`,`pincode`) VALUES ('$firstName','$mobileNo','$email','$dob','$gender','$state','$city','$address','$password','$fatherName','$motherName','$lifeMemberNo','$recieptno','$fileNameNew','$pincode')";
+                $sql = "INSERT INTO  `members` (`firstName`, `mobileNo`, `email`, `dob`, `gender`, `state`, `city`, `address`, `password`, `fatherName`, `motherName`, `lifeMemberNo`, `profilepic`,`pincode`) VALUES ('$firstName','$mobileNo','$email','$dob','$gender','$state','$city','$address','$password','$fatherName','$motherName','$lifeMemberNo','$fileNameNew','$pincode')";
                 if (mysqli_query($conn, $sql)) {
                     move_uploaded_file($fileTmpName, $fileDestination);
                     header("Location: ../server/member_form.php");

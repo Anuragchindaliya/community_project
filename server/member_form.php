@@ -148,7 +148,7 @@ include "../db/conn.php"
 
                   <div class="form-group col">
                     <label for="password1">Password<sup class="text-danger">*</sup> </label>
-                    <input type="password" class="form-control" id="password1" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" placeholder="Password" onblur='req()' name="password" required>
+                    <input type="password" class="form-control " id="password1" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" placeholder="Password" onblur='req()' name="password" required>
                     <div id="req"></div>
                   </div>
                   <div class="form-group col">
@@ -180,7 +180,7 @@ include "../db/conn.php"
                   <div class="form-group">
                     <input name="InputFile" type="file" class="form-control-file" id="exampleFormControlFile1" required>
                   </div>
-                 
+
                 </div>
               </div>
               <!-- /.card-body -->
@@ -200,6 +200,7 @@ include "../db/conn.php"
 </div>
 <script>
   var check = function() {
+   
     if (document.getElementById('password1').value ==
       document.getElementById('confirmPasswords').value) {
       document.getElementById('message').style.color = 'green';
@@ -213,8 +214,11 @@ include "../db/conn.php"
       document.getElementById('addMember').setAttribute('disabled', 'true')
     }
   }
-  var req = function(){
-    document.getElementById('req').innerHTML = `<div style="font-size:;color:red;">
+  function req() {
+
+    // this.style.borderColor = "red";
+    document.getElementById('req').innerHTML = `<div style="color:rgba(0,0,0,.5);
+    font-weight:800">
                           <p>Must be between 8 and 12 characters. have at least:one lowercase, uppercase, a digit and a symbol</p>
                         </div>`
   }
