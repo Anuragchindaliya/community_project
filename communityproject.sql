@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2021 at 03:21 PM
+-- Generation Time: Sep 24, 2021 at 10:31 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -84,8 +84,7 @@ INSERT INTO `child` (`id`, `child_Name`, `child_email`, `gender`, `mobileno`, `a
 CREATE TABLE `members` (
   `id` int(11) NOT NULL,
   `firstName` varchar(20) NOT NULL,
-  `lastname` varchar(20) NOT NULL,
-  `mobileNo` int(30) NOT NULL,
+  `mobileNo` bigint(30) NOT NULL,
   `email` varchar(30) NOT NULL,
   `dob` date NOT NULL,
   `gender` varchar(10) NOT NULL,
@@ -96,12 +95,19 @@ CREATE TABLE `members` (
   `fatherName` varchar(20) NOT NULL,
   `motherName` varchar(20) NOT NULL,
   `lifeMemberNo` int(12) NOT NULL,
-  `recieptNo` int(12) NOT NULL,
   `profilepic` varchar(255) NOT NULL,
   `status` int(10) NOT NULL DEFAULT 0,
   `isLifeMember` int(10) NOT NULL DEFAULT 0,
   `pincode` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `members`
+--
+
+INSERT INTO `members` (`id`, `firstName`, `mobileNo`, `email`, `dob`, `gender`, `state`, `city`, `address`, `password`, `fatherName`, `motherName`, `lifeMemberNo`, `profilepic`, `status`, `isLifeMember`, `pincode`) VALUES
+(94, 'dummi', 2147483647, 'anurag@gmail.com', '1999-12-28', 'Male', 'Delhi', 'Faridabad', '770, gali 1, Nagla Road NIT Faridabad, Haryana 121005', 'ASas!@12', 'dummy name', 'sdfda', 2345, '614c818c44a97.png', 1, 0, 121009),
+(95, 'dummy name ', 2147483647, 'nurag@gmail.com', '1999-12-29', 'Male', 'Haryana', 'Faridabad', '770, gali 1, Nagla Road NIT Faridabad, Haryana 121005', 'AS!@as12', 'dummy name', 'PHOOL', 12345, '614c8218c22ea.png', 0, 0, 121009);
 
 --
 -- Indexes for dumped tables
@@ -145,7 +151,7 @@ ALTER TABLE `child`
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
