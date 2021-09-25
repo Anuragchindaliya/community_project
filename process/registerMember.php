@@ -9,6 +9,14 @@ if (isset($_POST['registerMember'])) {
     $password = $_POST['password'];
     $pincode = $_POST['pincode'];
 
+    $sql="SELECT * FROM `members` WHERE `email` = '$email'";
+    $res=mysqli_query($conn,$sql);
+    echo mysqli_num_rows($res);
+    if(mysqli_num_rows($res)>0){
+        header("Location: ../client/all_form.php?already=you already have an account");
+        die();
+    }
+
     // image upload************************************
     $file = $_FILES['InputFile'];
     $fileName = $_FILES['InputFile']['name'];

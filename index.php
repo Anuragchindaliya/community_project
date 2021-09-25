@@ -1,3 +1,3 @@
 <?PHP
-header("location: ./client/admin_login.php");
+header("location: ./client/all_form.php");
 ?>

@@ -19,7 +19,7 @@
     <title>Varshney Admin</title>
 </head>
 
-<body>
+<body style="background-color: rgba(0,0,0,.03);">
 
     <div class="container mt-5">
         <div class="row">
@@ -32,16 +32,16 @@
         <div class="row">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 offset-md-4">
+                    <div class="col-md-6 offset-md-3 bg-white p-2 rounded">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Registration</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Member login</button>
+                                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Member </button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Admin login</button>
+                                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Admin </button>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
@@ -108,6 +108,9 @@
                                         <button type="submit" id="registerMember" name="registerMember" class="btn btn-success">Create Account</button>
                                     </div>
                                     <?php
+                                    if (isset($_GET['already'])) {
+                                        echo '<div class="alert alert-warning mt-2" role="alert">' . $_GET["already"] . '</div>';
+                                    } 
                                     if (isset($_GET['msgreg']) && $_GET['msgreg'] == "success") { ?>
                                         <div id="successMsg" class="alert alert-success alert-dismissible fade show" role="alert">
 
@@ -117,8 +120,8 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                            
                                         </div>
-                                    <?php }
-                                    ?>
+                                    <?php } ?>
+                                   
                                 </form>
                             </div>
 
@@ -138,6 +141,7 @@
                                 <?php if (isset($_GET['msg'])) {
                                     echo '<div class="alert alert-danger mt-2" role="alert">' . $_GET["msg"] . '</div>';
                                 } ?>
+                                
                             </div>
 
                             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
