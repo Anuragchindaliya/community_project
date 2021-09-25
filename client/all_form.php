@@ -1,9 +1,8 @@
-
-<?php 
-    session_start();
-    if(isset($_SESSION['login'])){
-        header("Location: ../server/dashboard.php");
-    }
+<?php
+session_start();
+if (isset($_SESSION['login'])) {
+    header("Location: ../server/dashboard.php");
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -65,13 +64,16 @@
                                         </div>
                                         <div class="row">
 
-                                            <div class="form-group col">
+                                            <div class="form-group col" style="position:relative">
                                                 <label for="password1">Password<sup class="text-danger">*</sup> <span></span></label>
-                                                <input type="password" class="form-control" id="password1" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" placeholder="Password" name="password" required>
+                                                <input type="password" class="form-control" id="password1" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" onblur='req()' placeholder="Password" name="password" required>
+                                                <span class="eye" onclick="eyeToggle()" style="position: absolute;top: 30px;right: 15px;"><i class="fas fa-eye-slash"></i></span>
+                                                <div id="req"></div>
+                                                 
                                             </div>
                                             <div class="form-group col">
                                                 <label for="confirmPasswords">Confirm Password<sup class="text-danger">*</sup> <span id='message' style="font-size: small;"></span></label>
-                                                <input type="password" class="form-control" id="confirmPasswords" placeholder="Confirm Passwords" onkeyup='check()' required>
+                                                <input type="password" class="form-control" onkeyup='check()' id="confirmPasswords" placeholder="Confirm Passwords" required>
                                             </div>
                                         </div>
 
@@ -105,23 +107,23 @@
                                     <!-- /.card-body -->
 
                                     <div class="card-footer">
-                                        <button type="submit" id="registerMember" name="registerMember" class="btn btn-success">Create Account</button>
+                                        <button type="submit" id="addMember" name="registerMember" class="btn btn-success">Create Account</button>
                                     </div>
                                     <?php
                                     if (isset($_GET['already'])) {
                                         echo '<div class="alert alert-warning mt-2" role="alert">' . $_GET["already"] . '</div>';
-                                    } 
+                                    }
                                     if (isset($_GET['msgreg']) && $_GET['msgreg'] == "success") { ?>
                                         <div id="successMsg" class="alert alert-success alert-dismissible fade show" role="alert">
 
                                             <i class="fa fa-check-circle"></i>
-                                           
-                                                <strong>Successfully Created!</strong> We'll approve you through mail
-                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                           
+
+                                            <strong>Successfully Created!</strong> We'll approve you through mail
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
                                         </div>
                                     <?php } ?>
-                                   
+
                                 </form>
                             </div>
 
@@ -141,19 +143,19 @@
                                 <?php if (isset($_GET['msg'])) {
                                     echo '<div class="alert alert-danger mt-2" role="alert">' . $_GET["msg"] . '</div>';
                                 } ?>
-                                
+
                             </div>
 
                             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                                 <form action="../process/loginAdmin.php" method="post">
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                        <input type="email" class="form-control" name="email" id="exampleInputEmail1" placeholder="Enter your email" aria-describedby="emailHelp" required>
+                                        <label for="exampleInputEmail2" class="form-label">Email address</label>
+                                        <input type="email" class="form-control" name="email" id="exampleInputEmail2" placeholder="Enter your email" aria-describedby="emailHelp" required>
                                         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                                        <input type="password" name="password" class="form-control" id="exampleInputPassword1" required>
+                                        <label for="exampleInputPassword2" class="form-label">Password</label>
+                                        <input type="password" name="password" class="form-control" id="exampleInputPassword2" required>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>
@@ -177,11 +179,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
     <script>
-        var msg = document.getElementById("successMsg")
-        setTimeout(()=>{
-            msg.style.display="none";
-        },5000)
+        if (!!document.getElementById("successMsg")) {
+            var msg = document.getElementById("successMsg");
+            setTimeout(() => {
+                msg.style.display = "none";
+            }, 5000)
+        }
     </script>
+    <script src="../assets/password.js"></script>
 </body>
 
 </html>
