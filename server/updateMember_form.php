@@ -160,9 +160,14 @@ include "../db/conn.php"
                 </div>
 
                 <div class="row">
-                  <div class="form-group col">
+                  <div class="form-group col " style="display:inline;" >
                     <label for="password1">Password<sup class="text-danger">*</sup></label>
-                    <input type="password" class="form-control" id="password1" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" placeholder="Password" name="password" value="<?php echo $arrdata['password'] ?>">
+                    <input type="password" class="form-control col-12" style="display: absolute
+                ;" id="password1" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" placeholder="Password" onblur='req()' name="password" value="<?php echo $arrdata['password'] ?>">
+                    <span class="eye" onclick="eyeToggle()" style="position: absolute;top: 39px;right: 19px;" >
+                    <i class="fas fa-eye-slash" ></i> 
+                  </span>
+                    <div id="req"></div> 
                   </div>
                   <div class="form-group col">
                     <label for="confirmPasswords">Confirm Password<sup class="text-danger">*</sup><span id='message' style="font-size: small;"></span> </label>
@@ -223,5 +228,26 @@ include "../db/conn.php"
       document.getElementById('addMember').setAttribute('disabled', 'true')
     }
   }
+  function req() {
+
+document.getElementById('req').innerHTML = `<div style="color:rgba(0,0,0,.5);
+font-weight:800"><p>Must be between 8 and 12 characters. have at least:one lowercase, uppercase, a digit and a symbol</p></div>`
+}
+function eyeToggle(e){
+    const Eyeicon = document.querySelector(".eye")
+    const Eye = document.querySelector("#password1");
+    console.log(Eye);
+    if(Eye.type === "password"){
+      Eye.type = "text";
+      Eyeicon.innerHTML = '<i class="fas fa-eye" ></i>';
+      console.log(Eyeicon);
+    }
+    else{
+      Eye.type ="password";
+      Eyeicon.innerHTML = '<i class="fas fa-eye-slash"></i>';
+    }
+
+  }
+
 </script>
 <?php include "../includes/footer.php" ?>
