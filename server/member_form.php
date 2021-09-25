@@ -199,7 +199,7 @@ include "../db/conn.php"
   </section>
   <!-- /.content -->
 </div>
-<script>
+<!-- <script>
   var check = function() {
 
     if (document.getElementById('password1').value ==
@@ -236,5 +236,5 @@ include "../db/conn.php"
     }
 
   }
-</script>
+</script> -->
 <?php include "../includes/footer.php" ?>

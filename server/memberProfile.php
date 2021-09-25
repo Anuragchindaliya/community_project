@@ -48,7 +48,7 @@ $arrdata = mysqli_fetch_assoc($showdata);
                         <h5 class="widget-user-desc">Founder &amp; CEO</h5>
                     </div>
                     <div class="widget-user-image">
-                        <img class="img-circle elevation-2" src="../process/uploads/<?= $arrdata['profilepic'] ?>" alt="User Avatar">
+                        <img class="img-circle elevation-2" src="../process/uploads/<?= $arrdata['profilepic']  ?>" style="height:90px" alt="User Avatar">
                     </div>
                     <div class="card-footer">
                         <div class="row">
