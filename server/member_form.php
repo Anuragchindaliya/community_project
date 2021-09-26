@@ -19,7 +19,22 @@ include "../db/conn.php"
         <div class="col-sm-6">
           <h1>Add New Member</h1>
         </div>
+
         <div class="col-sm-6">
+          <?php if(isset($_GET['msg'])){?>
+              <span id="msg" class="alert alert-success" role="alert">
+              <i class="fa fa-check-circle"></i>
+              <?=$_GET['msg'] ?>
+            </span>
+          <?php }
+          ?>
+           <?php if(isset($_GET['already'])){?>
+              <span id="msg" class="alert alert-warning" role="alert">
+              <i class="fa fa-check-circle"></i>
+              <?=$_GET['already'] ?>
+            </span>
+          <?php }
+          ?>
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
             <li class="breadcrumb-item active">General Form</li>
@@ -238,3 +253,19 @@ include "../db/conn.php"
   }
 </script> -->
 <?php include "../includes/footer.php" ?>
+<script>
+  if(!!$("#msg")){
+    setTimeout(() => {
+      // document.getElementById("msg").style.display="none";
+      $("#msg").hide();
+    }, 3000);
+    
+  }
+  
+  console.log();
+  // if(!!document.getElementById("msg")){
+  //   setTimeout(() => {
+  //     document.getElementById("msg").slideUp();
+  //   }, 3000)
+  // }
+</script>

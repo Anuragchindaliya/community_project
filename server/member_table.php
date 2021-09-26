@@ -16,9 +16,17 @@ include "../includes/sidebar.php";
             <div class="card mt-3" style="width: 80vw;">
                 <div class="card-header">
 
-                    <h3 class="card-title">All Members</h3>
+                    <h3 class="card-title">All Members <?php if (isset($_GET['msg'])) { ?>
+                            <span id="msg" class="alert alert-success p-2" role="alert">
+                                <i class="fa fa-check-circle"></i>
+                                <?= $_GET['msg'] ?>
+                            </span>
+                        <?php }
+                        ?></h3>
 
                     <div class="card-tools">
+                       
+                        
                         <div class="input-group input-group-sm" style="width: 150px;">
                             <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
@@ -39,7 +47,7 @@ include "../includes/sidebar.php";
                                 <th>FullName</th>
                                 <th>D.O.B</th>
                                 <?php if (isset($_SESSION) && $_SESSION['user'] == "admin") { ?>
-                                <th>Active / InActive</th>
+                                    <th>Active / InActive</th>
                                 <?php } ?>
                                 <th>Actions</th>
 
@@ -52,7 +60,7 @@ include "../includes/sidebar.php";
                             } else {
                                 $sql = "SELECT * FROM members";
                             }
-                            
+
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
@@ -60,10 +68,10 @@ include "../includes/sidebar.php";
 
                                     <tr>
                                         <td><img src="../process/uploads/<?= $row['profilepic'] ?>" style="width:45px;"></td>
-                                        <td><?= $row["firstName"]?></td>
+                                        <td><?= $row["firstName"] ?></td>
                                         <td>
-                                            <?= date('d-m-Y',strtotime($row["dob"])) ?>
-                                    </td>
+                                            <?= date('d-m-Y', strtotime($row["dob"])) ?>
+                                        </td>
                                         <?php if (isset($_SESSION) && $_SESSION['user'] == "admin") { ?>
                                             <td><button type="button" class="btn btn-<?= $row['status'] == '0' ? 'danger' : 'success' ?>" onclick="memberStatus(<?= $row['id'] ?>,<?= $row['status'] ?>)" status=""><?= $row['status'] == '0' ? "Deactive" : "Active" ?></button></td>
                                         <?php } ?>

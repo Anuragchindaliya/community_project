@@ -16,6 +16,11 @@ if (isset($_POST['addMember'])) {
     $lifeMemberNo = $_POST['lifeMember'];
     $pincode = $_POST['pincode'];
 
+    $uniqueRes =mysqli_query($conn,"SELECT email from `members` WHERE `email` = '$email'");
+    if(mysqli_fetch_array($uniqueRes)>0){
+        header("Location: ../server/member_form.php?already=This email is already register");
+        die();
+    }
     // image upload************************************
     $file = $_FILES['InputFile'];
     $fileName = $_FILES['InputFile']['name'];
@@ -39,7 +44,7 @@ if (isset($_POST['addMember'])) {
                 $sql = "INSERT INTO  `members` (`firstName`, `mobileNo`, `email`, `dob`, `gender`, `state`, `city`, `address`, `password`, `fatherName`, `motherName`, `lifeMemberNo`, `profilepic`,`pincode`) VALUES ('$firstName','$mobileNo','$email','$dob','$gender','$state','$city','$address','$password','$fatherName','$motherName','$lifeMemberNo','$fileNameNew','$pincode')";
                 if (mysqli_query($conn, $sql)) {
                     move_uploaded_file($fileTmpName, $fileDestination);
-                    header("Location: ../server/member_form.php");
+                    header("Location: ../server/member_form.php?msg=Member register successfully");
                 } else {
                     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                 }
