@@ -1,3 +1,4 @@
+
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="height: 100vh;">
     <!-- Brand Logo -->
     <a href="../server/dashboard.php" class="brand-link">
@@ -34,7 +35,9 @@
               </p>
             </a>
           </li>
-          <?php if($_SESSION['user']=="member"){?>
+          <?php
+         
+          if($_SESSION['user']=="member"){?>
           <li class="nav-item">
             <a href="../server/memberProfile.php" class="nav-link">
               <i class="nav-icon fas fa-users-cog"></i>

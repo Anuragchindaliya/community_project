@@ -4,12 +4,12 @@ include "../db/conn.php";
 if(isset($_POST['childdata'])){
     $child_Name =$_POST['name'];
     $child_email = $_POST['email'];
-    echo $gender = $_POST['childGender'];
+    $gender = $_POST['childGender'];
     $mobileno = $_POST['mobileno'];
     $age = $_POST['age'];
     $education = $_POST['education'];
     $degree = $_POST['degree'];
-    $profession = $_POST['profession'];
+    $profession = mysqli_real_escape_string($conn,$_POST['occupation']);
     $height = $_POST['height'];
     $dateofbirth = $_POST['dateofbirth'];
     $faceofcomplexion = $_POST['facecomplexion'];
@@ -40,7 +40,7 @@ if(isset($_POST['childdata'])){
                 // $sql = "INSERT INTO  `members` (`firstName`, `mobileNo`, `email`, `dob`, `gender`, `state`, `city`, `address`, `password`, `fatherName`, `motherName`, `lifeMemberNo`,`profilepic`) VALUES ('$firstName','$mobileNo','$email','$dob','$gender','$state','$city','$address','$password','$fatherName','$motherName','$lifeMemberNo','$fileNameNew')";
                 if (mysqli_query($conn, $sql)) {
                     move_uploaded_file($fileTmpName, $fileDestination);
-                    header("Location: ../server/member_form.php");
+                    header("Location: ../server/child_new.php");
                 } else {
                     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                 }

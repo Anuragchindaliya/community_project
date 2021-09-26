@@ -68,7 +68,7 @@ include "../db/conn.php"
                 <div class="row">
                   <div class="form-group col">
                     <label for="Mobile">Mobile No.<sup class="text-danger">*</sup></label>
-                    <input type="tel" class="form-control" id="Mobile" pattern="^[789]\d{9}$" placeholder="Mobile No." name="mobile" required>
+                    <input type="tel" class="form-control" id="Mobile" pattern="^[6789]\d{9}$" placeholder="Mobile No." name="mobile" maxlength="10" required>
                   </div>
                   <div class="form-group col">
                     <label for="Email1">Email address<sup class="text-danger">*</sup></label>
