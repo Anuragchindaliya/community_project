@@ -20,6 +20,13 @@ include "../db/conn.php";
                     <h1>Add New Child</h1>
                 </div>
                 <div class="col-sm-6">
+                    <?php if (isset($_GET['msg'])) { ?>
+                        <span id="msg" class="alert alert-success" role="alert">
+                            <i class="fa fa-check-circle"></i>
+                            <?= $_GET['msg'] ?>
+                        </span>
+                    <?php }
+                    ?>
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active">General Form</li>
@@ -120,9 +127,9 @@ include "../db/conn.php";
                                         <div>
                                             <select class="form-control dropdown" id="occupation" name="occupation">
                                                 <option value="" selected="selected" disabled="disabled">-- select one --</option>
-                                                    <option value="Business">Business</option>
-                                                    <option value="Service">Service</option>
-                                                    <option value="others">others</option>
+                                                <option value="Business">Business</option>
+                                                <option value="Service">Service</option>
+                                                <option value="others">others</option>
                                             </select>
                                         </div>
                                     </div>
@@ -204,3 +211,12 @@ include "../db/conn.php";
 </div>
 
 <?php include "../includes/footer.php" ?>
+<script>
+  if(!!$("#msg")){
+    setTimeout(() => {
+      // document.getElementById("msg").style.display="none";
+      $("#msg").hide();
+    }, 5000);
+    
+  }
+  </script>

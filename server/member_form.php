@@ -28,6 +28,7 @@ include "../db/conn.php"
             </span>
           <?php }
           ?>
+          
            <?php if(isset($_GET['already'])){?>
               <span id="msg" class="alert alert-warning" role="alert">
               <i class="fa fa-check-circle"></i>
@@ -258,11 +259,11 @@ include "../db/conn.php"
     setTimeout(() => {
       // document.getElementById("msg").style.display="none";
       $("#msg").hide();
-    }, 3000);
+    }, 5000);
     
   }
   
-  console.log();
+ 
   // if(!!document.getElementById("msg")){
   //   setTimeout(() => {
   //     document.getElementById("msg").slideUp();

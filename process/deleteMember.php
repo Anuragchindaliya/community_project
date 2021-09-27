@@ -2,6 +2,7 @@
 include "../db/conn.php";
 session_start();
 if (isset($_SESSION['login']) && $_SESSION['user'] === "member") {
+    echo $_SESSION['user'];
     header("Location: ../server/dashboard.php");
     die();
 }
@@ -15,5 +16,5 @@ if (isset($_SESSION['login']) && $_SESSION['user'] === "admin") {
         echo "error in deletion";
     }
 }
-header("Location: ../client/all_form.php");
+// header("Location: ../client/all_form.php");
 ?>

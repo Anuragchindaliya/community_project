@@ -116,5 +116,13 @@ include "../includes/sidebar.php";
 
 include "../includes/footer.php";
 ?>
+<script>
+  if(!!$("#msg")){
+    setTimeout(() => {
+      $("#msg").slideDown(50);
+    }, 5000);
+    
+  }
+  </script>
 <script src="../process/modal.js"></script>
 <script src="../process/memberStatus.js"></script>

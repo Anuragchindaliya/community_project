@@ -19,7 +19,6 @@ if (isset($_POST['update'])) {
   $pincode = $_POST['pincode'];
 
 
-
   // image upload************************************
   if (isset($_FILES['InputFile']) && $_FILES['InputFile']['name']) {
     $file = $_FILES['InputFile'];
@@ -45,7 +44,7 @@ if (isset($_POST['update'])) {
 
           if (mysqli_query($conn, $sql)) {
             move_uploaded_file($fileTmpName, $fileDestination);
-            header("Location: ../server/updateMember_form.php?id=$ids");
+            header("Location: ../server/updateMember_form.php?id=$ids&msg=Member is update successfully");
           } else {
             echo "<br/>Error: " . $sql . "<br>" . mysqli_error($conn);
           }
@@ -62,7 +61,7 @@ if (isset($_POST['update'])) {
   } else {
     $sql = "UPDATE `members` SET firstName ='$firstName', mobileNo= '$mobileNo' ,email = '$email', dob = '$dob', gender = '$gender', state = '$state', city = '$city', address = '$address', password ='$password', fatherName = '$fatherName', motherName ='$motherName', lifeMemberNo = '$lifeMemberNo' , pincode = '$pincode' WHERE id = '{$ids}'";
     if (mysqli_query($conn, $sql)) {
-      header("Location: ../server/updateMember_form.php?id=$ids");
+      header("Location: ../server/updateMember_form.php?id=$ids&msg=Member is update successfully");
     } else {
       echo "<br/>Error: " . $sql . "<br>" . mysqli_error($conn);
     }

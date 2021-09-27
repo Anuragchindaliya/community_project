@@ -1,9 +1,9 @@
-<?php 
-    session_start();
-    
-    if(isset($_SESSION['login'])){
-        header("Location: ../server/dashboard.php");
-    }
+<?php
+session_start();
+
+if (isset($_SESSION['login'])) {
+  header("Location: ../server/dashboard.php");
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -24,7 +24,7 @@
   <div class="container mt-5">
     <div class="row mb-5">
       <div class="col-md-8  m-auto">
-        <h1 class="m-auto text-center">Varshney Samaj Community</h1>
+      <a href="./all_form.php" style="text-decoration: none; color:#414141"><h1 class="m-auto text-center">Varshney Samaj Community</h1></a>
         <p class="text-center">Portal for Member</p>
       </div>
 
@@ -46,10 +46,17 @@
             <label class="form-check-label" for="exampleCheck1">Check me out</label>
           </div> -->
           <button type="submit" class="btn btn-primary">Submit</button>
+          <a class="btn btn-success" href="./all_form.php">All Login</a>
         </form>
-        <?php if(isset($_GET['msg'])){ 
-        echo '<div class="alert alert-danger mt-2" role="alert">'.$_GET["msg"].'</div>';
-         }?>
+
+        <?php if (isset($_GET['msg'])) { ?>
+          <div class="mt-2 alert alert-danger alert-dismissible fade show" role="alert">
+            <!-- <strong>Holy guacamole!</strong>  -->
+            <?= $_GET["msg"] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <?php
+        } ?>
       </div>
     </div>
   </div>

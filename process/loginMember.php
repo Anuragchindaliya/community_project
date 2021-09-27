@@ -17,7 +17,7 @@ if(isset($_POST['email']) && isset($_POST['password'])){
         $_SESSION['username']=$data['firstName'];
         header("location: ../server/dashboard.php");
     }else{
-        $msg = "wrong credentials or maybe you not activated";
+        $msg = "Wrong credentials or maybe you not activated";
         header("location: ../client/member_login.php?msg=$msg");
     }
 }else{

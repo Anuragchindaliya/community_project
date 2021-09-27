@@ -41,7 +41,7 @@ if (isset($_POST['childupdata'])) {
 
           if (mysqli_query($conn, $sql)) {
             move_uploaded_file($fileTmpName, $fileDestination);
-            header("Location: ../server/updateMember_form.php?id=$ids");
+            header("Location: ../server/childUpdate.php?id=$id&msg=Child details updated successfully");
           } else {
             echo "<br/>Error: " . $sql . "<br>" . mysqli_error($conn);
           }
@@ -58,7 +58,7 @@ if (isset($_POST['childupdata'])) {
   } else {
     $sql = "UPDATE `child` SET `child_Name`='$child_Name',`child_email`='$child_email',`gender`='$gender',`mobileno`='$mobile',`age`='$age',`education`='$education',`degree`='$degree',`profession`='$profession',`height`='$height',`dateofbirth`='$dateofbirth',`faceofcomplexion`='$faceofcomplexion',`manglik`='$manglik',`expectation`='$expectation' WHERE id = '{$id}'";
     if (mysqli_query($conn, $sql)) {
-      header("Location: ../server/childUpdate.php?id=$id");
+      header("Location: ../server/childUpdate.php?id=$id&msg=Child details updated successfully");
     } else {
       echo "<br/>Error: " . $sql . "<br>" . mysqli_error($conn);
     }

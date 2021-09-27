@@ -51,7 +51,7 @@
           <?php if(isset($_SESSION['login']) && $_SESSION['user']=='admin'){ ?>
           <li class="nav-item">
             <a href="../server/member_form.php" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
+              <i class="nav-icon fas fa-user-plus"></i>
               <p>
                 Add New Member
                 <!-- <span class="right badge badge-danger">New</span> -->
@@ -73,7 +73,7 @@
           
           <li class="nav-item">
             <a href="../server/child_new.php" class="nav-link">
-              <i class="nav-icon fas fa-user-plus"></i>
+              <i class="nav-icon fas  fa-graduation-cap"></i>
               <p>
                 Add New Child
                 <i class="fas fa-angle-left right"></i>
@@ -83,14 +83,14 @@
           
           <li class="nav-item">
             <a href="../server/childTables.php" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
+              <i class="nav-icon fas  fa-user-graduate"></i>
               <p>
                 View All Children
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
           </li>
-        </ul> -->
+        </ul> 
       </nav>
       <!-- /.sidebar-menu -->
     </div>

@@ -23,7 +23,7 @@ if (isset($_SESSION['login'])) {
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-8  m-auto">
-                <h1 class="m-auto text-center">Varshney Samaj Community</h1>
+                <a href="./all_form.php" style="text-decoration: none; color:#414141"><h1 class="m-auto text-center">Varshney Samaj Community</h1></a>
                 <p class="text-center">Portal for admin</p>
             </div>
 

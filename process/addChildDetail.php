@@ -40,7 +40,7 @@ if(isset($_POST['childdata'])){
                 // $sql = "INSERT INTO  `members` (`firstName`, `mobileNo`, `email`, `dob`, `gender`, `state`, `city`, `address`, `password`, `fatherName`, `motherName`, `lifeMemberNo`,`profilepic`) VALUES ('$firstName','$mobileNo','$email','$dob','$gender','$state','$city','$address','$password','$fatherName','$motherName','$lifeMemberNo','$fileNameNew')";
                 if (mysqli_query($conn, $sql)) {
                     move_uploaded_file($fileTmpName, $fileDestination);
-                    header("Location: ../server/child_new.php");
+                    header("Location: ../server/child_new.php?msg=Child added successfully");
                 } else {
                     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                 }
