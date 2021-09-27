@@ -244,5 +244,4 @@ $arrdata = mysqli_fetch_assoc($showdata);
         </section>
     </section>
 </div>
-
 <?php include "../includes/footer.php" ?>
