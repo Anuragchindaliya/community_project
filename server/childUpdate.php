@@ -51,11 +51,11 @@ include "../includes/sidebar.php";
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for="name">Name</label>
-                                        <input type="text" name="name" id="name" class="form-control" placeholder="Enter name" value="<?php echo $arrdata['child_Name'] ?>">
+                                        <input type="text" name="name" id="name" class="form-control" placeholder="Enter name" value="<?php echo $arrdata['child_Name'] ?>" pattern="[a-zA-Z][a-zA-Z ]*">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="exampleInputEmail1">Phone</label>
-                                        <input type="number" class="form-control" name="phone" placeholder="Enter phone number" value="<?php echo $arrdata['mobileno'] ?>">
+                                        <input type="number" class="form-control" name="phone" placeholder="Enter phone number" value="<?php echo $arrdata['mobileno'] ?>"  pattern="^[6789]\d{9}$" maxlength="10" minlength="10">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -172,21 +172,26 @@ include "../includes/sidebar.php";
                                     <div class="form-group col-md-6">
                                         <label for="exampleInputEmail1">Expectation</label>
                                         <div>
-                                            <textarea cols="40" name="expectation" rows="1"><?php echo $arrdata['expectation'] ?></textarea>
+                                            <textarea name="expectation" rows="4" style="width: 100%;"><?php echo $arrdata['expectation'] ?></textarea>
                                         </div>
                                     </div>
 
 
-                                    <div class="form-group">
-                                        <label for="exampleInputFile">File input</label><span><br><?php echo $arrdata['profile_pic'] ?></span>
+                                    <div class="form-group col-md-6">
+                                        <label for="exampleInputFile">File input</label><span><br></span>
                                         <div class="input-group">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" name="InputFile" id="exampleInputFile">
-                                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                                <label class="custom-file-label" for="exampleInputFile">
+
+                                                    <?php if (isset($arrdata['profile_pic'])) {
+                                                        echo $arrdata['profile_pic'];
+                                                    } else {
+                                                        echo "Choose new file";
+                                                    }   ?>
+                                                </label>
                                             </div>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">Upload</span>
-                                            </div>
+
                                         </div>
 
                                         <div class="col-md-6">
@@ -214,11 +219,11 @@ include "../includes/sidebar.php";
 
 <?php include "../includes/footer.php" ?>
 <script>
-  if(!!$("#msg")){
-    setTimeout(() => {
-      // document.getElementById("msg").style.display="none";
-      $("#msg").hide();
-    }, 5000);
-    
-  }
-  </script>
+    if (!!$("#msg")) {
+        setTimeout(() => {
+            // document.getElementById("msg").style.display="none";
+            $("#msg").hide();
+        }, 5000);
+
+    }
+</script>

@@ -22,11 +22,12 @@ include "../includes/sidebar.php";
                                 <?= $_GET['msg'] ?>
                             </span>
                         <?php }
-                        ?></h3>
+                        ?>
+                    </h3>
 
                     <div class="card-tools">
-                       
-                        
+
+
                         <div class="input-group input-group-sm" style="width: 150px;">
                             <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
@@ -117,12 +118,12 @@ include "../includes/sidebar.php";
 include "../includes/footer.php";
 ?>
 <script>
-  if(!!$("#msg")){
-    setTimeout(() => {
-      $("#msg").slideDown(50);
-    }, 5000);
-    
-  }
-  </script>
+    if (!!$("#msg")) {
+        setTimeout(() => {
+            $("#msg").slideDown(50);
+        }, 5000);
+
+    }
+</script>
 <script src="../process/modal.js"></script>
 <script src="../process/memberStatus.js"></script>

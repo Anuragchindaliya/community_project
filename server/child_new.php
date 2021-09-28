@@ -52,26 +52,26 @@ include "../db/conn.php";
                                 <div class="row">
 
                                     <div class="form-group col-md-6">
-                                        <label for="exampleInputEmail1">Name</label>
-                                        <input type="text" name="name" class="form-control" placeholder="Enter name">
+                                        <label for="exampleInputEmail1">Name<sup class="text-danger">*</sup></label>
+                                        <input type="text" name="name" class="form-control" placeholder="Enter name" pattern="[a-zA-Z][a-zA-Z ]*">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="exampleInputEmail1">Phone</label>
-                                        <input type="number" class="form-control" name="mobileno" placeholder="Enter phone number">
+                                        <label for="exampleInputEmail1">Phone<sup class="text-danger">*</sup></label>
+                                        <input type="tel" class="form-control" name="mobileno" placeholder="Enter phone number" pattern="^[6789]\d{9}$" maxlength="10">
                                     </div>
                                 </div>
                                 <div class="row">
 
                                     <div class="form-group col-md-6">
-                                        <label for="exampleInputEmail1">Email address</label>
+                                        <label for="exampleInputEmail1">Email address<sup class="text-danger">*</sup></label>
                                         <input type="email" class="form-control" name="email" placeholder="Enter email">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <div>
-                                            <label>Gender</label>
+                                            <label>Gender<sup class="text-danger">*</sup></label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="childGender" id="inlineRadio1" value="Male">
+                                            <input class="form-check-input" type="radio" name="childGender" id="inlineRadio1" value="Male" checked>
                                             <label class="form-check-label" for="inlineRadio1">Male</label>
                                         </div>
                                         <div class="form-check form-check-inline">
@@ -88,7 +88,7 @@ include "../db/conn.php";
                                 <div class="row">
 
                                     <div class="form-group col-md-6">
-                                        <label for="exampleInputEmail1">Education</label>
+                                        <label for="exampleInputEmail1">Education<sup class="text-danger">*</sup></label>
                                         <div>
                                             <select name="education" class="form-control">
                                                 <option value="" selected="selected" disabled="disabled">-- select one --</option>
@@ -104,10 +104,21 @@ include "../db/conn.php";
                                         <!-- <input type="text" class="form-control" name="education" placeholder="Enter education"> -->
 
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <!-- <div class="form-group col-md-6">
                                         <label for="exampleInputAge">Age</label>
                                         <input type="type" placeholder="enter age" name="age" class="form-control">
-                                    </div>
+                                    </div> -->
+                                    <?php if ($_SESSION['user'] == 'admin') { ?>
+                                        <div class="form-group col-md-6">
+                                            <label for="exampleInputAge">Parent ID</label>
+                                            <input type="type" name="parentid" placeholder="Enter Parent ID " name="age" class="form-control">
+                                        </div><?php } ?>
+                                    <?php if ($_SESSION['user'] == 'member') {
+                                    ?>
+                                        <input type="hidden" name="parentid" value="<?= $_SESSION['id'] ?>">
+                                    <?php
+                                    } ?>
+
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-6">
@@ -136,12 +147,13 @@ include "../db/conn.php";
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-6">
-                                        <label for="exampleInputEmail1">Height</label>
+                                        <label for="exampleInputEmail1">Height<sup class="text-danger">*</sup></label>
                                         <input type="text" class="form-control" name="height" placeholder="Enter height">
+                                        <sup>In centimeter ex- 152.6cm</sup>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="exampleInputEmail1">Date of Birth/D.O.B.</label>
-                                        <input type="date" class="form-control" name="dateofbirth" placeholder="Enter date of birth">
+                                        <label for="exampleInputEmail1">Date of Birth<sup class="text-danger">*</sup></label>
+                                        <input type="date" class="form-control" name="dateofbirth" placeholder="Enter date of birth" min='1899-01-01' max='<?= (date('Y') - 18) . "-" . date('m-d') ?>'>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -159,14 +171,13 @@ include "../db/conn.php";
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="exampleInputEmail1">Manglik</label>
+                                        <label for="exampleInputEmail1">Remark</label>
                                         <div>
-                                            <select name="manglik" class="form-control">
-                                                <option value="bcom">bcom</option>
-                                                <option value="btech">btech</option>
-                                                <option value="mca">mca</option>
-                                                <option value="other">other </option>
-                                            </select>
+                                            <input type="text" list="remark" class="form-control">
+                                            <datalist id="remark" name="manglik">
+                                                <option value="Sada Manglik">
+                                                <option value="Manglik">
+                                            </datalist>
                                         </div>
                                     </div>
                                 </div>
@@ -174,7 +185,7 @@ include "../db/conn.php";
                                     <div class="form-group col-md-6">
                                         <label for="exampleInputEmail1">Expectation</label>
                                         <div>
-                                            <textarea cols="40" name="expectation" rows="1"></textarea>
+                                            <textarea name="expectation" rows="2" style="width: 100%;"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6">
@@ -183,23 +194,19 @@ include "../db/conn.php";
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" name="InputFile" id="exampleInputFile">
                                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                                <sup>upload upto 1mb pic size</sup>
                                             </div>
                                         </div>
 
                                     </div>
                                 </div>
-
-                                <!-- <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                    </div> -->
-
                             </div>
 
 
                             <!-- /.card-body -->
 
                             <div class="card-footer">
+
                                 <button type="submit" name="childdata" class="btn btn-primary">Submit</button>
                             </div>
                         </form>
@@ -212,11 +219,11 @@ include "../db/conn.php";
 
 <?php include "../includes/footer.php" ?>
 <script>
-  if(!!$("#msg")){
-    setTimeout(() => {
-      // document.getElementById("msg").style.display="none";
-      $("#msg").hide();
-    }, 5000);
-    
-  }
-  </script>
+    if (!!$("#msg")) {
+        setTimeout(() => {
+            // document.getElementById("msg").style.display="none";
+            $("#msg").hide();
+        }, 5000);
+
+    }
+</script>
