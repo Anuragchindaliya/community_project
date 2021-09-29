@@ -7,7 +7,7 @@ if(isset($_POST['childdata'])){
     $child_email = $_POST['email'];
     $gender = $_POST['childGender'];
     $mobileno = $_POST['mobileno'];
-    $age = $_POST['age'];
+    // $age = $_POST['age'];
     $education = sansitizeString($_POST['education']);
     $degree = $_POST['degree'];
     $profession = mysqli_real_escape_string($conn,$_POST['occupation']);
@@ -17,6 +17,12 @@ if(isset($_POST['childdata'])){
     $manglik = $_POST['manglik'];
     $expectation = $_POST['expectation'];
     $parentid = $_POST['parentid'];
+
+    $uniqueRes =mysqli_query($conn,"SELECT child_email from `child` WHERE `child_email` = '$child_email'");
+    if(mysqli_fetch_array($uniqueRes)>0){
+        header("Location: ../server/child_new.php?already=This email is already register");
+        die();
+    }
     
     // image upload************************************
     $file = $_FILES['InputFile'];
@@ -38,7 +44,7 @@ if(isset($_POST['childdata'])){
                 $fileDestination = 'uploads/' . $fileNameNew;
 
                 // uploadfiles
-                $sql = "INSERT INTO `child`( `child_Name`, `child_email`, `gender`, `mobileno`, `age`, `education`, `degree`, `profession`, `height`, `dateofbirth`, `faceofcomplexion`, `manglik`, `expectation`,`profile_pic`,`pid`) VALUES ('$child_Name', '$child_email', '$gender', '$mobileno', '$age', '$education', '$degree', '$profession', '$height', '$dateofbirth', '$faceofcomplexion', '$manglik','$expectation','$fileNameNew',$parentid)";
+                $sql = "INSERT INTO `child`( `child_Name`, `child_email`, `gender`, `mobileno`, `education`, `degree`, `profession`, `height`, `dateofbirth`, `faceofcomplexion`, `manglik`, `expectation`,`profile_pic`,`pid`) VALUES ('$child_Name', '$child_email', '$gender', '$mobileno', '$education', '$degree', '$profession', '$height', '$dateofbirth', '$faceofcomplexion', '$manglik','$expectation','$fileNameNew',$parentid)";
                 // $sql = "INSERT INTO  `members` (`firstName`, `mobileNo`, `email`, `dob`, `gender`, `state`, `city`, `address`, `password`, `fatherName`, `motherName`, `lifeMemberNo`,`profilepic`) VALUES ('$firstName','$mobileNo','$email','$dob','$gender','$state','$city','$address','$password','$fatherName','$motherName','$lifeMemberNo','$fileNameNew')";
                 if (mysqli_query($conn, $sql)) {
                     move_uploaded_file($fileTmpName, $fileDestination);

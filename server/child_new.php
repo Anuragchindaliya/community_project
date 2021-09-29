@@ -27,6 +27,15 @@ include "../db/conn.php";
                         </span>
                     <?php }
                     ?>
+
+                    <?php if (isset($_GET['already'])) { ?>
+                        <span id="msg" class="alert alert-danger" role="alert">
+                            <i class="fa fa-check-circle"></i>
+                            <?= $_GET['already'] ?>
+                        </span>
+                    <?php }
+                    ?>
+
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active">General Form</li>
@@ -173,8 +182,8 @@ include "../db/conn.php";
                                     <div class="form-group col-md-6">
                                         <label for="exampleInputEmail1">Remark</label>
                                         <div>
-                                            <input type="text" list="remark" class="form-control">
-                                            <datalist id="remark" name="manglik">
+                                            <input type="text" list="remark" class="form-control" name="manglik">
+                                            <datalist id="remark">
                                                 <option value="Sada Manglik">
                                                 <option value="Manglik">
                                             </datalist>
