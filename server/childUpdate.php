@@ -55,7 +55,7 @@ include "../includes/sidebar.php";
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="exampleInputEmail1">Phone</label>
-                                        <input type="number" class="form-control" name="phone" placeholder="Enter phone number" value="<?php echo $arrdata['mobileno'] ?>"  pattern="^[6789]\d{9}$" maxlength="10" minlength="10">
+                                        <input type="number" class="form-control" name="phone" placeholder="Enter phone number" value="<?php echo $arrdata['mobileno'] ?>" pattern="^[6789]\d{9}$" maxlength="10" minlength="10">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -87,13 +87,38 @@ include "../includes/sidebar.php";
                                 <div class="row">
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-md-6">
+                                    <!-- <div class="form-group col-md-6">
                                         <label for="exampleInputAge">Age</label>
-                                        <input type="type" placeholder="enter age" name="age" class="form-control" value="<?php echo $arrdata['age'] ?>">
-                                    </div>
+                                         <input type="type" placeholder="enter age" name="age" class="form-control" value="
+                                        <?php
+                                        // echo $arrdata['age'] 
+                                        ?>"> -->
+                                    <!-- </div> -->
+
+                                    <?php if ($_SESSION['user'] == 'admin') { ?>
+                                        <div class="form-group col-md-6">
+                                            <label for="exampleInputAge">Parent ID</label>
+                                            <input type="type" name="parentid" placeholder="Enter Parent ID " name="age" class="form-control" value="<?= $arrdata['pid'] ?>" required>
+                                        </div><?php } ?>
+                                    <?php if ($_SESSION['user'] == 'member') {
+                                    ?>
+                                        <input type="hidden" name="parentid" value="<?= $_SESSION['id'] ?>" required>
+                                    <?php
+                                    } ?>
+
                                     <div class="form-group col-md-6">
                                         <label for="exampleInputEmail1">Education</label>
-                                        <input type="text" class="form-control" name="education" placeholder="Enter education" value="<?php echo $arrdata['education'] ?>">
+                                        <input type="text" list="education" class="form-control" name="education" placeholder="Enter education" value="<?php echo $arrdata['education'] ?>">
+
+                                        <datalist id="education" name="education" required>
+                                            <option value="No formal education">
+                                            <option value="Primary education">
+                                            <option value="Secondary education">
+                                            <option value="Vocational qualification">
+                                            <option value="Bachelor's degree">
+                                            <option value="Master's degree">
+                                            <option value="Doctorate or higher">
+                                        </datalist>
                                     </div>
                                 </div>
                                 <div class="row">

@@ -72,7 +72,9 @@ include "../includes/sidebar.php";
                                         <td><?= $row["id"] ?></td>
                                         <td><img src="../process/uploads/<?= $row["profile_pic"] ?>" style="width: 45px;" alt=""></td>
                                         <td><?= $row["child_Name"]; ?></td>
-                                        <td><?= $row["age"] ?></td>
+                                        <td>
+                                            <?= date_diff(date_create($row['dateofbirth']), date_create(date('d-m-Y')))->format("%y"); ?>
+                                        </td>
                                         <td><button type="submit">Active</button></td>
                                         <td>
 

@@ -62,18 +62,18 @@ include "../db/conn.php";
 
                                     <div class="form-group col-md-6">
                                         <label for="exampleInputEmail1">Name<sup class="text-danger">*</sup></label>
-                                        <input type="text" name="name" class="form-control" placeholder="Enter name" pattern="[a-zA-Z][a-zA-Z ]*">
+                                        <input type="text" name="name" class="form-control" placeholder="Enter name" pattern="[a-zA-Z][a-zA-Z ]*" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="exampleInputEmail1">Phone<sup class="text-danger">*</sup></label>
-                                        <input type="tel" class="form-control" name="mobileno" placeholder="Enter phone number" pattern="^[6789]\d{9}$" maxlength="10">
+                                        <input type="tel" class="form-control" name="mobileno" placeholder="Enter phone number" pattern="^[6789]\d{9}$" maxlength="10" required>
                                     </div>
                                 </div>
                                 <div class="row">
 
                                     <div class="form-group col-md-6">
                                         <label for="exampleInputEmail1">Email address<sup class="text-danger">*</sup></label>
-                                        <input type="email" class="form-control" name="email" placeholder="Enter email">
+                                        <input type="email" class="form-control" name="email" placeholder="Enter email" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <div>
@@ -99,7 +99,7 @@ include "../db/conn.php";
                                     <div class="form-group col-md-6">
                                         <label for="exampleInputEmail1">Education<sup class="text-danger">*</sup></label>
                                         <div>
-                                            <select name="education" class="form-control">
+                                            <select name="education" class="form-control" required>
                                                 <option value="" selected="selected" disabled="disabled">-- select one --</option>
                                                 <option value="No formal education">No formal education</option>
                                                 <option value="Primary education">Primary education</option>
@@ -120,11 +120,11 @@ include "../db/conn.php";
                                     <?php if ($_SESSION['user'] == 'admin') { ?>
                                         <div class="form-group col-md-6">
                                             <label for="exampleInputAge">Parent ID</label>
-                                            <input type="type" name="parentid" placeholder="Enter Parent ID " name="age" class="form-control">
+                                            <input type="type" name="parentid" placeholder="Enter Parent ID " name="age" class="form-control" required>
                                         </div><?php } ?>
                                     <?php if ($_SESSION['user'] == 'member') {
                                     ?>
-                                        <input type="hidden" name="parentid" value="<?= $_SESSION['id'] ?>">
+                                        <input type="hidden" name="parentid" value="<?= $_SESSION['id'] ?>" required>
                                     <?php
                                     } ?>
 
@@ -145,7 +145,7 @@ include "../db/conn.php";
                                     <div class="form-group col-md-6">
                                         <label for="occupation">Profession</label>
                                         <div>
-                                            <select class="form-control dropdown" id="occupation" name="occupation">
+                                            <select class="form-control dropdown" id="occupation" name="occupation" required>
                                                 <option value="" selected="selected" disabled="disabled">-- select one --</option>
                                                 <option value="Business">Business</option>
                                                 <option value="Service">Service</option>

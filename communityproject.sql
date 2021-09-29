@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 24, 2021 at 10:31 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 7.3.28
+-- Generation Time: Sep 29, 2021 at 04:49 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -54,7 +54,6 @@ CREATE TABLE `child` (
   `child_email` varchar(30) NOT NULL,
   `gender` varchar(10) NOT NULL,
   `mobileno` bigint(30) NOT NULL,
-  `age` int(3) NOT NULL,
   `education` varchar(20) NOT NULL,
   `degree` varchar(20) NOT NULL,
   `profession` varchar(30) NOT NULL,
@@ -64,16 +63,20 @@ CREATE TABLE `child` (
   `manglik` varchar(10) NOT NULL,
   `expectation` varchar(255) NOT NULL,
   `profile_pic` varchar(30) NOT NULL,
-  `status` varchar(10) NOT NULL
+  `status` varchar(10) NOT NULL,
+  `pid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `child`
 --
 
-INSERT INTO `child` (`id`, `child_Name`, `child_email`, `gender`, `mobileno`, `age`, `education`, `degree`, `profession`, `height`, `dateofbirth`, `faceofcomplexion`, `manglik`, `expectation`, `profile_pic`, `status`) VALUES
-(21, 'dummy don', 'site88@gmnail.cimn', 'Male', 0, 56, 'bca', 'btech', 'mca', 7, '2021-10-01', 'btech', 'mca', 'hj', '614736768a081.png', ''),
-(22, 'dummy101 dummy last1', 'anurag@gmail.com', 'Male', 8010334416, 56, 'cvb', 'bcom', 'bcom', 7, '2021-09-15', 'bcom', 'bcom', '', '614b25f938a34.png', '');
+INSERT INTO `child` (`id`, `child_Name`, `child_email`, `gender`, `mobileno`, `education`, `degree`, `profession`, `height`, `dateofbirth`, `faceofcomplexion`, `manglik`, `expectation`, `profile_pic`, `status`, `pid`) VALUES
+(29, 'J P GUPTA', 'jpgupta@gmail.com', 'Male', 9999999999, 'No formal education', 'bcom', 'Business', 7, '2003-09-10', 'Extremely ', '', 'sdhf asdh asdhj', '6154703e565f9.jpg', '', 130),
+(30, 'J P GUPTA', 'anurag@gmail.com', 'Male', 9999999999, 'Secondary education', 'bcom', 'Service', 7, '2003-09-10', 'Extremely ', 'Sada Mangl', 'sdfa a sfasfd', '6154725256f11.jpg', '', 130),
+(31, 'J P GUPTA', 'jpgupta@gmail.com1', 'Male', 9999999999, 'Primary education', 'bcom', 'others', 0, '2003-09-02', 'Extremely ', '', 'asd', '6154758e0d795.jpg', '', 130),
+(32, 'J P GUPTA', 'jpguptadws@gmail.com', 'Male', 9999999999, 'BSC', 'bcom', 'bcom', 7, '2003-09-01', 'bcom', 'bcom', 'asdf sa fd', '61547a4beec6d.jpg', '', 130),
+(33, 'J P GUPTAa', 'jpguptanew@gmail.com', 'Male', 9999999999, 'Primary education', 'bcom', 'bcom', 7, '1998-11-20', 'bcom', 'bcom', 'sd  Asfda sdf a', '61547b9135927.png', '', 130);
 
 -- --------------------------------------------------------
 
@@ -106,8 +109,8 @@ CREATE TABLE `members` (
 --
 
 INSERT INTO `members` (`id`, `firstName`, `mobileNo`, `email`, `dob`, `gender`, `state`, `city`, `address`, `password`, `fatherName`, `motherName`, `lifeMemberNo`, `profilepic`, `status`, `isLifeMember`, `pincode`) VALUES
-(94, 'dummi', 2147483647, 'anurag@gmail.com', '1999-12-28', 'Male', 'Delhi', 'Faridabad', '770, gali 1, Nagla Road NIT Faridabad, Haryana 121005', 'ASas!@12', 'dummy name', 'sdfda', 2345, '614c818c44a97.png', 1, 0, 121009),
-(95, 'dummy name ', 2147483647, 'nurag@gmail.com', '1999-12-29', 'Male', 'Haryana', 'Faridabad', '770, gali 1, Nagla Road NIT Faridabad, Haryana 121005', 'AS!@as12', 'dummy name', 'PHOOL', 12345, '614c8218c22ea.png', 0, 0, 121009);
+(128, 'J P GUPTA', 9999999999, 'anurag@gmail.com', '1999-12-26', 'Male', 'Haryana', 'faridabad', 'dummy address comes here', 'Anurag@123', 'asd', 'hsdjfh', 8765, '61519da3c7588.png', 1, 0, 121001),
+(130, 'pp gupta', 9911457143, 'mohit@gmail.com', '1969-01-01', 'Male', 'haryana', 'faridabad', 'dummy address comes here', 'Varun@123', 'ab', 'ab', 45464, '6151dd5e94d4a.jpeg', 1, 0, 121001);
 
 --
 -- Indexes for dumped tables
@@ -123,13 +126,15 @@ ALTER TABLE `admin`
 -- Indexes for table `child`
 --
 ALTER TABLE `child`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `child_email` (`child_email`);
 
 --
 -- Indexes for table `members`
 --
 ALTER TABLE `members`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -145,13 +150,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `child`
 --
 ALTER TABLE `child`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

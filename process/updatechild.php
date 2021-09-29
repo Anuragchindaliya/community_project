@@ -7,7 +7,7 @@ if (isset($_POST['childupdata'])) {
   $child_email = $_POST['email'];
   $gender = $_POST['Gender'];
   $mobile = $_POST['phone'];
-  $age = $_POST['age'];
+  
   $education = $_POST['education'];
   $degree = $_POST['degree'];
   $profession = $_POST['profession'];
@@ -37,7 +37,7 @@ if (isset($_POST['childupdata'])) {
           $fileDestination = 'uploads/' . $fileNameNew;
 
           // uploadfiles
-          $sql = "UPDATE `child` SET `child_Name`='$child_Name',`child_email`='$child_email',`gender`='$gender',`mobileno`='$mobile',`age`='$age',`education`='$education',`degree`='$degree',`profession`='$profession',`height`='$height',`dateofbirth`='$dateofbirth',`faceofcomplexion`='$faceofcomplexion',`manglik`='$manglik',`expectation`='$expectation',`profile_pic`='$fileNameNew' WHERE id = '{$id}'";
+          $sql = "UPDATE `child` SET `child_Name`='$child_Name',`child_email`='$child_email',`gender`='$gender',`mobileno`='$mobile',`education`='$education',`degree`='$degree',`profession`='$profession',`height`='$height',`dateofbirth`='$dateofbirth',`faceofcomplexion`='$faceofcomplexion',`manglik`='$manglik',`expectation`='$expectation',`profile_pic`='$fileNameNew' WHERE id = '{$id}'";
 
           if (mysqli_query($conn, $sql)) {
             move_uploaded_file($fileTmpName, $fileDestination);
@@ -56,7 +56,7 @@ if (isset($_POST['childupdata'])) {
       echo "You cannot upload files of this type!";
     }
   } else {
-    $sql = "UPDATE `child` SET `child_Name`='$child_Name',`child_email`='$child_email',`gender`='$gender',`mobileno`='$mobile',`age`='$age',`education`='$education',`degree`='$degree',`profession`='$profession',`height`='$height',`dateofbirth`='$dateofbirth',`faceofcomplexion`='$faceofcomplexion',`manglik`='$manglik',`expectation`='$expectation' WHERE id = '{$id}'";
+    $sql = "UPDATE `child` SET `child_Name`='$child_Name',`child_email`='$child_email',`gender`='$gender',`mobileno`='$mobile',`education`='$education',`degree`='$degree',`profession`='$profession',`height`='$height',`dateofbirth`='$dateofbirth',`faceofcomplexion`='$faceofcomplexion',`manglik`='$manglik',`expectation`='$expectation' WHERE id = '{$id}'";
     if (mysqli_query($conn, $sql)) {
       header("Location: ../server/childUpdate.php?id=$id&msg=Child details updated successfully");
     } else {
