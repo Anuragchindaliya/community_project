@@ -1,9 +1,7 @@
 <?php 
 include "../db/conn.php";
 $id=$_POST['id'];
-
-
-$sql="SELECT * FROM `members` WHERE id='$id'";
+$sql="SELECT * FROM `child` WHERE id='$id'";
 $result=mysqli_query($conn,$sql);
 if(mysqli_num_rows($result)>0){
     $data=mysqli_fetch_array($result);
@@ -12,14 +10,14 @@ if(mysqli_num_rows($result)>0){
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="../process/uploads/'.$data['profilepic'].'" alt="" />
+                    <img src="../process/uploads/'.$data['profile_pic'].'" alt="" />
                    
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="profile-head">
                     <h5>'.
-                        ucFirst($data['firstName'])
+                        ucFirst($data['child_Name'])
                     .'</h5>
                     <h6>
                         Web Developer and Designer
@@ -56,7 +54,7 @@ if(mysqli_num_rows($result)>0){
                             </div>
                             <div class="col-md-6">
                                 
-                                <p>'.$data['firstName'].'</p>
+                                <p>'.$data['child_Name'].'</p>
                             </div>
                         </div>
                         <div class="row">
@@ -64,7 +62,7 @@ if(mysqli_num_rows($result)>0){
                                 <label>Email</label>
                             </div>
                             <div class="col-md-6">
-                                <p>'.$data['email'].'</p>
+                                <p>'.$data['child_email'].'</p>
                             </div>
                         </div>
                         <div class="row">
@@ -72,7 +70,7 @@ if(mysqli_num_rows($result)>0){
                                 <label>Phone</label>
                             </div>
                             <div class="col-md-6">
-                                <p>'.$data['mobileNo'].'</p>
+                                <p>'.$data['mobileno'].'</p>
                             </div>
                         </div>
                         <div class="row">
@@ -80,7 +78,7 @@ if(mysqli_num_rows($result)>0){
                                 <label>Father Name</label>
                             </div>
                             <div class="col-md-6">
-                                <p>'.$data['fatherName'].'</p>
+                                <p> parent id : '.$data['pid'].'</p>
                             </div>
                         </div>
                         <div class="row">
@@ -88,7 +86,7 @@ if(mysqli_num_rows($result)>0){
                                 <label>Mother Name</label>
                             </div>
                             <div class="col-md-6">
-                                <p>'.$data['motherName'].'</p>
+                                <p>mother name</p>
                             </div>
                         </div>
                     </div>
@@ -98,7 +96,7 @@ if(mysqli_num_rows($result)>0){
                                 <label>Address</label>
                             </div>
                             <div class="col-md-6">
-                                <p>'.$data['address'].'</p>
+                                <p>address</p>
                             </div>
                         </div>
                         <div class="row">

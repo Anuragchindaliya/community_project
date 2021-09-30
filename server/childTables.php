@@ -13,8 +13,8 @@ include "../includes/sidebar.php";
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-2"></div>
-        <div class="col-md-8">
-            <div class="card " style="width: 1250px;">
+        <div class="col-md-10">
+            <div class="card " style="width: 100%;">
                 <div class="card-header">
 
                     <h3 class="card-title"> All Children
@@ -47,7 +47,7 @@ include "../includes/sidebar.php";
                                 <th>Profile Image</th>
                                 <th>User</th>
                                 <th>Age</th>
-                                <th>Active / InActive</th>
+                                <!-- <th>Active / InActive</th> -->
                                 <th>Actions</th>
 
                             </tr>
@@ -75,10 +75,10 @@ include "../includes/sidebar.php";
                                         <td>
                                             <?= date_diff(date_create($row['dateofbirth']), date_create(date('d-m-Y')))->format("%y"); ?>
                                         </td>
-                                        <td><button type="submit">Active</button></td>
+                                        <!-- <td><button type="submit">Active</button></td> -->
                                         <td>
 
-                                            <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#example"><i class="fas fa-eye"></i>
+                                            <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#example" onclick="fetchData(<?= $row['id'] ?>,'child')"><i class="fas fa-eye"></i>
                                             </button>
                                             <a href="./childUpdate.php?id=<?= $row['id'] ?> "><button class="btn btn-primary ml-1"><i class="fas fa-edit"></i></button></a>
                                             <a href="../process/deleteChild.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure?')"><button type="submit" class="btn btn-danger ml-1" id="delete"><i class="fas fa-trash-alt"></i></button></a>
@@ -100,5 +100,6 @@ include "../includes/sidebar.php";
 
 </div>
 <?php
-include "../includes//footer.php"
+include "../includes/footer.php"
 ?>
+<script src="../process/modal.js"></script>

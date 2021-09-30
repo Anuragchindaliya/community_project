@@ -21,18 +21,18 @@ include "../db/conn.php"
         </div>
 
         <div class="col-sm-6">
-          <?php if(isset($_GET['msg'])){?>
-              <span id="msg" class="alert alert-success" role="alert">
+          <?php if (isset($_GET['msg'])) { ?>
+            <span id="msg" class="alert alert-success" role="alert">
               <i class="fa fa-check-circle"></i>
-              <?=$_GET['msg'] ?>
+              <?= $_GET['msg'] ?>
             </span>
           <?php }
           ?>
-          
-           <?php if(isset($_GET['already'])){?>
-              <span id="msg" class="alert alert-warning" role="alert">
+
+          <?php if (isset($_GET['already'])) { ?>
+            <span id="msg" class="alert alert-warning" role="alert">
               <i class="fa fa-check-circle"></i>
-              <?=$_GET['already'] ?>
+              <?= $_GET['already'] ?>
             </span>
           <?php }
           ?>
@@ -187,9 +187,14 @@ include "../db/conn.php"
 
                 <div class="row">
                   <div class="form-group col">
-                    <label for="lifeMemberNo.">Life Member No.</label>
-                    <input type="text" class="form-control" id="lifeMember" name="lifeMember" placeholder="Life Member">
+                  <label for="lifeMemberNo.">Life Member No.</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">LM-</span>
+                    </div>
+                    <input type="text" class="form-control" id="lifeMember" name="lifeMember" placeholder="Life Member No." aria-label="Lifemember" aria-describedby="basic-addon1" pattern="[0-9]" maxlength="3" required>
                   </div>
+                  </div>  
                 </div>
 
                 <div class="form-group col-md-6">
@@ -255,15 +260,15 @@ include "../db/conn.php"
 </script> -->
 <?php include "../includes/footer.php" ?>
 <script>
-  if(!!$("#msg")){
+  if (!!$("#msg")) {
     setTimeout(() => {
       // document.getElementById("msg").style.display="none";
       $("#msg").hide();
     }, 5000);
-    
+
   }
-  
- 
+
+
   // if(!!document.getElementById("msg")){
   //   setTimeout(() => {
   //     document.getElementById("msg").slideUp();

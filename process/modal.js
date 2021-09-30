@@ -1,7 +1,12 @@
-function fetchData(id) {
-    // console.log(id);
+function fetchData(id, role) {
+    var link;
+    if (role == 'member') {
+        link = "../process/modalprocess.php";
+    } else if (role == 'child') {
+        link = "../process/childModal.php"
+    }
     $.ajax({
-        url: "../process/modalprocess.php",
+        url: link,
         method: "post",
         data: {
             id: id

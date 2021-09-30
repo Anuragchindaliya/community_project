@@ -120,7 +120,7 @@ include "../db/conn.php";
                                     <?php if ($_SESSION['user'] == 'admin') { ?>
                                         <div class="form-group col-md-6">
                                             <label for="exampleInputAge">Parent ID</label>
-                                            <input type="type" name="parentid" placeholder="Enter Parent ID " name="age" class="form-control" required>
+                                            <input type="number" name="parentid" placeholder="Enter Parent ID " name="age" class="form-control" pattern="[0-9]" maxlength="3" required>
                                         </div><?php } ?>
                                     <?php if ($_SESSION['user'] == 'member') {
                                     ?>
@@ -201,7 +201,7 @@ include "../db/conn.php";
                                         <label for="exampleInputFile">File input</label>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" name="InputFile" id="exampleInputFile">
+                                                <input type="file" class="custom-file-input" name="InputFile" id="exampleInputFile" required>
                                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                                 <sup>upload upto 1mb pic size</sup>
                                             </div>
@@ -233,6 +233,5 @@ include "../db/conn.php";
             // document.getElementById("msg").style.display="none";
             $("#msg").hide();
         }, 5000);
-
     }
 </script>

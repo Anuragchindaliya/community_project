@@ -78,7 +78,7 @@ include "../includes/sidebar.php";
                                         <?php } ?>
                                         <td>
                                             <!-- modal view icon -->
-                                            <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#example" onclick="fetchData(<?= $row['id'] ?>)">
+                                            <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#example" onclick="fetchData(<?= $row['id'] ?>,'member')">
                                                 <i class="fas fa-eye"></i>
                                             </button>
 
