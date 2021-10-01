@@ -1,0 +1,24 @@
+.button_action {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+  top: -50%;
+  transform: translateY(-50%);
+}
+.connectedSortable,
+.life_memberImages {
+  width: auto;
+  height: 500px;
+}
+.btn_prev,
+.btn_next {
+  border-radius: 50px;
+  padding: 19px;
+  opacity: 0.6;
+  font-size: x-large;
+  color: black;
+  font-weight: 900;
+  border: none;
+  margin: 15px;
+}
