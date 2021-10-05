@@ -68,10 +68,10 @@ include "../includes/sidebar.php";
                             ?>
 
                                     <tr>
-                                        <td><img src="../process/uploads/<?= $row['profilepic'] ?>" style="width:45px;"></td>
+                                        <td><img src="../process/uploads/<?= $row['profilepic']==""?"user.png":$row['profilepic'] ?>" style="width:45px;"></td>
                                         <td><?= $row["firstName"] ?></td>
                                         <td>
-                                            <?= date('d-m-Y', strtotime($row["dob"])) ?>
+                                            <?= $row["dob"]=="0000-00-00"?"XXXX-XX-XX":date('d-m-Y', strtotime($row["dob"])) ?>
                                         </td>
                                         <?php if (isset($_SESSION) && $_SESSION['user'] == "admin") { ?>
                                             <td><button type="button" class="btn btn-<?= $row['status'] == '0' ? 'danger' : 'success' ?>" onclick="memberStatus(<?= $row['id'] ?>,<?= $row['status'] ?>)" status=""><?= $row['status'] == '0' ? "Deactive" : "Active" ?></button></td>

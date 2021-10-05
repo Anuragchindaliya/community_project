@@ -79,8 +79,8 @@ if (isset($_SESSION['login'])) {
 
                                         <div class="row">
                                             <div class="form-group col-md-6">
-                                                <label for="address">Area<sup class="text-danger">*</sup></label>
-                                                <textarea type="text" class="form-control" id="address" name="address" placeholder="Area" rows="3" required></textarea>
+                                                <label for="address">Address<sup class="text-danger">*</sup></label>
+                                                <textarea type="text" class="form-control" id="address" name="address" placeholder="Address" rows="3" required></textarea>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group col">
@@ -88,11 +88,18 @@ if (isset($_SESSION['login'])) {
                                                     <input class="form-control" id="pincode" name="pincode" placeholder="Pincode" type="text" pattern="[0-9]{6}" title="Correct Format: 121005" required>
                                                 </div>
                                                 <div class="form-group col">
-                                                    <label for="exampleInputFile">Choose Profile Picture<sup class="text-danger">*</sup></label>
+                                                    <label for="exampleInputFile">Choose Profile Picture</label>
                                                     <div class="form-group">
-                                                        <input name="InputFile" type="file" class="form-control-file" id="exampleFormControlFile1" required>
+                                                        <input name="InputFile" type="file" class="form-control-file" id="exampleFormControlFile1">
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group col">
+                                                    <label for="address">DATE OF BIRTH<sup class="text-danger">*</sup></label>
+                                                    <input class="form-control" id="pincode" name="pincode" placeholder="Pincode" type="date" pattern="[0-9]{6}" title="Correct Format: 121005" required>
+                                                </div>
+                                                
                                             </div>
 
 

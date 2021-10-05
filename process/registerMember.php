@@ -16,7 +16,7 @@ if (isset($_POST['registerMember'])) {
         header("Location: ../client/all_form.php?already=you already have an account");
         die();
     }
-
+    if (isset($_FILES['InputFile']) && $_FILES['InputFile']['name']) {
     // image upload************************************
     $file = $_FILES['InputFile'];
     $fileName = $_FILES['InputFile']['name'];
@@ -54,6 +54,14 @@ if (isset($_POST['registerMember'])) {
     } else {
         echo "You cannot upload files of this type!";
     }
+}else{
+    $sql = "INSERT INTO  `members` (`firstName`, `mobileNo`, `email`,`address`, `password`,`pincode`) VALUES ('$firstName','$mobileNo','$email','$address','$password','$pincode')";
+    if (mysqli_query($conn, $sql)) {
+        header("Location: ../client/all_form.php?msgreg=success");
+    } else {
+      echo "<br/>Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+}
 
     mysqli_close($conn);
 }

@@ -192,7 +192,7 @@ include "../db/conn.php"
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="basic-addon1">LM-</span>
                     </div>
-                    <input type="text" class="form-control" id="lifeMember" name="lifeMember" placeholder="Life Member No." aria-label="Lifemember" aria-describedby="basic-addon1" pattern="[0-9]" maxlength="3" required>
+                    <input type="text" class="form-control" id="lifeMember" name="lifeMember" placeholder="Life Member No." aria-label="Lifemember" aria-describedby="basic-addon1" pattern="[0-9]+" maxlength="3" minlength="1" required>
                   </div>
                   </div>  
                 </div>
