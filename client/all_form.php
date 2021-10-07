@@ -90,8 +90,10 @@ if (isset($_SESSION['login'])) {
                                                 <div class="form-group col">
                                                     <label for="exampleInputFile">Choose Profile Picture</label>
                                                     <div class="form-group">
-                                                        <input name="InputFile" type="file" class="form-control-file" id="exampleFormControlFile1">
+                                                        <input name="InputFile" type="file" class="form-control-file" id="exampleFormControlFile1" onchange="loadFile(event)">
+                                                        <img id="imgput" class="mb-3" style="width: 100px; display:none">
                                                     </div>
+                                                    
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -194,6 +196,7 @@ if (isset($_SESSION['login'])) {
         }
     </script>
     <script src="../assets/password.js"></script>
+    <script src="../assets/previewImage.js"></script>
 </body>
 
 </html>

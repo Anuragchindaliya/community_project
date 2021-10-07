@@ -176,7 +176,7 @@ if ( i<LMI.length-1){
     }
 }
     setInterval(lifeMemberCarouselNext, 2000);
-    window.onload(lifeMemberCarouselNext);
+    // window.onload(lifeMemberCarouselNext);
   // btn_prev.addEventListener('click',lifeMemberCarousel);
 </script>
 <?php

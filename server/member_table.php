@@ -9,11 +9,11 @@ include "../includes/sidebar.php";
 
 ?>
 
-<div class="container-fluid">
+<div class="container-fluid pl-5">
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-10">
-            <div class="card mt-3" style="width: 80vw;">
+            <div class="card mt-3">
                 <div class="card-header">
 
                     <h3 class="card-title">All Members <?php if (isset($_GET['msg'])) { ?>

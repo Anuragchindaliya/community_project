@@ -10,7 +10,7 @@ include "../includes/header.php";
 include "../includes/sidebar.php";
 ?>
 <!-- Button trigger modal -->
-<div class="container-fluid">
+<div class="container-fluid pl-5 mt-3">
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-10">

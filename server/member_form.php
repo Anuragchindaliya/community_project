@@ -200,9 +200,9 @@ include "../db/conn.php"
                 <div class="form-group col-md-6">
                   <label for="exampleInputFile">Choose your Profile Picture<sup class="text-danger">*</sup></label>
                   <div class="form-group">
-                    <input name="InputFile" type="file" class="form-control-file" id="exampleFormControlFile1" required>
+                    <input name="InputFile" type="file" class="form-control-file" id="exampleFormControlFile1" onchange="loadFile(event)" required>
                   </div>
-
+                  <img id="imgput" style="width:150px">
                 </div>
               </div>
               <!-- /.card-body -->
@@ -220,44 +220,6 @@ include "../db/conn.php"
   </section>
   <!-- /.content -->
 </div>
-<!-- <script>
-  var check = function() {
-
-    if (document.getElementById('password1').value ==
-      document.getElementById('confirmPasswords').value) {
-      document.getElementById('message').style.color = 'green';
-      document.getElementById('message').innerHTML = 'Confirm Posswordis Is Matching';
-      // var addMember = document.getElementById('addMember')
-      document.getElementById('addMember').removeAttribute('disabled');
-
-    } else {
-      document.getElementById('message').style.color = 'red';
-      document.getElementById('message').innerHTML = ' Confirm Posswordis Is Not Matching';
-      document.getElementById('addMember').setAttribute('disabled', 'true')
-    }
-  }
-
-  function req() {
-
-    // this.style.borderColor = "red";
-    document.getElementById('req').innerHTML = `<div style="color:rgba(0,0,0,.5);
-    font-weight:800"> <p>Must be between 8 and 12 characters. have at least:one lowercase, uppercase, a digit and a symbol</p></div>`
-  }
-
-  function eyeToggle(e) {
-
-    const Eye = document.querySelector("#password1");
-    console.log(Eye);
-    if (Eye.type === "password") {
-      Eye.type = "text";
-      Eyeicon.innerHTML = '<i class="fas fa-eye" ></i>';
-    } else {
-      Eye.type = "password";
-      Eyeicon.innerHTML = '<i class="fas fa-eye-slash"></i>';
-    }
-
-  }
-</script> -->
 <?php include "../includes/footer.php" ?>
 <script>
   if (!!$("#msg")) {
@@ -275,3 +237,4 @@ include "../db/conn.php"
   //   }, 3000)
   // }
 </script>
+<script src="../assets/previewImage.js"></script>

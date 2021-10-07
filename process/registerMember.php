@@ -65,3 +65,6 @@ if (isset($_POST['registerMember'])) {
 
     mysqli_close($conn);
 }
+
+
+

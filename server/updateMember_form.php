@@ -205,12 +205,12 @@ include "../db/conn.php"
                   <label for="exampleInputFile">Choose your Profile Picture<sup class="text-danger">*</sup> </label>
                   <h6><?= $arrdata['profilepic'] ?></h6>
                   <div class="form-group">
-                    <input name="InputFile" type="file" class="form-control-file" id="exampleFormControlFile1">
+                    <input name="InputFile" type="file" class="form-control-file" onchange="loadFile(event)">
 
                   </div>
 
                   <div class="col-md-6">
-                    <img src="../process/uploads/<?= $arrdata['profilepic'] ?>" style="width:45px;">
+                    <img id="imgput" src="../process/uploads/<?= $arrdata['profilepic'] ?>" style="width:45px;">
                   </div>
 
                 </div>
@@ -269,3 +269,4 @@ include "../db/conn.php"
     
   }
   </script>
+  <script src="../assets/previewImage.js"></script>
