@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 include "../db/conn.php";
 include "../includes/header.php";
@@ -43,9 +44,30 @@ include "../includes/sidebar.php";
                                 <?php
                                 // include "../db/conn.php";
                                 $ids = $_GET['id'];
-                                $showquery = "select * from `child` where id = $ids";
-                                $showdata = mysqli_query($conn, $showquery);
-                                $arrdata = mysqli_fetch_assoc($showdata);
+                                
+                                if($_SESSION['user']=='member'){
+                                    // member can only delete their child
+                                    $memberId = $_SESSION['id'];
+                                    $showquery = "SELECT * FROM `child` WHERE id = $ids AND pid = $memberId";
+                                    $showdata = mysqli_query($conn, $showquery);
+                                    if(mysqli_num_rows($showdata)==0){
+                                   
+                                        echo "<h1>You can't edit this child</h1>";
+                                        header("Location: ./childTables.php?pid=true&msg=You can't edit this child");
+                                        exit();
+                                    }else{
+                                        $arrdata = mysqli_fetch_assoc($showdata);
+                                    }
+                                }else if($_SESSION['user']=='admin'){
+                                    $showquery = "SELECT * FROM `child` WHERE id = $ids";
+                                    $showdata = mysqli_query($conn, $showquery);
+                                    $arrdata = mysqli_fetch_assoc($showdata);
+                                    }
+                                
+                                
+                                
+                                
+                                
 
                                 ?>
                                 <div class="row">
@@ -206,7 +228,7 @@ include "../includes/sidebar.php";
                                         <label for="exampleInputFile">File input</label><span><br></span>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" name="InputFile" id="exampleInputFile">
+                                                <input type="file" class="custom-file-input" name="InputFile" id="exampleInputFile" onchange="loadFile(event)">
                                                 <label class="custom-file-label" for="exampleInputFile">
 
                                                     <?php if (isset($arrdata['profile_pic'])) {
@@ -220,7 +242,7 @@ include "../includes/sidebar.php";
                                         </div>
 
                                         <div class="col-md-6">
-                                            <img src="../process/uploads/<?= $arrdata['profile_pic'] ?>" style="width:75px;">
+                                            <img id="imgput" src="../process/uploads/<?= $arrdata['profile_pic'] ?>" style="width:75px;">
                                         </div>
 
                                     </div>
@@ -243,6 +265,7 @@ include "../includes/sidebar.php";
 </div>
 
 <?php include "../includes/footer.php" ?>
+<script src="../assets/previewImage.js"></script>
 <script>
     if (!!$("#msg")) {
         setTimeout(() => {

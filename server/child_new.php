@@ -120,8 +120,22 @@ include "../db/conn.php";
                                     <?php if ($_SESSION['user'] == 'admin') { ?>
                                         <div class="form-group col-md-6">
                                             <label for="exampleInputAge">Parent ID</label>
-                                            <input type="number" name="parentid" placeholder="Enter Parent ID " name="age" class="form-control" pattern="[0-9]" maxlength="3" required>
-                                        </div><?php } ?>
+                                            <!-- <input type="number" name="parentid" placeholder="Enter Parent ID " name="age" class="form-control" pattern="[0-9]" maxlength="3" required> -->
+                                            <input type="text" name="parentid" placeholder="Enter Parent Email ID" class="form-control" list="parentList" required>
+                                            <datalist id="parentList">
+                                                <?php 
+                                                    $sql = "SELECT id,email FROM members";
+                                                    $result=mysqli_query($conn,$sql);
+                                                    if(mysqli_num_rows($result)>0){
+                                                        while ($row=mysqli_fetch_assoc($result)) {
+                                                            echo "<option value='".$row['id']."'>".$row['email']."</option>";
+                                                        }
+                                                    }
+                                                ?>
+                                                
+                                            </datalist>
+                                        </div>
+                                        <?php } ?>
                                     <?php if ($_SESSION['user'] == 'member') {
                                     ?>
                                         <input type="hidden" name="parentid" value="<?= $_SESSION['id'] ?>" required>
@@ -201,11 +215,15 @@ include "../db/conn.php";
                                         <label for="exampleInputFile">File input</label>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" name="InputFile" id="exampleInputFile" required>
+                                                <input type="file" class="custom-file-input" name="InputFile" id="exampleInputFile"  onchange="loadFile(event)" required>
                                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                                <sup>upload upto 1mb pic size</sup>
+                                                 
+                                                
                                             </div>
+                                            
                                         </div>
+                                        <sup class="text-gray">Upload upto 1mb pic size</sup>
+                                        <img id="imgput" style="width:150px; display:none;">
 
                                     </div>
                                 </div>
@@ -227,6 +245,7 @@ include "../db/conn.php";
 </div>
 
 <?php include "../includes/footer.php" ?>
+<script src="../assets/previewImage.js"></script>
 <script>
     if (!!$("#msg")) {
         setTimeout(() => {

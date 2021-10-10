@@ -12,6 +12,7 @@ session_start();
 
     unset($_SESSION["login"]);
     unset($_SESSION["username"]);
+    unset($_SESSION["id"]);
     header("Location: ../client/all_form.php");
 
 

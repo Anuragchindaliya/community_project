@@ -99,7 +99,7 @@ include "../includes/sidebar.php";
         <!-- Main row -->
         <div class="row">
           <!-- Left col -->
-          <section class="col-lg-7 connectedSortable">
+          <section class="col-lg-7 connectedSortable w-100">
             <!-- Custom tabs (Charts with tabs)-->
             <div class="card">
               <img class="life_memberImages"

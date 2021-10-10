@@ -44,7 +44,7 @@ $arrdata = mysqli_fetch_assoc($showdata);
                 <div class="card card-widget widget-user shadow">
                     <!-- Add the bg color to the header using any of the bg-* classes -->
                     <div class="widget-user-header bg-info">
-                        <h3 class="widget-user-username"><?=$arrdata['firstName']?></h3>
+                        <h3 class="widget-user-username"><?= $arrdata['firstName'] ?></h3>
                         <h5 class="widget-user-desc">Founder &amp; CEO</h5>
                     </div>
                     <div class="widget-user-image">
@@ -90,11 +90,11 @@ $arrdata = mysqli_fetch_assoc($showdata);
                         <div class="card-body">
 
                             <div class="row">
-                               
+
                                 <div class="form-group col">
-                                    <input type="hidden" name="id" value="<?=$arrdata['id'] ?>">
+                                    <input type="hidden" name="id" value="<?= $arrdata['id'] ?>">
                                     <label for="inputName">FullName<sup class="text-danger">*</sup></label>
-                                    <input type="text" class="form-control" name="firstName" pattern="[a-zA-Z][a-zA-Z ]*" value="<?=$arrdata['firstName'] ?>" id="inputName" placeholder="Name" required>
+                                    <input type="text" class="form-control" name="firstName" pattern="[a-zA-Z][a-zA-Z ]*" value="<?= $arrdata['firstName'] ?>" id="inputName" placeholder="Name" required>
                                 </div>
                             </div>
                             <div class="row">
@@ -225,12 +225,13 @@ $arrdata = mysqli_fetch_assoc($showdata);
                                 <label for="exampleInputFile">Choose your Profile Picture<sup class="text-danger">*</sup> </label>
                                 <h6><?= $arrdata['profilepic'] ?></h6>
                                 <div class="form-group">
-                                    <input name="InputFile" type="file" class="form-control-file" id="exampleFormControlFile1">
+                                    <input name="InputFile" type="file" class="form-control-file" id="exampleFormControlFile1" onchange="loadFile(event)">
 
                                 </div>
 
                                 <div class="col-md-6">
-                                    <img src="../process/uploads/<?= $arrdata['profilepic'] ?>" style="width:45px;">
+                                    <!-- <img style="width:150px; display:none;"> -->
+                                    <img  id="imgput" src="../process/uploads/<?= $arrdata['profilepic'] ?>" style="width:150px;">
                                 </div>
 
                             </div>
@@ -245,3 +246,4 @@ $arrdata = mysqli_fetch_assoc($showdata);
     </section>
 </div>
 <?php include "../includes/footer.php" ?>
+<script src="../assets/previewImage.js"></script>

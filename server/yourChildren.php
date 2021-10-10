@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 if (!isset($_SESSION['login']) && $_SESSION['user'] == "member") {
     header("Location: ../client/member_login.php");
@@ -18,35 +19,12 @@ include "../includes/sidebar.php";
                     <div class="card card-dark mt-3">
                         <div class="card-header">
                             <h3 class="card-title"> All Children
-                                <?php if (isset($_GET['delete']) && $_GET['delete'] == 'true') { ?>
+                                <?php if (isset($_GET['msg'])) { ?>
                                     <span id="msg" class="alert alert-success" role="alert">
                                         <i class="fa fa-check-circle"></i>
                                         <?= $_GET['msg'] ?>
                                     </span>
-                                <?php } else if (isset($_GET['delete']) && $_GET['delete'] == 'false') {
-                                ?>
-                                    <span id="msg" class="alert alert-danger" role="alert">
-                                        <i class="fa fa-times-circle"></i>
-                                        <?= $_GET['msg'] ?>
-                                    </span>
-                                <?php
-                                } else if (isset($_GET['pid'])) {
-                                ?>
-                                    <span id="msg" class="alert alert-danger" role="alert">
-                                        <i class="fa fa-check-circle"></i>
-                                        <?= $_GET['msg'] ?>
-                                    </span>
-                                <?php
-                                }
-                                if (isset($_GET['admin']) && $_GET['admin'] == true) {
-                                ?>
-                                    <span id="msg" class="alert alert-danger" role="alert">
-                                        <i class="fa fa-check-circle"></i>
-                                        <?= $_GET['msg'] ?>
-                                    </span>
-                                <?php
-                                }
-
+                                <?php }
                                 ?>
                             </h3>
 
@@ -77,11 +55,17 @@ include "../includes/sidebar.php";
                                 </thead>
                                 <tbody>
                                     <?php
+                                    if(isset($_SESSION['id'])){
+                                        $memberId = $_SESSION['id'];
+                                    }else{
+                                        header("location: ./childTables.php?admin=false&msg=Admin can't have child");
+                                    }
+                                    
                                     if (isset($_GET['filter']) && $_GET['filter'] == 'marriageable') {
                                         //change it later
                                         $sql = "SELECT * FROM child WHERE gender='Male'";
                                     } else {
-                                        $sql = "SELECT * FROM child";
+                                        $sql = "SELECT * FROM child WHERE pid = $memberId";
                                     }
 
                                     $result = mysqli_query($conn, $sql);
@@ -103,18 +87,15 @@ include "../includes/sidebar.php";
 
                                                     <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#example" onclick="fetchData(<?= $row['id'] ?>,'child')"><i class="fas fa-eye"></i>
                                                     </button>
-                                                    <?php if ($_SESSION['user'] == 'admin') {
-                                                    ?>
-                                                        <a href="./childUpdate.php?id=<?= $row['id'] ?> "><button class="btn btn-primary ml-1"><i class="fas fa-edit"></i></button></a>
-                                                        <a href="../process/deleteChild.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure?')"><button type="submit" class="btn btn-danger ml-1" id="delete"><i class="fas fa-trash-alt"></i></button></a>
-                                                    <?php } ?>
+                                                    <a href="./childUpdate.php?id=<?= $row['id'] ?> "><button class="btn btn-primary ml-1"><i class="fas fa-edit"></i></button></a>
+                                                    <a href="../process/deleteChild.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure?')"><button type="submit" class="btn btn-danger ml-1" id="delete"><i class="fas fa-trash-alt"></i></button></a>
                                                 </td>
                                             </tr>
                                             <?php include "../includes/modal.php"; ?>
                                     <?php
                                         }
                                     } else {
-                                        echo "0 results";
+                                        echo '<tr><td colspan="5" class="text-center"><h1>Add your children<br><a class="btn btn-primary">Add new child</a></td></h1></tr>';
                                     } ?>
                                 </tbody>
                             </table>
