@@ -7,13 +7,13 @@ $sql="SELECT * FROM `members` WHERE id='$id'";
 $result=mysqli_query($conn,$sql);
 if(mysqli_num_rows($result)>0){
     $data=mysqli_fetch_array($result);
+    $imgUrl = $data['profilepic']==""?"user.png":$data['profilepic'];
     echo $modalContent='<div class="container emp-profile">
     <form method="post">
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="../process/uploads/'.$data['profilepic'].'" alt="" />
-                   
+                    <img src="../process/uploads/'.$imgUrl.'" alt="" />
                 </div>
             </div>
             <div class="col-md-6">

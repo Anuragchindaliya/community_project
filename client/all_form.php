@@ -98,8 +98,8 @@ if (isset($_SESSION['login'])) {
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group col">
-                                                    <label for="address">DATE OF BIRTH<sup class="text-danger">*</sup></label>
-                                                    <input class="form-control" id="pincode" name="pincode" placeholder="Pincode" type="date" pattern="[0-9]{6}" title="Correct Format: 121005" required>
+                                                    <label for="address">DATE OF BIRTH</label>
+                                                    <input class="form-control" id="pincode" name="doj" placeholder="Pincode" type="date"  min='1899-01-01' max='<?= (date('Y') - 18) . "-" . date('m-d') ?>'>
                                                 </div>
                                                 
                                             </div>

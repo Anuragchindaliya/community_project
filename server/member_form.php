@@ -79,7 +79,7 @@ include "../db/conn.php"
                 <div class="row">
                   <div class="form-group col">
                     <label for="Dob">Date of Birth<sup class="text-danger">*</sup></label>
-                    <input type="date" class="form-control" id="Dob" placeholder="Date of Birth" name="dob" min='1899-01-01' max='2000-01-01' required>
+                    <input type="date" class="form-control" id="Dob" placeholder="Date of Birth" name="dob"  min='1899-01-01' max='<?= (date('Y') - 18) . "-" . date('m-d') ?>' required>
                   </div>
                   <div class="form-group col">
                     <div>
