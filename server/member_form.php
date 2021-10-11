@@ -200,7 +200,7 @@ include "../db/conn.php"
                 <div class="form-group col-md-6">
                   <label for="exampleInputFile">Choose your Profile Picture<sup class="text-danger">*</sup></label>
                   <div class="form-group">
-                    <input name="InputFile" type="file" class="form-control-file" id="exampleFormControlFile1" onchange="loadFile(event)" required>
+                    <input name="InputFile" type="file" class="form-control-file" id="imageFile" accept="image/*" onchange="loadFile(event)" required>
                   </div>
                   <img id="imgput" style="width:150px">
                 </div>

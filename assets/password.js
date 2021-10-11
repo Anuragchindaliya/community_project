@@ -23,11 +23,11 @@ font-weight:800"><p>Must be between 8 and 12 characters. have at least:one lower
 function eyeToggle(e) {
   const Eyeicon = document.querySelector(".eye");
   const Eye = document.querySelector("#password1");
-  console.log(Eye);
+  // console.log(Eye);
   if (Eye.type === "password") {
     Eye.type = "text";
     Eyeicon.innerHTML = '<i class="fas fa-eye" ></i>';
-    console.log(Eyeicon);
+    // console.log(Eyeicon);
   } else {
     Eye.type = "password";
     Eyeicon.innerHTML = '<i class="fas fa-eye-slash"></i>';
