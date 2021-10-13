@@ -2,3 +2,5 @@ process/uploads/*.jpg
 process/uploads/*.png
 process/uploads/*.jpeg
 process/uploads/*.png
+
+data
