@@ -125,16 +125,16 @@ include "../../data/db/conn.php";
                                     </div> -->
                                     <?php if ($_SESSION['user'] == 'admin') { ?>
                                         <div class="form-group col-md-6">
-                                            <label for="exampleInputAge">Parent ID</label>
+                                            <label for="exampleInputAge">Parent ID<sup class="text-danger">*</sup></label>
                                             <!-- <input type="number" name="parentid" placeholder="Enter Parent ID " name="age" class="form-control" pattern="[0-9]" maxlength="3" required> -->
                                             <input type="text" name="parentid" placeholder="Enter Parent Email ID" class="form-control" list="parentList" required>
                                             <datalist id="parentList">
                                                 <?php
-                                                $sql = "SELECT id,email FROM members";
+                                                $sql = "SELECT id,firstName,email FROM members";
                                                 $result = mysqli_query($conn, $sql);
                                                 if (mysqli_num_rows($result) > 0) {
                                                     while ($row = mysqli_fetch_assoc($result)) {
-                                                        echo "<option value='" . $row['id'] . "'>" . $row['email'] . "</option>";
+                                                        echo "<option value='" . $row['id'] . "'>" . $row['firstName'] . " (".$row['email'].")</option>";
                                                     }
                                                 }
                                                 ?>
@@ -177,7 +177,7 @@ include "../../data/db/conn.php";
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for="exampleInputEmail1">Height<sup class="text-danger">*</sup></label>
-                                        <input type="text" class="form-control" name="height" placeholder="Enter height">
+                                        <input type="number" class="form-control" name="height" placeholder="Enter height" step="00.1">
                                         <sup>In centimeter ex- 152.6cm</sup>
                                     </div>
                                     <div class="form-group col-md-6">
@@ -222,9 +222,7 @@ include "../../data/db/conn.php";
                                         <div class="input-group">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" name="InputFile" id="exampleInputFile" onchange="loadFile(event)" required>
-                                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-
-
+                                                <label id="imgLabel" class="custom-file-label" for="exampleInputFile">Choose file</label>
                                             </div>
 
                                         </div>

@@ -15,6 +15,7 @@ if (!isset($_SESSION['login']) && !isset($_SESSION['user'])) {
 include "../../data/db/conn.php";
 include "../includes/header.php";
 include "../includes/sidebar.php";
+include "../process/imgFn.php";
 ?>
 <!-- Button trigger modal -->
 <div class="content-wrapper">
@@ -25,13 +26,14 @@ include "../includes/sidebar.php";
                     <div class="card card-dark mt-3">
                         <div class="card-header">
                             <h3 class="card-title"> All Children
-                                <?php if (isset($_GET['msg'])) { ?>
+                                <?php if (isset($_GET['delete']) && isset($_GET['msg'])) { ?>
                                     <span id="msg" class="alert alert-success" role="alert">
                                         <i class="fa fa-check-circle"></i>
                                         <?= $_GET['msg'] ?>
                                     </span>
                                 <?php }
                                 ?>
+
                             </h3>
 
                             <div class="card-tools">
@@ -79,19 +81,11 @@ include "../includes/sidebar.php";
                                         // output data of each row
 
                                         while ($row = mysqli_fetch_assoc($result)) {
-                                            $imgPath = '../../data/uploads/';
-                                            if ($row['profile_pic'] == '') {
-                                                $imgPath .= "user.png";
-                                            } else if (file_exists("../../data/uploads/child/" . $row['profile_pic'])) {
-                                                $imgPath .= "child/" . $row['profile_pic'];
-                                            } else {
-                                                $imgPath .= "na.png";
-                                            }
                                     ?>
                                             <tr>
 
                                                 <td><?= $row["id"] ?></td>
-                                                <td><img src="<?=$imgPath?>" style="width: 45px;" alt=""></td>
+                                                <td><img src="<?=defaultImage('../../data/uploads/',$row['profile_pic'], "child")?>" style="width: 45px;" alt=""></td>
                                                 <td><?= $row["child_Name"]; ?></td>
                                                 <td>
                                                     <?= date_diff(date_create($row['dateofbirth']), date_create(date('d-m-Y')))->format("%y"); ?>

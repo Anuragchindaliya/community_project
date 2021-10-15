@@ -3,4 +3,9 @@ process/uploads/*.png
 process/uploads/*.jpeg
 process/uploads/*.png
 
-data
+
+data/uploads/child
+data/uploads/garbage
+data/uploads/member
+
+_backup

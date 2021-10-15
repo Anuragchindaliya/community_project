@@ -12,6 +12,7 @@ if ($_SESSION['user'] == 'admin') {
 include "../includes/header.php";
 include "../includes/sidebar.php";
 include "../../data/db/conn.php";
+include "../process/imgFn.php";
 
 // include "../../data/db/conn.php";
 $ids = $_SESSION['id'];
@@ -48,7 +49,7 @@ $arrdata = mysqli_fetch_assoc($showdata);
                         <h5 class="widget-user-desc">Founder &amp; CEO</h5>
                     </div>
                     <div class="widget-user-image">
-                        <img class="img-circle elevation-2" src="../../data/uploads/member/<?= $arrdata['profilepic']  ?>" style="height:90px" alt="User Avatar">
+                        <img class="img-circle elevation-2" src="<?=defaultImage('../../data/uploads/',$arrdata['profilepic'], "member")?>" style="height:90px" alt="User Avatar">
                     </div>
                     <div class="card-footer">
                         <div class="row">
@@ -231,7 +232,7 @@ $arrdata = mysqli_fetch_assoc($showdata);
 
                                 <div class="col-md-6">
                                     <!-- <img style="width:150px; display:none;"> -->
-                                    <img  id="imgput" src="../../data/uploads/member/<?= $arrdata['profilepic'] ?>" style="width:150px;">
+                                    <img  id="imgput" src="<?=defaultImage('../../data/uploads/',$arrdata['profilepic'], "member")?>" style="width:150px;">
                                 </div>
 
                             </div>

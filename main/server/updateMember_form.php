@@ -13,7 +13,8 @@ if (!isset($_GET['id'])) {
 }
 include "../includes/header.php";
 include "../includes/sidebar.php";
-include "../../data/db/conn.php"
+include "../../data/db/conn.php";
+include "../process/imgFn.php";
 ?>
 <div class="content-wrapper ">
   <!-- Content Header (Page header) -->
@@ -205,12 +206,14 @@ include "../../data/db/conn.php"
                   <label for="exampleInputFile">Choose your Profile Picture<sup class="text-danger">*</sup> </label>
                   <h6><?= $arrdata['profilepic'] ?></h6>
                   <div class="form-group">
+                    <!-- old image file name -->
+                    <input type="hidden" value="<?=$arrdata['profilepic']?>" name="oldImageName">
                     <input name="InputFile" type="file" class="form-control-file" onchange="loadFile(event)">
 
                   </div>
-
+                 
                   <div class="col-md-6">
-                    <img id="imgput" src="../../data/uploads/member/<?= $arrdata['profilepic'] ?>" style="width:45px;">
+                    <img id="imgput" src="<?=defaultImage('../../data/uploads/',$arrdata['profilepic'], "member")?>" style="width:45px;">
                   </div>
 
                 </div>

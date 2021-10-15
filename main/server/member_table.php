@@ -6,6 +6,7 @@ if (!isset($_SESSION['login'])) {
 include "../../data/db/conn.php";
 include "../includes/header.php";
 include "../includes/sidebar.php";
+include "../process/imgFn.php";
 
 ?>
 
@@ -66,19 +67,8 @@ include "../includes/sidebar.php";
                                     if (mysqli_num_rows($result) > 0) {
                                         while ($row = mysqli_fetch_assoc($result)) {
                                     ?>
-                                            <?php
-                                            $imgPath = '../../data/uploads/';
-                                            if ($row['profilepic'] == '') {
-                                                $imgPath .= "user.png";
-                                            } else if (file_exists("../../data/uploads/member/" . $row['profilepic'])) {
-                                                $imgPath .= "member/".$row['profilepic'];
-                                            } else {
-                                                $imgPath .= "na.png";
-                                            }
-
-                                            ?>
                                             <tr>
-                                                <td><img src="<?=$imgPath?>" style="width:45px; height:45px;"></td>
+                                                <td><img src="<?= defaultImage('../../data/uploads/',$row['profilepic'], "member") ?>" style="width:45px; height:45px;"></td>
                                                 <td><?= $row["firstName"] ?></td>
                                                 <td>
                                                     <?= $row["dob"] == "0000-00-00" ? "XXXX-XX-XX" : date('d-m-Y', strtotime($row["dob"])) ?>
@@ -93,7 +83,7 @@ include "../includes/sidebar.php";
                                                     </button>
 
                                                     <?php if (isset($_SESSION['login']) && $_SESSION['user'] == 'admin') { ?>
-                                                        <a href="../server/updateMember_form.php?id=<?= $row['id'] ?> "><button class="btn btn-primary ml-1" data-toggle="modal" data-target="#example"><i class="fas fa-edit"></i></button></a>
+                                                        <a href="../server/updateMember_form.php?id=<?= $row['id'] ?> " class="btn btn-primary ml-1"><i class="fas fa-edit"></i></a>
 
                                                         <a href="../process/deleteMember.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure?')"><button type="submit" class="btn btn-danger ml-1" id="delete"><i class="fas fa-trash-alt"></i></button></a>
                                                     <?php } ?>

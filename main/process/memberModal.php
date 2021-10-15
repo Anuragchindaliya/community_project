@@ -1,5 +1,7 @@
 <?php
 include "../../data/db/conn.php";
+include "imgFn.php";
+
 $id = $_POST['id'];
 
 
@@ -9,22 +11,14 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     $data = mysqli_fetch_array($result);
     
-    $imgPath = '../../data/uploads/';
-    if ($data['profilepic'] == '') {
-        $imgPath .= "user.png";
-    } else if (file_exists("../../data/uploads/member/" . $data['profilepic'])) {
-        $imgPath .= "member/" . $data['profilepic'];
-    } else {
-        $imgPath .= "na.png";
-    }
-
+  
     
     echo $modalContent = '<div class="container emp-profile">
     <form method="post">
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="' . $imgPath . '" alt="" />
+                    <img src="' . defaultImage('../../data/uploads/',$data['profilepic'], "member") . '" alt="" />
                 </div>
             </div>
             <div class="col-md-6">

@@ -15,6 +15,7 @@ if (!isset($_SESSION['login']) && !isset($_SESSION['user'])) {
 include "../../data/db/conn.php";
 include "../includes/header.php";
 include "../includes/sidebar.php";
+include "../process/imgFn.php";
 
 ?>
 <div class="content-wrapper">
@@ -189,7 +190,7 @@ include "../includes/sidebar.php";
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for="exampleInputEmail1">Height</label>
-                                        <input type="text" class="form-control" name="height" value="<?php echo $arrdata['height'] ?>" placeholder="Enter height">
+                                        <input type="number" class="form-control" name="height" value="<?php echo $arrdata['height'] ?>" placeholder="Enter height" step="00.1">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="exampleInputEmail1">Date of Birth/D.O.B.</label>
@@ -253,15 +254,8 @@ include "../includes/sidebar.php";
                                         </div>
 
                                         <div class="col-md-6">
-                                            <?php $imgPath = '../../data/uploads/';
-                                            if ($arrdata['profile_pic'] == '') {
-                                                $imgPath .= "user.png";
-                                            } else if (file_exists("../../data/uploads/child/" . $arrdata['profile_pic'])) {
-                                                $imgPath .= "child/" . $arrdata['profile_pic'];
-                                            } else {
-                                                $imgPath .= "na.png";
-                                            } ?>
-                                            <img id="imgput" src="<?= $imgPath ?>" style="width:75px;">
+                                           
+                                            <img id="imgput" src="<?= defaultImage('../../data/uploads/',$arrdata['profile_pic'], "child") ?>" style="width:75px;">
                                         </div>
 
                                     </div>

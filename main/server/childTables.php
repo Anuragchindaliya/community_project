@@ -14,6 +14,7 @@ if (!isset($_SESSION['login']) && !isset($_SESSION['user'])) {
 include "../../data/db/conn.php";
 include "../includes/header.php";
 include "../includes/sidebar.php";
+include "../process/imgFn.php";
 ?>
 <!-- Button trigger modal -->
 <div class="content-wrapper">
@@ -24,6 +25,7 @@ include "../includes/sidebar.php";
                     <div class="card card-dark mt-3">
                         <div class="card-header">
                             <h3 class="card-title"> All Children
+                                <!-- for delete -->
                                 <?php if (isset($_GET['delete']) && $_GET['delete'] == 'true') { ?>
                                     <span id="msg" class="alert alert-success" role="alert">
                                         <i class="fa fa-check-circle"></i>
@@ -87,7 +89,14 @@ include "../includes/sidebar.php";
                                         //change it later
                                         $sql = "SELECT * FROM child WHERE gender='Male'";
                                     } else {
-                                        $sql = "SELECT * FROM child";
+                                        
+                                        if($_SESSION['user']=='member'){
+                                            $id = $_SESSION['id'];
+                                            $sql = "SELECT * FROM child WHERE pid!=$id";
+                                        }else{
+                                            $sql = "SELECT * FROM child";
+                                        }
+                                        
                                     }
 
                                     $result = mysqli_query($conn, $sql);
@@ -95,20 +104,12 @@ include "../includes/sidebar.php";
                                         // output data of each row
 
                                         while ($row = mysqli_fetch_assoc($result)) {
-                                            $imgPath = '../../data/uploads/';
-                                              if ($row['profile_pic'] == '') {
-                                                  $imgPath .= "user.png";
-                                              } else if (file_exists("../../data/uploads/member/" . $row['profile_pic'])) {
-                                                  $imgPath .= "member/" . $row['profile_pic'];
-                                              } else {
-                                                  $imgPath .= "na.png";
-                                              }
                                         ?>
                                             <tr>
 
                                                 <td><?= $row["id"] ?></td>
                                                 <td>
-                                                    <img src="<?= $imgPath?>" style="width: 45px; height:45px;" alt="">
+                                                    <img src="<?=defaultImage('../../data/uploads/',$row['profile_pic'], "child")?>" style="width: 45px; height:45px;" alt="">
                                                     <!-- <div style="background-image: url(../../data/uploads/<?= $row["profile_pic"] ?>); width:40px; height:40px; background-size:cover; background-position:top;"></div> -->
                                                 </td>
                                                 <td><?= $row["child_Name"]; ?></td>
@@ -131,7 +132,7 @@ include "../includes/sidebar.php";
                                     <?php
                                         }
                                     } else {
-                                        echo "0 results";
+                                        echo '<tr><td colspan="5" class="text-center"><h1>0 Results found <br><a class="btn btn-primary" href="./child_new.php">Add new child</a></td></h1></tr>';
                                     } ?>
 
                                 </tbody>
