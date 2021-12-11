@@ -102,6 +102,15 @@
           </li>
         <?php
         } ?>
+        <li class="nav-item">
+          <a href="#" class="nav-link"  data-toggle="modal" data-target="#excelModal">
+            <i class="nav-icon fas fa-list"></i>
+            <p>
+              List of Life Member
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+        </li>
 
       </ul>
     </nav>
@@ -109,3 +118,24 @@
   </div>
   <!-- /.sidebar -->
 </aside>
+
+
+<!-- Modal for excel screenshot-->
+<div class="modal fade " id="excelModal" tabindex="-1" aria-labelledby="excelModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="excelModalLabel">SHREE VARSHNEY VAISH SAMAJ (REGD), FARIDABAD</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img class="col" src="../assets/image/excel.png" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
